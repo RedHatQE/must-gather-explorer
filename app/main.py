@@ -1,11 +1,60 @@
 import os
 from typing import Dict, List
 
+import click
 import ipdb
 import yaml
 
 
-def main():
+@click.command("must-gather-explorer")
+@click.option(
+    "kind",
+    type=click.STRING,
+    required=True,
+    help="""
+    \b
+    The Kind of the resource to get from must-gather
+    multiple kinds can be sent separated by comma (without spaces)
+    Example: -k Deployment,Pod,ConfigMap
+""",  # TODO do we want to get multiple kinds? Probably yes
+)
+@click.option(
+    "-k",
+    "--kind",
+    type=click.STRING,
+    required=True,
+    help="""
+    \b
+    The Kind of the resource to get from must-gather
+    multiple kinds can be sent separated by comma (without spaces)
+    Example: -k Deployment,Pod,ConfigMap
+""",  # TODO do we want to get multiple kinds? Probably yes
+)
+@click.option(
+    "-name",
+    "--name",
+    type=click.STRING,
+    default="",
+    help="""
+    \b
+    The name, or the name prefix  of the resource to get from must-gather
+""",
+)
+@click.option(
+    "-n",
+    "--namespace",
+    type=click.STRING,
+    default="",
+    help="""
+    \b
+    The namespace of the resources to get from must-gather
+""",
+)
+def main(
+    kind: str,
+    name: str,
+    namespace: str,
+):
     must_gather_path: str = "/home/jpeimer/Downloads/must-gather-cnv"
 
     # Fill dictionaries for all files kinds
@@ -45,22 +94,48 @@ def main():
     # ipdb.set_trace()
 
     # Get resource using CLI (click) (reference in OCP wrapper - class generator)
-    resources_list = get_cluster_resources(
-        all_resources=all_resources, kind="PersistentVolumeClaim", name="hpp", namespace="openshift-cnv"
-    )
+
+    kinds: List[str] = kind.split(",")
+    resources_list_requested = {}
+
+    for kind in kinds:
+        resources_list_requested.setdefault(kind, []).extend(
+            get_cluster_resources(all_resources=all_resources, kind=kind, name=name, namespace=namespace)
+        )
+
     ipdb.set_trace()
 
 
-def get_cluster_resources(all_resources, kind, name=None, namespace=None):
+def get_cluster_resources(all_resources: Dict[str, str], kind: str, name: str, namespace: str):
     resources_list: List[Dict] = []
 
-    for cluster_resource in all_resources[f"{kind}"]:
-        if (
-            cluster_resource.get("namespace") == namespace
-            and cluster_resource.get("name")
-            and cluster_resource.get("name").startswith(name)
-        ):
+    for cluster_resource in all_resources[kind]:
+        cluster_resource_name = cluster_resource.get("name")
+        cluster_resource_namespace = cluster_resource.get("namespace")
+
+        # kind, name, namespace
+        if name and namespace:
+            if (
+                cluster_resource_namespace == namespace
+                and cluster_resource_name
+                and cluster_resource_name.startswith(name)
+            ):
+                resources_list.append(cluster_resource)
+
+        # kind, name
+        elif name:
+            if cluster_resource_name and cluster_resource_name.startswith(name):
+                resources_list.append(cluster_resource)
+
+        # kind, namespace
+        elif namespace:
+            if cluster_resource_namespace == namespace:
+                resources_list.append(cluster_resource)
+
+        # kind (mandatory)
+        else:
             resources_list.append(cluster_resource)
+
     return resources_list
 
 
