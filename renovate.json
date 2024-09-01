@@ -1,1 +1,1 @@
-{"$schema": "https://docs.renovatebot.com/renovate-schema.json", "packageRules": [{"matchPackagePatterns": ["pyyaml", "cloup", "ipdb"], "groupName": "poetry-deps"}]}
+{"$schema": "https://docs.renovatebot.com/renovate-schema.json", "packageRules": [{"matchPackagePatterns": ["pyyaml", "click", "ipdb"], "groupName": "poetry-deps"}]}
