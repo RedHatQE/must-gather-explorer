@@ -53,7 +53,7 @@ def main(
     kind: str,
     name: str,
     namespace: str,
-):
+) -> None:
     must_gather_path: str = "/home/jpeimer/Downloads/must-gather-cnv"
 
     # Fill dictionaries for all files kinds
@@ -93,7 +93,7 @@ def main(
     # Get resource using CLI (click) (reference in OCP wrapper - class generator)
 
     kinds: List[str] = kind.split(",")
-    resources_list_requested = {}
+    resources_list_requested: Dict[str, Any] = {}
 
     for kind in kinds:
         resources_list_requested.setdefault(kind, []).extend(
@@ -101,7 +101,7 @@ def main(
         )
 
 
-def get_cluster_resources(all_resources: Dict[str, Any], kind: str, name: str, namespace: str):
+def get_cluster_resources(all_resources: Dict[str, Any], kind: str, name: str, namespace: str) -> List[Dict[str, Any]]:
     resources_list: List[Dict[str, Any]] = []
 
     for cluster_resource in all_resources[kind]:

@@ -19,7 +19,7 @@ repos:
         stages: [commit]
       - id: ruff
         name: sort imports with ruff
-        args: [ --select, I, --fix ]
+        args: [--select, I, --fix]
       - id: ruff-format
         stages: [commit]
 
@@ -63,3 +63,9 @@ repos:
     rev: "v8.18.2"
     hooks:
       - id: gitleaks
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.11.2
+    hooks:
+      - id: mypy
+        additional_dependencies: [types-PyYAML]
