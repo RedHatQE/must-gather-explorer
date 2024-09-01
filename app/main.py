@@ -2,7 +2,6 @@ import os
 from typing import Any, Dict, List
 
 import click
-import ipdb
 import yaml
 
 
@@ -91,8 +90,6 @@ def main(
                 "yaml_file": yaml_file_path,
             })
 
-    # ipdb.set_trace()
-
     # Get resource using CLI (click) (reference in OCP wrapper - class generator)
 
     kinds: List[str] = kind.split(",")
@@ -102,8 +99,6 @@ def main(
         resources_list_requested.setdefault(kind, []).extend(
             get_cluster_resources(all_resources=all_resources, kind=kind, name=name, namespace=namespace)
         )
-
-    ipdb.set_trace()
 
 
 def get_cluster_resources(all_resources: Dict[str, Any], kind: str, name: str, namespace: str):
