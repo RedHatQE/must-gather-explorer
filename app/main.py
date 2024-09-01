@@ -1,5 +1,5 @@
 import os
-from typing import Dict, List
+from typing import Any, Dict, List
 
 import click
 import ipdb
@@ -60,7 +60,7 @@ def main(
     # Fill dictionaries for all files kinds
     all_yaml_files: Dict[str, List[str]] = {}
     all_log_files: Dict[str, List[str]] = {}
-    for root, dirs, files in os.walk(must_gather_path):
+    for root, dirs, _ in os.walk(must_gather_path):
         for _dir in dirs:
             for _file in os.listdir(os.path.join(root, _dir)):
                 file_extention = _file.rsplit(".", 1)
@@ -77,7 +77,7 @@ def main(
 
     # Fill dictionaries for all resource kinds
     # {Kind: [{”name”:”cdi-deployment”, : “path”: “path/../”, “namespace”: “openshift-cnv”}]}
-    all_resources: Dict[str, str] = {}
+    all_resources: Dict[str, Any] = {}
     # resource_dictionary = {}
     for yaml_path, yaml_files in all_yaml_files.items():
         for yaml_file in yaml_files:
@@ -106,8 +106,8 @@ def main(
     ipdb.set_trace()
 
 
-def get_cluster_resources(all_resources: Dict[str, str], kind: str, name: str, namespace: str):
-    resources_list: List[Dict] = []
+def get_cluster_resources(all_resources: Dict[str, Any], kind: str, name: str, namespace: str):
+    resources_list: List[Dict[str, Any]] = []
 
     for cluster_resource in all_resources[kind]:
         cluster_resource_name = cluster_resource.get("name")
