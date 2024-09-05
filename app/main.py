@@ -1,60 +1,20 @@
 import os
+import sys
 from typing import Any, Dict, List
 
-import click
 import yaml
+from rich.console import Console
+from rich.prompt import Prompt
+from rich.table import Table
 
 
-@click.command("must-gather-explorer")
-@click.option(
-    "kind",
-    type=click.STRING,
-    required=True,
-    help="""
-    \b
-    The Kind of the resource to get from must-gather
-    multiple kinds can be sent separated by comma (without spaces)
-    Example: -k Deployment,Pod,ConfigMap
-""",  # TODO do we want to get multiple kinds? Probably yes
-)
-@click.option(
-    "-k",
-    "--kind",
-    type=click.STRING,
-    required=True,
-    help="""
-    \b
-    The Kind of the resource to get from must-gather
-    multiple kinds can be sent separated by comma (without spaces)
-    Example: -k Deployment,Pod,ConfigMap
-""",  # TODO do we want to get multiple kinds? Probably yes
-)
-@click.option(
-    "-name",
-    "--name",
-    type=click.STRING,
-    default="",
-    help="""
-    \b
-    The name, or the name prefix  of the resource to get from must-gather
-""",
-)
-@click.option(
-    "-n",
-    "--namespace",
-    type=click.STRING,
-    default="",
-    help="""
-    \b
-    The namespace of the resources to get from must-gather
-""",
-)
-def main(
-    kind: str,
-    name: str,
-    namespace: str,
-) -> None:
+def main() -> None:
     must_gather_path: str = "/home/jpeimer/Downloads/must-gather-cnv"
+
+    console = Console()
+    console.print(
+        "\n[bold cyan]Welcome to the must-gather-explorer\n" "Please wait while the must gather data is being parsed\n"
+    )
 
     # Fill dictionaries for all files kinds
     all_yaml_files: Dict[str, List[str]] = {}
@@ -90,18 +50,103 @@ def main(
                 "yaml_file": yaml_file_path,
             })
 
-    # Get resource using CLI (click) (reference in OCP wrapper - class generator)
+    actions_dict: Dict[str, Any] = {
+        "get": get_resources,
+        "logs": get_logs,
+        "describe": get_describe,
+        "exit": None,
+        "help": print_help,
+    }
 
-    kinds: List[str] = kind.split(",")
-    resources_list_requested: Dict[str, Any] = {}
+    # Get user prompt
+    while True:
+        user_command = Prompt.ask("Enter the command ")
 
-    for kind in kinds:
-        resources_list_requested.setdefault(kind, []).extend(
-            get_cluster_resources(all_resources=all_resources, kind=kind, name=name, namespace=namespace)
-        )
+        # get PersistentVolumeClaim -n openshift-cnv
+        # get PersistentVolumeClaim -n openshift-cnv hpp
+        # get PersistentVolumeClaim hpp
+        # get PersistentVolumeClaim
+
+        commands_list: List[str] = user_command.split()
+
+        action_name = commands_list[0]
+
+        supported_actions = actions_dict.keys()
+        if action_name not in supported_actions:
+            console.print(f"Action '{action_name}' is not supported, please use a supported action {supported_actions}")
+            continue
+
+        if action_name == "exit":
+            sys.exit(0)
+
+        if action_name == "help":
+            actions_dict[action_name]()
+            continue
+
+        commands_list.remove(action_name)
+
+        namespace_name = ""
+        if "-n" in commands_list:
+            namespace_index = commands_list.index("-n")
+            namespace_name = commands_list[namespace_index + 1]
+            commands_list.remove("-n")
+            commands_list.remove(namespace_name)
+
+        if not commands_list:
+            console.print("Please pass the resource Kind")
+            continue
+
+        resource_kind = commands_list[0]
+        commands_list.remove(resource_kind)
+
+        resource_name = ""
+
+        if commands_list:
+            if len(commands_list) > 1:
+                console.print("Too many params")
+                continue
+            else:
+                resource_name = commands_list[0]
+
+        kwargs: Dict[str, Any] = {
+            "all_resources": all_resources,
+            "kind": resource_kind,
+            "name": resource_name,
+            "namespace": namespace_name,
+        }
+
+        resources_raw_data = get_cluster_resources_raw_data(**kwargs)
+        actions_dict[action_name](resources_raw_data)
 
 
-def get_cluster_resources(all_resources: Dict[str, Any], kind: str, name: str, namespace: str) -> List[Dict[str, Any]]:
+def get_resources(resources_raw_data: List[Dict[str, Any]]) -> None:
+    # Print table of Namespace, Name
+    table = Table()
+    table.add_column("NAMESPACE")
+    table.add_column("NAME")
+
+    for raw_data in resources_raw_data:
+        table.add_row(raw_data["namespace"], raw_data["name"])
+
+    console = Console()
+    console.print(table)
+
+
+def get_logs() -> None:
+    pass
+
+
+def get_describe() -> None:
+    pass
+
+
+def print_help() -> None:
+    pass
+
+
+def get_cluster_resources_raw_data(
+    all_resources: Dict[str, Any], kind: str, name: str, namespace: str
+) -> List[Dict[str, Any]]:
     resources_list: List[Dict[str, Any]] = []
 
     for cluster_resource in all_resources[kind]:
