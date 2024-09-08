@@ -2,17 +2,34 @@ import os
 import sys
 from typing import Any, Dict, List
 
+import click
 import yaml
 from rich.console import Console
 from rich.prompt import Prompt
 from rich.table import Table
 
+CONSOLE = Console()
 
-def main() -> None:
-    must_gather_path: str = "/home/jpeimer/Downloads/must-gather-cnv"
+NAMESPACE_FLAG = "-n"
 
-    console = Console()
-    console.print(
+
+@click.command("must-gather-explorer")
+@click.option(
+    "-p",
+    "--path",
+    type=click.STRING,
+    default="",
+    help="""
+    \b
+    The full path to the must-gather folder
+""",
+)
+def main(
+    path: str,
+) -> None:
+    must_gather_path = path
+
+    CONSOLE.print(
         "\n[bold cyan]Welcome to the must-gather-explorer\n" "Please wait while the must gather data is being parsed\n"
     )
 
@@ -35,9 +52,8 @@ def main() -> None:
                     all_log_files.setdefault(os.path.join(root, _dir), []).append(_file)
 
     # Fill dictionaries for all resource kinds
-    # {Kind: [{”name”:”cdi-deployment”, : “path”: “path/../”, “namespace”: “openshift-cnv”}]}
+    # {Kind: [{”name”:”cdi-deployment”, : “yaml_file”: “path/../”, “namespace”: “openshift-cnv”}]}
     all_resources: Dict[str, Any] = {}
-    # resource_dictionary = {}
     for yaml_path, yaml_files in all_yaml_files.items():
         for yaml_file in yaml_files:
             yaml_file_path = os.path.join(yaml_path, yaml_file)
@@ -49,13 +65,19 @@ def main() -> None:
                 "namespace": resource_dict_metadata.get("namespace", ""),
                 "yaml_file": yaml_file_path,
             })
+    if not all_resources:
+        CONSOLE.print(
+            "[red]Can't parse the files \n"
+            "Please check that the --path points to the [bold]correct[/bold] and [bold]non-empty[/bold] must-gather folder"
+        )
+        sys.exit(1)
 
     actions_dict: Dict[str, Any] = {
         "get": get_resources,
         "logs": get_logs,
         "describe": get_describe,
         "exit": None,
-        "help": print_help,
+        "help": None,
     }
 
     # Get user prompt
@@ -70,30 +92,29 @@ def main() -> None:
         commands_list: List[str] = user_command.split()
 
         action_name = commands_list[0]
+        commands_list.remove(action_name)
 
         supported_actions = actions_dict.keys()
         if action_name not in supported_actions:
-            console.print(f"Action '{action_name}' is not supported, please use a supported action {supported_actions}")
+            CONSOLE.print(f"Action '{action_name}' is not supported, please use a supported action {supported_actions}")
             continue
 
         if action_name == "exit":
             sys.exit(0)
 
         if action_name == "help":
-            actions_dict[action_name]()
+            print_help()
             continue
 
-        commands_list.remove(action_name)
-
         namespace_name = ""
-        if "-n" in commands_list:
-            namespace_index = commands_list.index("-n")
+        if NAMESPACE_FLAG in commands_list:
+            namespace_index = commands_list.index(NAMESPACE_FLAG)
             namespace_name = commands_list[namespace_index + 1]
-            commands_list.remove("-n")
+            commands_list.remove(NAMESPACE_FLAG)
             commands_list.remove(namespace_name)
 
         if not commands_list:
-            console.print("Please pass the resource Kind")
+            CONSOLE.print("Please pass the resource Kind")
             continue
 
         resource_kind = commands_list[0]
@@ -103,19 +124,14 @@ def main() -> None:
 
         if commands_list:
             if len(commands_list) > 1:
-                console.print("Too many params")
+                CONSOLE.print("[red]Too many params passed in, run 'help' for help\n")
                 continue
             else:
                 resource_name = commands_list[0]
 
-        kwargs: Dict[str, Any] = {
-            "all_resources": all_resources,
-            "kind": resource_kind,
-            "name": resource_name,
-            "namespace": namespace_name,
-        }
-
-        resources_raw_data = get_cluster_resources_raw_data(**kwargs)
+        resources_raw_data = get_cluster_resources_raw_data(
+            all_resources=all_resources, kind=resource_kind, name=resource_name, namespace=namespace_name
+        )
         actions_dict[action_name](resources_raw_data)
 
 
@@ -128,8 +144,7 @@ def get_resources(resources_raw_data: List[Dict[str, Any]]) -> None:
     for raw_data in resources_raw_data:
         table.add_row(raw_data["namespace"], raw_data["name"])
 
-    console = Console()
-    console.print(table)
+    CONSOLE.print(table)
 
 
 def get_logs() -> None:
