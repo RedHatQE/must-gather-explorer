@@ -17,8 +17,7 @@ NAMESPACE_FLAG = "-n"
 @click.option(
     "-p",
     "--path",
-    type=click.STRING,
-    default="",
+    type=click.Path(exists=True),
     help="""
     \b
     The full path to the must-gather folder
@@ -126,8 +125,8 @@ def main(
             if len(commands_list) > 1:
                 CONSOLE.print("[red]Too many params passed in, run 'help' for help\n")
                 continue
-            else:
-                resource_name = commands_list[0]
+
+            resource_name = commands_list[0]
 
         resources_raw_data = get_cluster_resources_raw_data(
             all_resources=all_resources, kind=resource_kind, name=resource_name, namespace=namespace_name
