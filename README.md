@@ -2,10 +2,15 @@
 Will help you to navigate the collected must-gather
 
 ## How to use
-- Run the command:
-
+- Install pipx
 ```bash
-poetry run must-gather-explorer --path=<path-to-must-gather-folder>
+git clone https://github.com/RedHatQE/must-gather-explorer.git
+cd must-gather-explorer
+pipx install .
+```
+- Run the command:
+```bash
+must-gather-explorer --path=<path-to-must-gather-folder>
 ```
 - Get the resources:
 ```bash
@@ -24,8 +29,9 @@ exit
 
 ## Update cluster resources aliases
 - You need a live OpenShift cluster
-- Run this command:
+- Install pipx (see the instructions above)
+- Run the command:
 
 ```bash
-poetry run update-resources-aliases
+update-resources-aliases
 ```

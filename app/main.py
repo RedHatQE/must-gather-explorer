@@ -135,6 +135,8 @@ def main(
 
 
 def get_resources(resources_raw_data: List[Dict[str, Any]]) -> None:
+    # TODO Hande when no resource found, i.e. "get VirtualMachine"
+
     # Print table of Namespace, Name
     table = Table()
     table.add_column("NAMESPACE")
