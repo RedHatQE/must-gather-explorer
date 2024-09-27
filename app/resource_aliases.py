@@ -29,26 +29,30 @@ def fill_api_resources_aliases() -> None:
     cli_resource_alias: Dict[str, List[str]] = {}
 
     for line in out.splitlines():
-        # line format:
-        # 'NAME                SHORTNAMES(optional)    APIVERSION        NAMESPACED    KIND'
+        # line example:
         # 'bindings                                    v1                true          Binding'
         # 'virtualmachines     vm,vms                  kubevirt.io/v1    true          VirtualMachine'
 
         split_line = line.split()
 
-        # add NAME
-        alias_list: List[str] = [split_line[0]]
+        # add NAME to the list of aliases
+        alias_list: List[str] = [split_line[0]]  # alias_list = ['virtualmachines']
 
-        if len(split_line) == 5:
+        line_len = len(split_line)
+
+        # len is 5 when there are SHORTNAMES
+        if line_len == 5:
             # add SHORTNAMES
-            alias_list = alias_list + split_line[1].split(",")
-        else:
-            if len(split_line) != 4:
-                CONSOLE.print(f"split line should contain 4 or 5 elements, got {len(split_line): \nline: {split_line}}")
-                sys.exit(1)
+            alias_list = alias_list + split_line[1].split(",")  # alias_list = ['virtualmachines','vm','vms']
+        # len is 4 when there are NO SHORTNAMES
+        elif line_len != 4:
+            CONSOLE.print(f"split line should contain 4 or 5 elements, got {len(split_line): \nline: {split_line}}")
+            sys.exit(1)
 
-        # add KIND
-        cli_resource_alias[split_line[-1]] = alias_list
+        # Fill cli_resource_alias dict with {Kind}:['alias1','alias2','...']
+        cli_resource_alias[split_line[-1]] = (
+            alias_list  # cli_resource_alias = {'VirtualMachine': ['virtualmachines','vm','vms']}
+        )
 
     resources_aliases.update(cli_resource_alias)
 

@@ -1,17 +1,24 @@
 # Must-gather explorer
-Will help you to navigate the collected must-gather
+Explore the collected must-gather data
 
-## How to use
-- Install pipx
+## Prerequisite
+Install [pipx](https://github.com/pypa/pipx)
+
+## Installation
 ```bash
 git clone https://github.com/RedHatQE/must-gather-explorer.git
+
 cd must-gather-explorer
-pipx install .
+
+pipx install . -f
 ```
+
+## How to use
 - Run the command:
 ```bash
 must-gather-explorer --path=<path-to-must-gather-folder>
 ```
+Once you executed the command, you will enter the must-gather-explorer shell `Enter the command:`, where you can prompt these commands:
 - Get the resources:
 ```bash
 get <resource_kind:mandatory> <-n namespace_name:optional> <resource_name_starts_with:optional>
@@ -21,6 +28,10 @@ get <resource_kind:mandatory> <-n namespace_name:optional> <resource_name_starts
 get Node # To get all Nodes
 get PersistentVolumeClaim hpp # To get all PVCs that name starts form 'hpp'
 get PersistentVolumeClaim -n openshift-storage hpp # To get all PVCs in 'openshift-storage' namespace that name starts form 'hpp'
+```
+- Help:
+```bash
+help
 ```
 - Exit:
 ```bash
