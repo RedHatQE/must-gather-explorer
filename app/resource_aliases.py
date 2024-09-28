@@ -50,9 +50,8 @@ def fill_api_resources_aliases() -> None:
             sys.exit(1)
 
         # Fill cli_resource_alias dict with {Kind}:['alias1','alias2','...']
-        cli_resource_alias[split_line[-1]] = (
-            alias_list  # cli_resource_alias = {'VirtualMachine': ['virtualmachines','vm','vms']}
-        )
+        cli_resource_alias[split_line[-1]] = alias_list
+        # cli_resource_alias = {'VirtualMachine': ['virtualmachines','vm','vms']}
 
     resources_aliases.update(cli_resource_alias)
 
