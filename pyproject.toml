@@ -30,10 +30,14 @@ python = "^3.9"
 pyyaml = "^6.0.2"
 click = "^8.1.7"
 rich = "^13.8.0"
+poetry-dynamic-versioning = "^1.4.1"
 
 
 [tool.poetry.group.dev.dependencies]
 ipdb = "^0.13.13"
+
+[tool.poetry-dynamic-versioning.substitution]
+files = ["VERSION"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
