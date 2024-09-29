@@ -1,0 +1,1059 @@
+{
+    "Binding": [
+        "bindings"
+    ],
+    "ComponentStatus": [
+        "componentstatuses",
+        "cs"
+    ],
+    "ConfigMap": [
+        "configmaps",
+        "cm"
+    ],
+    "Endpoints": [
+        "endpoints",
+        "ep"
+    ],
+    "Event": [
+        "events",
+        "ev"
+    ],
+    "LimitRange": [
+        "limitranges",
+        "limits"
+    ],
+    "Namespace": [
+        "namespaces",
+        "ns"
+    ],
+    "Node": [
+        "nodes"
+    ],
+    "PersistentVolumeClaim": [
+        "persistentvolumeclaims",
+        "pvc"
+    ],
+    "PersistentVolume": [
+        "persistentvolumes",
+        "pv"
+    ],
+    "Pod": [
+        "pods",
+        "po"
+    ],
+    "PodTemplate": [
+        "podtemplates"
+    ],
+    "ReplicationController": [
+        "replicationcontrollers",
+        "rc"
+    ],
+    "ResourceQuota": [
+        "resourcequotas",
+        "quota"
+    ],
+    "Secret": [
+        "secrets"
+    ],
+    "ServiceAccount": [
+        "serviceaccounts",
+        "sa"
+    ],
+    "Service": [
+        "services",
+        "svc"
+    ],
+    "AAQ": [
+        "aaqs",
+        "aaq",
+        "aaqs"
+    ],
+    "MutatingWebhookConfiguration": [
+        "mutatingwebhookconfigurations"
+    ],
+    "ValidatingAdmissionPolicy": [
+        "validatingadmissionpolicies"
+    ],
+    "ValidatingAdmissionPolicyBinding": [
+        "validatingadmissionpolicybindings"
+    ],
+    "ValidatingWebhookConfiguration": [
+        "validatingwebhookconfigurations"
+    ],
+    "CustomResourceDefinition": [
+        "customresourcedefinitions",
+        "crd",
+        "crds"
+    ],
+    "APIService": [
+        "apiservices"
+    ],
+    "APIRequestCount": [
+        "apirequestcounts"
+    ],
+    "ControllerRevision": [
+        "controllerrevisions"
+    ],
+    "DaemonSet": [
+        "daemonsets",
+        "ds"
+    ],
+    "Deployment": [
+        "deployments",
+        "deploy"
+    ],
+    "ReplicaSet": [
+        "replicasets",
+        "rs"
+    ],
+    "StatefulSet": [
+        "statefulsets",
+        "sts"
+    ],
+    "DeploymentConfig": [
+        "deploymentconfigs",
+        "dc"
+    ],
+    "SelfSubjectReview": [
+        "selfsubjectreviews"
+    ],
+    "TokenReview": [
+        "tokenreviews"
+    ],
+    "LocalSubjectAccessReview": [
+        "localsubjectaccessreviews"
+    ],
+    "SelfSubjectAccessReview": [
+        "selfsubjectaccessreviews"
+    ],
+    "SelfSubjectRulesReview": [
+        "selfsubjectrulesreviews"
+    ],
+    "SubjectAccessReview": [
+        "subjectaccessreviews"
+    ],
+    "ClusterRoleBinding": [
+        "clusterrolebindings"
+    ],
+    "ClusterRole": [
+        "clusterroles"
+    ],
+    "LocalResourceAccessReview": [
+        "localresourceaccessreviews"
+    ],
+    "ResourceAccessReview": [
+        "resourceaccessreviews"
+    ],
+    "RoleBindingRestriction": [
+        "rolebindingrestrictions"
+    ],
+    "RoleBinding": [
+        "rolebindings"
+    ],
+    "Role": [
+        "roles"
+    ],
+    "SubjectRulesReview": [
+        "subjectrulesreviews"
+    ],
+    "HorizontalPodAutoscaler": [
+        "horizontalpodautoscalers",
+        "hpa"
+    ],
+    "ClusterAutoscaler": [
+        "clusterautoscalers",
+        "ca"
+    ],
+    "MachineAutoscaler": [
+        "machineautoscalers",
+        "ma"
+    ],
+    "CronJob": [
+        "cronjobs",
+        "cj"
+    ],
+    "Job": [
+        "jobs"
+    ],
+    "BuildConfig": [
+        "buildconfigs",
+        "bc"
+    ],
+    "Build": [
+        "builds"
+    ],
+    "CDIConfig": [
+        "cdiconfigs"
+    ],
+    "CDI": [
+        "cdis",
+        "cdi",
+        "cdis"
+    ],
+    "DataImportCron": [
+        "dataimportcrons",
+        "dic",
+        "dics"
+    ],
+    "DataSource": [
+        "datasources",
+        "das"
+    ],
+    "DataVolume": [
+        "datavolumes",
+        "dv",
+        "dvs"
+    ],
+    "ObjectTransfer": [
+        "objecttransfers",
+        "ot",
+        "ots"
+    ],
+    "StorageProfile": [
+        "storageprofiles"
+    ],
+    "VolumeCloneSource": [
+        "volumeclonesources"
+    ],
+    "VolumeImportSource": [
+        "volumeimportsources"
+    ],
+    "VolumeUploadSource": [
+        "volumeuploadsources"
+    ],
+    "CephBlockPoolRadosNamespace": [
+        "cephblockpoolradosnamespaces"
+    ],
+    "CephBlockPool": [
+        "cephblockpools"
+    ],
+    "CephBucketNotification": [
+        "cephbucketnotifications"
+    ],
+    "CephBucketTopic": [
+        "cephbuckettopics"
+    ],
+    "CephClient": [
+        "cephclients"
+    ],
+    "CephCluster": [
+        "cephclusters"
+    ],
+    "CephCOSIDriver": [
+        "cephcosidrivers",
+        "cephcosi"
+    ],
+    "CephFilesystemMirror": [
+        "cephfilesystemmirrors"
+    ],
+    "CephFilesystem": [
+        "cephfilesystems"
+    ],
+    "CephFilesystemSubVolumeGroup": [
+        "cephfilesystemsubvolumegroups"
+    ],
+    "CephNFS": [
+        "cephnfses",
+        "nfs"
+    ],
+    "CephObjectRealm": [
+        "cephobjectrealms"
+    ],
+    "CephObjectStore": [
+        "cephobjectstores"
+    ],
+    "CephObjectStoreUser": [
+        "cephobjectstoreusers",
+        "rcou",
+        "objectuser"
+    ],
+    "CephObjectZoneGroup": [
+        "cephobjectzonegroups"
+    ],
+    "CephObjectZone": [
+        "cephobjectzones"
+    ],
+    "CephRBDMirror": [
+        "cephrbdmirrors"
+    ],
+    "CertificateSigningRequest": [
+        "certificatesigningrequests",
+        "csr"
+    ],
+    "VirtualMachineClone": [
+        "virtualmachineclones",
+        "vmclone",
+        "vmclones"
+    ],
+    "CloudPrivateIPConfig": [
+        "cloudprivateipconfigs"
+    ],
+    "CredentialsRequest": [
+        "credentialsrequests"
+    ],
+    "APIServer": [
+        "apiservers"
+    ],
+    "Authentication": [
+        "authentications"
+    ],
+    "ClusterOperator": [
+        "clusteroperators",
+        "co"
+    ],
+    "ClusterVersion": [
+        "clusterversions"
+    ],
+    "Console": [
+        "consoles"
+    ],
+    "DNS": [
+        "dnses"
+    ],
+    "FeatureGate": [
+        "featuregates"
+    ],
+    "ImageContentPolicy": [
+        "imagecontentpolicies"
+    ],
+    "ImageDigestMirrorSet": [
+        "imagedigestmirrorsets",
+        "idms"
+    ],
+    "Image": [
+        "images"
+    ],
+    "ImageTagMirrorSet": [
+        "imagetagmirrorsets",
+        "itms"
+    ],
+    "Infrastructure": [
+        "infrastructures"
+    ],
+    "Ingress": [
+        "ingresses",
+        "ing"
+    ],
+    "Network": [
+        "networks"
+    ],
+    "OAuth": [
+        "oauths"
+    ],
+    "OperatorHub": [
+        "operatorhubs"
+    ],
+    "Project": [
+        "projects"
+    ],
+    "Proxy": [
+        "proxies"
+    ],
+    "Scheduler": [
+        "schedulers"
+    ],
+    "ConsoleCLIDownload": [
+        "consoleclidownloads"
+    ],
+    "ConsoleExternalLogLink": [
+        "consoleexternalloglinks"
+    ],
+    "ConsoleLink": [
+        "consolelinks"
+    ],
+    "ConsoleNotification": [
+        "consolenotifications"
+    ],
+    "ConsolePlugin": [
+        "consoleplugins"
+    ],
+    "ConsoleQuickStart": [
+        "consolequickstarts"
+    ],
+    "ConsoleSample": [
+        "consolesamples"
+    ],
+    "ConsoleYAMLSample": [
+        "consoleyamlsamples"
+    ],
+    "PodNetworkConnectivityCheck": [
+        "podnetworkconnectivitychecks"
+    ],
+    "Lease": [
+        "leases"
+    ],
+    "CephConnection": [
+        "cephconnections"
+    ],
+    "ClientProfileMapping": [
+        "clientprofilemappings"
+    ],
+    "ClientProfile": [
+        "clientprofiles"
+    ],
+    "Driver": [
+        "drivers"
+    ],
+    "OperatorConfig": [
+        "operatorconfigs"
+    ],
+    "CSIAddonsNode": [
+        "csiaddonsnodes"
+    ],
+    "EncryptionKeyRotationCronJob": [
+        "encryptionkeyrotationcronjobs"
+    ],
+    "EncryptionKeyRotationJob": [
+        "encryptionkeyrotationjobs"
+    ],
+    "NetworkFence": [
+        "networkfences"
+    ],
+    "ReclaimSpaceCronJob": [
+        "reclaimspacecronjobs"
+    ],
+    "ReclaimSpaceJob": [
+        "reclaimspacejobs"
+    ],
+    "EndpointSlice": [
+        "endpointslices"
+    ],
+    "VirtualMachineExport": [
+        "virtualmachineexports",
+        "vmexport",
+        "vmexports"
+    ],
+    "FlowSchema": [
+        "flowschemas"
+    ],
+    "PriorityLevelConfiguration": [
+        "prioritylevelconfigurations"
+    ],
+    "OpenstackVolumePopulator": [
+        "openstackvolumepopulators",
+        "osvp",
+        "osvps"
+    ],
+    "OvirtVolumePopulator": [
+        "ovirtvolumepopulators",
+        "ovvp",
+        "ovvps"
+    ],
+    "HyperConverged": [
+        "hyperconvergeds",
+        "hco",
+        "hcos"
+    ],
+    "HelmChartRepository": [
+        "helmchartrepositories"
+    ],
+    "ProjectHelmChartRepository": [
+        "projecthelmchartrepositories"
+    ],
+    "HostPathProvisioner": [
+        "hostpathprovisioners"
+    ],
+    "ImageSignature": [
+        "imagesignatures"
+    ],
+    "ImageStreamImage": [
+        "imagestreamimages",
+        "isimage"
+    ],
+    "ImageStreamImport": [
+        "imagestreamimports"
+    ],
+    "ImageStreamMapping": [
+        "imagestreammappings"
+    ],
+    "ImageStream": [
+        "imagestreams",
+        "is"
+    ],
+    "ImageStreamTag": [
+        "imagestreamtags",
+        "istag"
+    ],
+    "ImageTag": [
+        "imagetags",
+        "itag"
+    ],
+    "Config": [
+        "configs"
+    ],
+    "ImagePruner": [
+        "imagepruners"
+    ],
+    "Metal3Remediation": [
+        "metal3remediations",
+        "m3r",
+        "m3remediation"
+    ],
+    "Metal3RemediationTemplate": [
+        "metal3remediationtemplates",
+        "m3rt",
+        "m3remediationtemplate",
+        "m3remediationtemplates",
+        "metal3rt",
+        "metal3remediationtemplate"
+    ],
+    "DNSRecord": [
+        "dnsrecords"
+    ],
+    "VirtualMachineClusterInstancetype": [
+        "virtualmachineclusterinstancetypes",
+        "vmclusterinstancetype",
+        "vmclusterinstancetypes",
+        "vmcf",
+        "vmcfs"
+    ],
+    "VirtualMachineClusterPreference": [
+        "virtualmachineclusterpreferences",
+        "vmcp",
+        "vmcps"
+    ],
+    "VirtualMachineInstancetype": [
+        "virtualmachineinstancetypes",
+        "vminstancetype",
+        "vminstancetypes",
+        "vmf",
+        "vmfs"
+    ],
+    "VirtualMachinePreference": [
+        "virtualmachinepreferences",
+        "vmpref",
+        "vmprefs",
+        "vmp",
+        "vmps"
+    ],
+    "IPAddressClaim": [
+        "ipaddressclaims"
+    ],
+    "IPAddress": [
+        "ipaddresses"
+    ],
+    "NetworkAttachmentDefinition": [
+        "network-attachment-definitions",
+        "net-attach-def"
+    ],
+    "AdminPolicyBasedExternalRoute": [
+        "adminpolicybasedexternalroutes",
+        "apbexternalroute"
+    ],
+    "EgressFirewall": [
+        "egressfirewalls"
+    ],
+    "EgressIP": [
+        "egressips",
+        "eip"
+    ],
+    "EgressQoS": [
+        "egressqoses"
+    ],
+    "EgressService": [
+        "egressservices"
+    ],
+    "KubeVirt": [
+        "kubevirts",
+        "kv",
+        "kvs"
+    ],
+    "VirtualMachineInstanceMigration": [
+        "virtualmachineinstancemigrations",
+        "vmim",
+        "vmims"
+    ],
+    "VirtualMachineInstancePreset": [
+        "virtualmachineinstancepresets",
+        "vmipreset",
+        "vmipresets"
+    ],
+    "VirtualMachineInstanceReplicaSet": [
+        "virtualmachineinstancereplicasets",
+        "vmirs",
+        "vmirss"
+    ],
+    "VirtualMachineInstance": [
+        "virtualmachineinstances",
+        "vmi",
+        "vmis"
+    ],
+    "VirtualMachine": [
+        "virtualmachines",
+        "vm",
+        "vms"
+    ],
+    "LocalVolumeDiscovery": [
+        "localvolumediscoveries"
+    ],
+    "LocalVolumeDiscoveryResult": [
+        "localvolumediscoveryresults"
+    ],
+    "LocalVolume": [
+        "localvolumes"
+    ],
+    "LocalVolumeSet": [
+        "localvolumesets"
+    ],
+    "ControlPlaneMachineSet": [
+        "controlplanemachinesets"
+    ],
+    "MachineHealthCheck": [
+        "machinehealthchecks",
+        "mhc",
+        "mhcs"
+    ],
+    "Machine": [
+        "machines"
+    ],
+    "MachineSet": [
+        "machinesets"
+    ],
+    "ContainerRuntimeConfig": [
+        "containerruntimeconfigs",
+        "ctrcfg"
+    ],
+    "ControllerConfig": [
+        "controllerconfigs"
+    ],
+    "KubeletConfig": [
+        "kubeletconfigs"
+    ],
+    "MachineConfigPool": [
+        "machineconfigpools",
+        "mcp"
+    ],
+    "MachineConfig": [
+        "machineconfigs",
+        "mc"
+    ],
+    "BareMetalHost": [
+        "baremetalhosts",
+        "bmh",
+        "bmhost"
+    ],
+    "BMCEventSubscription": [
+        "bmceventsubscriptions",
+        "bes",
+        "bmcevent"
+    ],
+    "DataImage": [
+        "dataimages"
+    ],
+    "FirmwareSchema": [
+        "firmwareschemas"
+    ],
+    "HardwareData": [
+        "hardwaredata",
+        "hd"
+    ],
+    "HostFirmwareComponents": [
+        "hostfirmwarecomponents"
+    ],
+    "HostFirmwareSettings": [
+        "hostfirmwaresettings",
+        "hfs"
+    ],
+    "PreprovisioningImage": [
+        "preprovisioningimages",
+        "ppimg"
+    ],
+    "Provisioning": [
+        "provisionings"
+    ],
+    "NodeMetrics": [
+        "nodes"
+    ],
+    "PodMetrics": [
+        "pods"
+    ],
+    "StorageState": [
+        "storagestates"
+    ],
+    "StorageVersionMigration": [
+        "storageversionmigrations"
+    ],
+    "MigrationPolicy": [
+        "migrationpolicies"
+    ],
+    "AlertmanagerConfig": [
+        "alertmanagerconfigs",
+        "amcfg"
+    ],
+    "Alertmanager": [
+        "alertmanagers",
+        "am"
+    ],
+    "PodMonitor": [
+        "podmonitors",
+        "pmon"
+    ],
+    "Probe": [
+        "probes",
+        "prb"
+    ],
+    "Prometheus": [
+        "prometheuses",
+        "prom"
+    ],
+    "PrometheusRule": [
+        "prometheusrules",
+        "promrule"
+    ],
+    "ServiceMonitor": [
+        "servicemonitors",
+        "smon"
+    ],
+    "ThanosRuler": [
+        "thanosrulers",
+        "ruler"
+    ],
+    "AlertingRule": [
+        "alertingrules"
+    ],
+    "AlertRelabelConfig": [
+        "alertrelabelconfigs"
+    ],
+    "EgressRouter": [
+        "egressrouters"
+    ],
+    "OperatorPKI": [
+        "operatorpkis"
+    ],
+    "NetworkAddonsConfig": [
+        "networkaddonsconfigs"
+    ],
+    "IngressClass": [
+        "ingressclasses"
+    ],
+    "NetworkPolicy": [
+        "networkpolicies",
+        "netpol"
+    ],
+    "NMState": [
+        "nmstates"
+    ],
+    "NodeNetworkConfigurationEnactment": [
+        "nodenetworkconfigurationenactments",
+        "nnce"
+    ],
+    "NodeNetworkConfigurationPolicy": [
+        "nodenetworkconfigurationpolicies",
+        "nncp"
+    ],
+    "NodeNetworkState": [
+        "nodenetworkstates",
+        "nns"
+    ],
+    "RuntimeClass": [
+        "runtimeclasses"
+    ],
+    "BackingStore": [
+        "backingstores"
+    ],
+    "BucketClass": [
+        "bucketclasses"
+    ],
+    "NamespaceStore": [
+        "namespacestores"
+    ],
+    "NooBaaAccount": [
+        "noobaaaccounts"
+    ],
+    "NooBaa": [
+        "noobaas",
+        "nb"
+    ],
+    "OAuthAccessToken": [
+        "oauthaccesstokens"
+    ],
+    "OAuthAuthorizeToken": [
+        "oauthauthorizetokens"
+    ],
+    "OAuthClientAuthorization": [
+        "oauthclientauthorizations"
+    ],
+    "OAuthClient": [
+        "oauthclients"
+    ],
+    "UserOAuthAccessToken": [
+        "useroauthaccesstokens"
+    ],
+    "ObjectBucketClaim": [
+        "objectbucketclaims",
+        "obc",
+        "obcs"
+    ],
+    "ObjectBucket": [
+        "objectbuckets",
+        "ob",
+        "obs"
+    ],
+    "OCSInitialization": [
+        "ocsinitializations"
+    ],
+    "StorageClaim": [
+        "storageclaims"
+    ],
+    "StorageClient": [
+        "storageclients"
+    ],
+    "StorageClusterPeer": [
+        "storageclusterpeers"
+    ],
+    "StorageCluster": [
+        "storageclusters"
+    ],
+    "StorageConsumer": [
+        "storageconsumers"
+    ],
+    "StorageRequest": [
+        "storagerequests"
+    ],
+    "StorageSystem": [
+        "storagesystems",
+        "storsys"
+    ],
+    "CloudCredential": [
+        "cloudcredentials"
+    ],
+    "ClusterCSIDriver": [
+        "clustercsidrivers"
+    ],
+    "CSISnapshotController": [
+        "csisnapshotcontrollers"
+    ],
+    "Etcd": [
+        "etcds"
+    ],
+    "ImageContentSourcePolicy": [
+        "imagecontentsourcepolicies"
+    ],
+    "IngressController": [
+        "ingresscontrollers"
+    ],
+    "InsightsOperator": [
+        "insightsoperators"
+    ],
+    "KubeAPIServer": [
+        "kubeapiservers"
+    ],
+    "KubeControllerManager": [
+        "kubecontrollermanagers"
+    ],
+    "KubeScheduler": [
+        "kubeschedulers"
+    ],
+    "KubeStorageVersionMigrator": [
+        "kubestorageversionmigrators"
+    ],
+    "MachineConfiguration": [
+        "machineconfigurations"
+    ],
+    "OpenShiftAPIServer": [
+        "openshiftapiservers"
+    ],
+    "OpenShiftControllerManager": [
+        "openshiftcontrollermanagers"
+    ],
+    "ServiceCA": [
+        "servicecas"
+    ],
+    "Storage": [
+        "storages"
+    ],
+    "CatalogSource": [
+        "catalogsources",
+        "catsrc"
+    ],
+    "ClusterServiceVersion": [
+        "clusterserviceversions",
+        "csv",
+        "csvs"
+    ],
+    "InstallPlan": [
+        "installplans",
+        "ip"
+    ],
+    "OLMConfig": [
+        "olmconfigs"
+    ],
+    "OperatorCondition": [
+        "operatorconditions",
+        "condition"
+    ],
+    "OperatorGroup": [
+        "operatorgroups",
+        "og"
+    ],
+    "Operator": [
+        "operators"
+    ],
+    "Subscription": [
+        "subscriptions",
+        "sub",
+        "subs"
+    ],
+    "PackageManifest": [
+        "packagemanifests"
+    ],
+    "PerformanceProfile": [
+        "performanceprofiles"
+    ],
+    "PodDisruptionBudget": [
+        "poddisruptionbudgets",
+        "pdb"
+    ],
+    "AdminNetworkPolicy": [
+        "adminnetworkpolicies",
+        "anp"
+    ],
+    "BaselineAdminNetworkPolicy": [
+        "baselineadminnetworkpolicies",
+        "banp"
+    ],
+    "VirtualMachinePool": [
+        "virtualmachinepools",
+        "vmpool",
+        "vmpools"
+    ],
+    "ProjectRequest": [
+        "projectrequests"
+    ],
+    "AppliedClusterResourceQuota": [
+        "appliedclusterresourcequotas"
+    ],
+    "ClusterResourceQuota": [
+        "clusterresourcequotas",
+        "clusterquota"
+    ],
+    "Recipe": [
+        "recipes"
+    ],
+    "VolumeGroupReplicationClass": [
+        "volumegroupreplicationclasses"
+    ],
+    "VolumeGroupReplicationContent": [
+        "volumegroupreplicationcontents"
+    ],
+    "VolumeGroupReplication": [
+        "volumegroupreplications"
+    ],
+    "VolumeReplicationClass": [
+        "volumereplicationclasses",
+        "vrc"
+    ],
+    "VolumeReplication": [
+        "volumereplications",
+        "vr"
+    ],
+    "Route": [
+        "routes"
+    ],
+    "PriorityClass": [
+        "priorityclasses",
+        "pc"
+    ],
+    "RangeAllocation": [
+        "rangeallocations"
+    ],
+    "PodSecurityPolicyReview": [
+        "podsecuritypolicyreviews"
+    ],
+    "PodSecurityPolicySelfSubjectReview": [
+        "podsecuritypolicyselfsubjectreviews"
+    ],
+    "PodSecurityPolicySubjectReview": [
+        "podsecuritypolicysubjectreviews"
+    ],
+    "SecurityContextConstraints": [
+        "securitycontextconstraints",
+        "scc"
+    ],
+    "VirtualMachineRestore": [
+        "virtualmachinerestores",
+        "vmrestore",
+        "vmrestores"
+    ],
+    "VirtualMachineSnapshotContent": [
+        "virtualmachinesnapshotcontents",
+        "vmsnapshotcontent",
+        "vmsnapshotcontents"
+    ],
+    "VirtualMachineSnapshot": [
+        "virtualmachinesnapshots",
+        "vmsnapshot",
+        "vmsnapshots"
+    ],
+    "VolumeSnapshotClass": [
+        "volumesnapshotclasses",
+        "vsclass",
+        "vsclasses"
+    ],
+    "VolumeSnapshotContent": [
+        "volumesnapshotcontents",
+        "vsc",
+        "vscs"
+    ],
+    "VolumeSnapshot": [
+        "volumesnapshots",
+        "vs"
+    ],
+    "SSP": [
+        "ssps"
+    ],
+    "CSIDriver": [
+        "csidrivers"
+    ],
+    "CSINode": [
+        "csinodes"
+    ],
+    "CSIStorageCapacity": [
+        "csistoragecapacities"
+    ],
+    "StorageClass": [
+        "storageclasses",
+        "sc"
+    ],
+    "VolumeAttachment": [
+        "volumeattachments"
+    ],
+    "BrokerTemplateInstance": [
+        "brokertemplateinstances"
+    ],
+    "Template": [
+        "templates"
+    ],
+    "TemplateInstance": [
+        "templateinstances"
+    ],
+    "Profile": [
+        "profiles"
+    ],
+    "Tuned": [
+        "tuneds"
+    ],
+    "UploadTokenRequest": [
+        "uploadtokenrequests",
+        "utr",
+        "utrs"
+    ],
+    "Group": [
+        "groups"
+    ],
+    "Identity": [
+        "identities"
+    ],
+    "UserIdentityMapping": [
+        "useridentitymappings"
+    ],
+    "User": [
+        "users"
+    ],
+    "IPPool": [
+        "ippools"
+    ],
+    "OverlappingRangeIPReservation": [
+        "overlappingrangeipreservations"
+    ]
+}
