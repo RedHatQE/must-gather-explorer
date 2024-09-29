@@ -12,6 +12,9 @@ cd must-gather-explorer
 
 pipx install . -f
 ```
+After successful installation, these CLI will be available:
+- must-gather-explorer
+- update-resources-aliases
 
 ## How to use
 - Run the command:
@@ -39,8 +42,7 @@ exit
 ```
 
 ## Update cluster resources aliases
-- You need a live OpenShift cluster
-- [Install pipx](#Installation)
+- Need to be logged-in to the OpenShift cluster or have exported KUBECONFIG
 - Run the command:
 
 ```bash
