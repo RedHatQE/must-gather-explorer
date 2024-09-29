@@ -6,11 +6,7 @@ Install [pipx](https://github.com/pypa/pipx)
 
 ## Installation
 ```bash
-git clone https://github.com/RedHatQE/must-gather-explorer.git
-
-cd must-gather-explorer
-
-pipx install . -f
+pipx install must-gather-explorer
 ```
 After successful installation, these CLI tools will be available:
 - must-gather-explorer
