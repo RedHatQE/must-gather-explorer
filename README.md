@@ -12,7 +12,7 @@ cd must-gather-explorer
 
 pipx install . -f
 ```
-After successful installation, these CLI will be available:
+After successful installation, these CLI tools will be available:
 - must-gather-explorer
 - update-resources-aliases
 

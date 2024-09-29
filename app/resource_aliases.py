@@ -15,7 +15,9 @@ def fill_api_resources_aliases() -> None:
     command = "oc api-resources --no-headers=true"
     rc, out, err = run_command(command=shlex.split(command), verify_stderr=False, check=False, log_errors=False)
     if not rc:
-        CONSOLE.print(f"Command {command} failed with error {err}")
+        CONSOLE.print(f"[bold red]Error:[/bold red] Command '{command}' failed.")
+        CONSOLE.print(f"Exit code: {rc}")
+        CONSOLE.print(f"Error message: {err}")
         sys.exit(1)
 
     aliases_file_path = "app/manifests/aliases.json"
@@ -56,8 +58,13 @@ def fill_api_resources_aliases() -> None:
     resources_aliases.update(cli_resource_alias)
 
     # Write to file
-    with open(aliases_file_path, "w") as aliases_file:
-        json.dump(resources_aliases, aliases_file, indent=4)
+    try:
+        with open(aliases_file_path, "w") as aliases_file:
+            json.dump(resources_aliases, aliases_file, indent=4)
+    except IOError as e:
+        CONSOLE.print(f"[bold red]Error:[/bold red] Failed to write to {aliases_file_path}")
+        CONSOLE.print(f"Error details: {str(e)}")
+        sys.exit(1)
 
 
 if __name__ == "__main__":
