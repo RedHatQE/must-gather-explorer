@@ -211,8 +211,12 @@ def get_resource_kind_by_alias(requested_kind: str) -> str:
     try:
         with open(ALIASES_FILE_PATH) as aliases_file:
             resources_aliases = json.load(aliases_file)
-    except Exception:
-        CONSOLE.print(f"[red]Can't read the aliases_file.\n{how_to_update_aliases_message}")
+    except Exception as exp:
+        CONSOLE.print(
+            f"[bold red]Error:[/bold red] Can't read the aliases_file\n"
+            f"Error details: {exp}\n"
+            f"{how_to_update_aliases_message}"
+        )
         sys.exit(1)
 
     for kind, aliases in resources_aliases.items():
