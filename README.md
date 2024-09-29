@@ -40,7 +40,7 @@ exit
 
 ## Update cluster resources aliases
 - You need a live OpenShift cluster
-- Install pipx (see the instructions above)
+- [Install pipx](#Installation)
 - Run the command:
 
 ```bash
