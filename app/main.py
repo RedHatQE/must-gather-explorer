@@ -15,9 +15,6 @@ from app.constants import ALIASES_FILE_PATH
 CONSOLE = Console()
 
 NAMESPACE_FLAG = "-n"
-README_UPDATE_RESOURCES_ALIASES_LINK = (
-    "https://github.com/RedHatQE/must-gather-explorer?tab=readme-ov-file#update-cluster-resources-aliases"
-)
 
 
 @click.command("must-gather-explorer")
@@ -206,7 +203,10 @@ def get_cluster_resources_raw_data(
 def get_resource_kind_by_alias(requested_kind: str) -> str:
     kind_lower = requested_kind.lower()
 
-    how_to_update_aliases_message = f"How to update the resource aliases file: {README_UPDATE_RESOURCES_ALIASES_LINK}\n"
+    how_to_update_aliases_message = (
+        "How to update the resource aliases file: "
+        "https://github.com/RedHatQE/must-gather-explorer?tab=readme-ov-file#update-cluster-resources-aliases\n"
+    )
 
     try:
         with open(ALIASES_FILE_PATH) as aliases_file:
@@ -228,7 +228,7 @@ def get_resource_kind_by_alias(requested_kind: str) -> str:
         f"please make sure it was typed correctly and alias file is up to date\n"
         f"{how_to_update_aliases_message}"
     )
-    return ""
+    sys.exit(2)
 
 
 if __name__ == "__main__":
