@@ -31,7 +31,7 @@ pyyaml = "^6.0.2"
 click = "^8.1.7"
 rich = "^13.8.0"
 poetry-dynamic-versioning = "^1.4.1"
-pyhelper-utils = "^0.0.41"
+pyhelper-utils = "^0.0.42"
 
 
 [tool.poetry.group.dev.dependencies]
