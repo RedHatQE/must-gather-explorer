@@ -1,5 +1,7 @@
+import json
 import os
 import sys
+from functools import lru_cache
 from typing import Any, Dict, List
 
 import click
@@ -7,6 +9,8 @@ import yaml
 from rich.console import Console
 from rich.prompt import Prompt
 from rich.table import Table
+
+from app.constants import ALIASES_FILE_PATH
 
 CONSOLE = Console()
 
@@ -59,7 +63,7 @@ def main(
             with open(yaml_file_path) as fd:
                 resource_dictionary = yaml.safe_load(fd)
             resource_dict_metadata = resource_dictionary["metadata"]
-            all_resources.setdefault(resource_dictionary["kind"], []).append({
+            all_resources.setdefault(f'{resource_dictionary["kind"]}'.lower(), []).append({
                 "name": resource_dict_metadata.get("name", ""),
                 "namespace": resource_dict_metadata.get("namespace", ""),
                 "yaml_file": yaml_file_path,
@@ -163,7 +167,9 @@ def get_cluster_resources_raw_data(
 ) -> List[Dict[str, Any]]:
     resources_list: List[Dict[str, Any]] = []
 
-    for cluster_resource in all_resources[kind]:
+    resource_kind = get_resource_kind_by_alias(requested_kind=kind)
+
+    for cluster_resource in all_resources[resource_kind]:
         cluster_resource_name = cluster_resource.get("name")
         cluster_resource_namespace = cluster_resource.get("namespace")
 
@@ -191,6 +197,38 @@ def get_cluster_resources_raw_data(
             resources_list.append(cluster_resource)
 
     return resources_list
+
+
+@lru_cache
+def get_resource_kind_by_alias(requested_kind: str) -> str:
+    kind_lower = requested_kind.lower()
+
+    how_to_update_aliases_message = (
+        "How to update the resource aliases file: "
+        "https://github.com/RedHatQE/must-gather-explorer?tab=readme-ov-file#update-cluster-resources-aliases\n"
+    )
+
+    try:
+        with open(ALIASES_FILE_PATH) as aliases_file:
+            resources_aliases = json.load(aliases_file)
+    except Exception as exp:
+        CONSOLE.print(
+            f"[bold red]Error:[/bold red] Can't read the aliases_file\n"
+            f"Error details: {exp}\n"
+            f"{how_to_update_aliases_message}"
+        )
+        sys.exit(1)
+
+    for kind, aliases in resources_aliases.items():
+        if kind == kind_lower or kind_lower in aliases:
+            return kind
+
+    CONSOLE.print(
+        f"[bold red]Error:[/bold red] Not valid resource kind '{kind_lower}', "
+        f"please make sure it was typed correctly and alias file is up to date\n"
+        f"{how_to_update_aliases_message}"
+    )
+    sys.exit(2)
 
 
 if __name__ == "__main__":

@@ -7,6 +7,8 @@ import click
 from pyhelper_utils.shell import run_command
 from rich.console import Console
 
+from app.constants import ALIASES_FILE_PATH
+
 CONSOLE = Console()
 
 
@@ -20,10 +22,8 @@ def fill_api_resources_aliases() -> None:
         CONSOLE.print(f"Error message: {err}")
         sys.exit(1)
 
-    aliases_file_path = "app/manifests/aliases.json"
-
     try:
-        with open(aliases_file_path) as aliases_file:
+        with open(ALIASES_FILE_PATH) as aliases_file:
             resources_aliases = json.load(aliases_file)
     except Exception:
         resources_aliases = {}
@@ -52,17 +52,17 @@ def fill_api_resources_aliases() -> None:
             sys.exit(1)
 
         # Fill cli_resource_alias dict with {Kind}:['alias1','alias2','...']
-        cli_resource_alias[split_line[-1]] = alias_list
-        # cli_resource_alias = {'VirtualMachine': ['virtualmachines','vm','vms']}
+        cli_resource_alias[split_line[-1].lower()] = list(set(alias_list))
+        # cli_resource_alias = {'virtualmachine':['virtualmachines','vm','vms']}
 
     resources_aliases.update(cli_resource_alias)
 
     # Write to file
     try:
-        with open(aliases_file_path, "w") as aliases_file:
+        with open(ALIASES_FILE_PATH, "w") as aliases_file:
             json.dump(resources_aliases, aliases_file, indent=4)
     except IOError as e:
-        CONSOLE.print(f"[bold red]Error:[/bold red] Failed to write to {aliases_file_path}")
+        CONSOLE.print(f"[bold red]Error:[/bold red] Failed to write to {ALIASES_FILE_PATH}")
         CONSOLE.print(f"Error details: {str(e)}")
         sys.exit(1)
 
