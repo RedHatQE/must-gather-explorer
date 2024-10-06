@@ -77,6 +77,7 @@ def main(
 
     actions_dict: Dict[str, Any] = {
         "get": get_resources,
+        "yaml": print_resource_yaml,
         "logs": get_logs,
         "describe": get_describe,
         "exit": None,
@@ -86,6 +87,8 @@ def main(
     # Get user prompt
     while True:
         user_command = Prompt.ask("Enter the command ")
+        if not user_command:
+            continue
 
         # get PersistentVolumeClaim -n openshift-cnv
         # get PersistentVolumeClaim -n openshift-cnv hpp
@@ -123,13 +126,20 @@ def main(
         resource_kind = commands_list[0]
         commands_list.remove(resource_kind)
 
-        resource_name = ""
+        # if "yaml" passed - change the action_name to "yaml"
+        # get pvc -n openshift-cnv yaml
+        # get pvc -n openshift-cnv hpp yaml
+        # get pvc yaml
+        yaml_str = "yaml"
+        if yaml_str in commands_list:
+            action_name = yaml_str
+            commands_list.remove(yaml_str)
 
+        resource_name = ""
         if commands_list:
             if len(commands_list) > 1:
                 CONSOLE.print("[red]Too many params passed in, run 'help' for help\n")
                 continue
-
             resource_name = commands_list[0]
 
         resources_raw_data = get_cluster_resources_raw_data(
@@ -146,11 +156,18 @@ def get_resources(resources_raw_data: List[Dict[str, Any]]) -> None:
     table = Table()
     table.add_column("NAMESPACE")
     table.add_column("NAME")
-
     for raw_data in resources_raw_data:
         table.add_row(raw_data["namespace"], raw_data["name"])
-
     CONSOLE.print(table)
+
+
+def print_resource_yaml(resources_raw_data: List[Dict[str, Any]]) -> None:
+    for raw_data in resources_raw_data:
+        # Read resource yaml file from path in raw_data["yaml_file"]
+        with open(raw_data["yaml_file"]) as fd:
+            resource_yaml_content = fd.read()
+        CONSOLE.print(resource_yaml_content)
+        CONSOLE.print("--------------------------------------------------")
 
 
 def get_logs() -> None:
