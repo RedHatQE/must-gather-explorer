@@ -9,7 +9,7 @@ Install [uv](https://github.com/astral-sh/uv)
 ## Installation
 
 ```bash
-pipx install must-gather-explorer
+uv tool install must-gather-explorer
 ```
 
 After successful installation, these CLI tools will be available:
