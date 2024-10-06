@@ -4,7 +4,7 @@ default_language_version:
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v5.0.0
     hooks:
       - id: check-added-large-files
       - id: check-docstring-first
@@ -36,13 +36,13 @@ repos:
       - id: detect-secrets
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.6.8
+    rev: v0.6.9
     hooks:
       - id: ruff
       - id: ruff-format
 
   - repo: https://github.com/gitleaks/gitleaks
-    rev: v8.19.3
+    rev: v8.20.0
     hooks:
       - id: gitleaks
 
@@ -50,10 +50,17 @@ repos:
     rev: v1.11.2
     hooks:
       - id: mypy
-        exclude: (tests/*)
+        exclude: (tests/)
         additional_dependencies: [types-PyYAML]
 
   - repo: https://github.com/DavidAnson/markdownlint-cli2
-    rev: v0.13.0
+    rev: v0.14.0
     hooks:
       - id: markdownlint-cli2
+
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    # uv version.
+    rev: 0.4.18
+    hooks:
+      # Update the uv lockfile
+      - id: uv-lock
