@@ -18,10 +18,10 @@ warn_unused_ignores = true
 
 [project]
 name = "must-gather-explorer"
-version = "0.1.0"
+version = "0.1.2"
 description = "Tool to explore must-gather data"
-# authors = ["Jenia Peimer <jpeimer@redhat.com>"]
-# license = "Apache-2.0 license"
+authors = [{ "name" = "Jenia Peimer", "email" = "jpeimer@redhat.com" }]
+license = { "text" = "Apache-2.0 license" }
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
