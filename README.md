@@ -15,7 +15,7 @@ pipx install must-gather-explorer
 After successful installation, these CLI tools will be available:
 
 - must-gather-explorer
-- update-resources-aliases
+- must-gather-explorer-update-resources
 
 ## How to use
 

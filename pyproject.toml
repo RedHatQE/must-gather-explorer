@@ -34,9 +34,13 @@ dependencies = [
 [tool.hatch.build.targets.wheel]
 packages = ["app"]
 
+[tool.uv]
+dev-dependencies = ["ipdb>=0.13.13", "ipython>=8.18.1"]
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project.scripts]
 must-gather-explorer = "app.main:main"
+must-gather-explorer-update-aliases = "app.resource_aliases:fill_api_resources_aliases"
