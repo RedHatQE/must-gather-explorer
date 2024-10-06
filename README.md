@@ -15,7 +15,7 @@ uv tool install must-gather-explorer
 After successful installation, these CLI tools will be available:
 
 - must-gather-explorer
-- must-gather-explorer-update-resources
+- must-gather-explorer-update-aliases
 
 ## How to use
 
