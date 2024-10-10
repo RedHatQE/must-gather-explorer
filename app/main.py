@@ -135,6 +135,9 @@ def main(
         resources_raw_data = get_cluster_resources_raw_data(
             all_resources=all_resources, kind=resource_kind, name=resource_name, namespace=namespace_name
         )
+        if not resources_raw_data:
+            CONSOLE.print(f"No resources found for {resource_kind} {resource_name} {namespace_name}")
+            continue
         actions_dict[action_name](resources_raw_data)
 
 
@@ -169,7 +172,7 @@ def get_cluster_resources_raw_data(
 
     resource_kind = get_resource_kind_by_alias(requested_kind=kind)
 
-    for cluster_resource in all_resources[resource_kind]:
+    for cluster_resource in all_resources.get(resource_kind, []):
         cluster_resource_name = cluster_resource.get("name")
         cluster_resource_namespace = cluster_resource.get("namespace")
 
