@@ -40,10 +40,12 @@ get Node # To get all Nodes
 get PersistentVolumeClaim hpp # To get all PVCs when name starts from 'hpp'
 get pvc -n openshift-storage hpp # To get all PVCs in 'openshift-storage' namespace when name starts from 'hpp'
 ```
-- To print the resource YAML, add `yaml` to the `get` command, for example:
+
+- To print the resource YAML, add `-oyaml` to the `get` command, for example:
+
 ```bash
-get pvc hpp yaml # To print yamls of all PVCs when name starts from 'hpp'
-get pvc -n openshift-storage hpp yaml # To print yamls of all PVCs in 'openshift-storage' namespace when name starts from 'hpp'
+get pvc hpp -oyaml # To print yamls of all PVCs when name starts from 'hpp'
+get pvc -n openshift-storage hpp -oyaml # To print yamls of all PVCs in 'openshift-storage' namespace when name starts from 'hpp'
 ```
 
 - Help:

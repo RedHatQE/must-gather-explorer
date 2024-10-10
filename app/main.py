@@ -79,7 +79,6 @@ def main(
 
     actions_dict: Dict[str, Any] = {
         GET_ACTION: get_resources,
-        "yaml": print_resource_yaml,
         "logs": get_logs,
         "describe": get_describe,
         "exit": None,
@@ -156,7 +155,8 @@ def main(
         if not resources_raw_data:
             CONSOLE.print(f"No resources found for {resource_kind} {resource_name} {namespace_name}")
             continue
-        actions_dict[action_name](resources_raw_data)
+
+        actions_dict[action_name](resources_raw_data, print_yaml)
 
 
 def get_resources(resources_raw_data: List[Dict[str, Any]], print_yaml: bool = False, **kwargs: Dict[Any, Any]) -> None:
