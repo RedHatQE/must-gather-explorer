@@ -164,10 +164,14 @@ def get_resources(resources_raw_data: List[Dict[str, Any]]) -> None:
 def print_resource_yaml(resources_raw_data: List[Dict[str, Any]]) -> None:
     for raw_data in resources_raw_data:
         # Read resource yaml file from path in raw_data["yaml_file"]
-        with open(raw_data["yaml_file"]) as fd:
-            resource_yaml_content = fd.read()
+        try:
+            with open(raw_data["yaml_file"]) as fd:
+                resource_yaml_content = fd.read()
+        except (FileNotFoundError, IOError) as e:
+            CONSOLE.print(f"[red]Error opening file {raw_data['yaml_file']}: {e}")
+            continue
         CONSOLE.print(resource_yaml_content)
-        CONSOLE.print("--------------------------------------------------")
+        CONSOLE.print("-" * os.get_terminal_size().columns)
 
 
 def get_logs() -> None:
