@@ -50,5 +50,10 @@ repos:
     rev: v1.11.2
     hooks:
       - id: mypy
-        exclude: (tests/*)
+        exclude: (tests/)
         additional_dependencies: [types-PyYAML]
+
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.14.0
+    hooks:
+      - id: markdownlint-cli2
