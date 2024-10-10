@@ -75,8 +75,10 @@ def main(
         )
         sys.exit(1)
 
+    GET_ACTION = "get"
+
     actions_dict: Dict[str, Any] = {
-        "get": get_resources,
+        GET_ACTION: get_resources,
         "yaml": print_resource_yaml,
         "logs": get_logs,
         "describe": get_describe,
@@ -133,8 +135,8 @@ def main(
         print_yaml = False
         yaml_flag = "-oyaml"
         if yaml_flag in commands_list:
-            if action_name != "get":
-                CONSOLE.print(f"{yaml_flag} is only supported with 'get' action")
+            if action_name != GET_ACTION:
+                CONSOLE.print(f"'{yaml_flag}' is only supported with '{GET_ACTION}' action")
                 continue
             print_yaml = True
             commands_list.remove(yaml_flag)
