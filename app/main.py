@@ -75,8 +75,10 @@ def main(
         )
         sys.exit(1)
 
+    GET_ACTION = "get"
+
     actions_dict: Dict[str, Any] = {
-        "get": get_resources,
+        GET_ACTION: get_resources,
         "logs": get_logs,
         "describe": get_describe,
         "exit": None,
@@ -86,6 +88,8 @@ def main(
     # Get user prompt
     while True:
         user_command = Prompt.ask("Enter the command ")
+        if not user_command:
+            continue
 
         # get PersistentVolumeClaim -n openshift-cnv
         # get PersistentVolumeClaim -n openshift-cnv hpp
@@ -99,7 +103,9 @@ def main(
 
         supported_actions = actions_dict.keys()
         if action_name not in supported_actions:
-            CONSOLE.print(f"Action '{action_name}' is not supported, please use a supported action {supported_actions}")
+            CONSOLE.print(
+                f"Action '{action_name}' is not supported, please use a supported action {tuple(supported_actions)}"
+            )
             continue
 
         if action_name == "exit":
@@ -123,13 +129,24 @@ def main(
         resource_kind = commands_list[0]
         commands_list.remove(resource_kind)
 
-        resource_name = ""
+        # if "-oyaml" passed, change print_yaml to True
+        # get pvc -n openshift-cnv -oyaml
+        # get pvc -n openshift-cnv hpp -oyaml
+        # get pvc -oyaml
+        print_yaml = False
+        yaml_flag = "-oyaml"
+        if yaml_flag in commands_list:
+            if action_name != GET_ACTION:
+                CONSOLE.print(f"'{yaml_flag}' is only supported with '{GET_ACTION}' action")
+                continue
+            print_yaml = True
+            commands_list.remove(yaml_flag)
 
+        resource_name = ""
         if commands_list:
             if len(commands_list) > 1:
                 CONSOLE.print("[red]Too many params passed in, run 'help' for help\n")
                 continue
-
             resource_name = commands_list[0]
 
         resources_raw_data = get_cluster_resources_raw_data(
@@ -138,30 +155,45 @@ def main(
         if not resources_raw_data:
             CONSOLE.print(f"No resources found for {resource_kind} {resource_name} {namespace_name}")
             continue
-        actions_dict[action_name](resources_raw_data)
+
+        actions_dict[action_name](resources_raw_data, print_yaml)
 
 
-def get_resources(resources_raw_data: List[Dict[str, Any]]) -> None:
-    # Print table of Namespace, Name
-    table = Table()
-    table.add_column("NAMESPACE")
-    table.add_column("NAME")
+def get_resources(resources_raw_data: List[Dict[str, Any]], print_yaml: bool = False, **kwargs: Dict[Any, Any]) -> None:
+    if print_yaml:
+        print_resource_yaml(resources_raw_data=resources_raw_data)
+    else:
+        # Print table of Namespace, Name
+        table = Table()
+        table.add_column("NAMESPACE")
+        table.add_column("NAME")
+        for raw_data in resources_raw_data:
+            table.add_row(raw_data["namespace"], raw_data["name"])
+        CONSOLE.print(table)
 
+
+def print_resource_yaml(resources_raw_data: List[Dict[str, Any]]) -> None:
     for raw_data in resources_raw_data:
-        table.add_row(raw_data["namespace"], raw_data["name"])
+        # Read resource yaml file from path in raw_data["yaml_file"]
+        try:
+            with open(raw_data["yaml_file"]) as fd:
+                resource_yaml_content = fd.read()
+        except (FileNotFoundError, IOError) as e:
+            CONSOLE.print(f"[red]Error opening file {raw_data['yaml_file']}: {e}")
+            continue
+        CONSOLE.print(resource_yaml_content)
+        CONSOLE.print("-" * os.get_terminal_size().columns)
 
-    CONSOLE.print(table)
 
-
-def get_logs() -> None:
+def get_logs(**kwargs: Dict[Any, Any]) -> None:
     pass
 
 
-def get_describe() -> None:
+def get_describe(**kwargs: Dict[Any, Any]) -> None:
     pass
 
 
-def print_help() -> None:
+def print_help(**kwargs: Dict[Any, Any]) -> None:
     pass
 
 
