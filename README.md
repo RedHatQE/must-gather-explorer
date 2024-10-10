@@ -59,5 +59,5 @@ exit
 - Run the command:
 
 ```bash
-update-resources-aliases
+must-gather-explorer-update-aliases
 ```
