@@ -4,8 +4,8 @@ line-length = 120
 fix = true
 output-format = "grouped"
 
-[tool.ruff.format]
-exclude = [".git", ".venv", ".mypy_cache", ".tox", "__pycache__"]
+  [tool.ruff.format]
+  exclude = [ ".git", ".venv", ".mypy_cache", ".tox", "__pycache__" ]
 
 [tool.mypy]
 check_untyped_defs = true
@@ -16,31 +16,36 @@ no_implicit_optional = true
 show_error_codes = true
 warn_unused_ignores = true
 
+[tool.hatch.build.targets.wheel]
+packages = [ "app" ]
+
+[tool.uv]
+dev-dependencies = [ "ipdb>=0.13.13", "ipython>=8.18.1" ]
+
 [project]
 name = "must-gather-explorer"
-version = "0.1.2"
+version = "0.1.3"
 description = "Tool to explore must-gather data"
-authors = [{ "name" = "Jenia Peimer", "email" = "jpeimer@redhat.com" }]
-license = { "text" = "Apache-2.0 license" }
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
   "click>=8.1.7",
   "pyhelper-utils>=0.0.42",
   "pyyaml>=6.0.2",
-  "rich>=13.9.2",
+  "rich>=13.9.2"
 ]
 
-[tool.hatch.build.targets.wheel]
-packages = ["app"]
+  [[project.authors]]
+  name = "Jenia Peimer"
+  email = "jpeimer@redhat.com"
 
-[tool.uv]
-dev-dependencies = ["ipdb>=0.13.13", "ipython>=8.18.1"]
+  [project.license]
+  text = "Apache-2.0 license"
+
+  [project.scripts]
+  must-gather-explorer = "app.main:main"
+  must-gather-explorer-update-aliases = "app.resource_aliases:fill_api_resources_aliases"
 
 [build-system]
-requires = ["hatchling"]
+requires = [ "hatchling" ]
 build-backend = "hatchling.build"
-
-[project.scripts]
-must-gather-explorer = "app.main:main"
-must-gather-explorer-update-aliases = "app.resource_aliases:fill_api_resources_aliases"
