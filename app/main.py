@@ -129,10 +129,10 @@ def main(
         resource_kind = commands_list[0]
         commands_list.remove(resource_kind)
 
-        # if "yaml" passed - change the action_name to "yaml"
-        # get pvc -n openshift-cnv yaml
-        # get pvc -n openshift-cnv hpp yaml
-        # get pvc yaml
+        # if "-oyaml" passed, change print_yaml to True
+        # get pvc -n openshift-cnv -oyaml
+        # get pvc -n openshift-cnv hpp -oyaml
+        # get pvc -oyaml
         print_yaml = False
         yaml_flag = "-oyaml"
         if yaml_flag in commands_list:
