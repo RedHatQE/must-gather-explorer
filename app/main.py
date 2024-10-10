@@ -130,10 +130,14 @@ def main(
         # get pvc -n openshift-cnv yaml
         # get pvc -n openshift-cnv hpp yaml
         # get pvc yaml
-        yaml_str = "yaml"
-        if yaml_str in commands_list:
-            action_name = yaml_str
-            commands_list.remove(yaml_str)
+        print_yaml = False
+        yaml_flag = "-oyaml"
+        if yaml_flag in commands_list:
+            if action_name != "get":
+                CONSOLE.print(f"{yaml_flag} is only supported with 'get' action")
+                continue
+            print_yaml = True
+            commands_list.remove(yaml_flag)
 
         resource_name = ""
         if commands_list:
@@ -151,14 +155,17 @@ def main(
         actions_dict[action_name](resources_raw_data)
 
 
-def get_resources(resources_raw_data: List[Dict[str, Any]]) -> None:
-    # Print table of Namespace, Name
-    table = Table()
-    table.add_column("NAMESPACE")
-    table.add_column("NAME")
-    for raw_data in resources_raw_data:
-        table.add_row(raw_data["namespace"], raw_data["name"])
-    CONSOLE.print(table)
+def get_resources(resources_raw_data: List[Dict[str, Any]], print_yaml: bool = False, **kwargs: Dict[Any, Any]) -> None:
+    if print_yaml:
+        print_resource_yaml(resources_raw_data=resources_raw_data)
+    else:
+        # Print table of Namespace, Name
+        table = Table()
+        table.add_column("NAMESPACE")
+        table.add_column("NAME")
+        for raw_data in resources_raw_data:
+            table.add_row(raw_data["namespace"], raw_data["name"])
+        CONSOLE.print(table)
 
 
 def print_resource_yaml(resources_raw_data: List[Dict[str, Any]]) -> None:
@@ -174,15 +181,15 @@ def print_resource_yaml(resources_raw_data: List[Dict[str, Any]]) -> None:
         CONSOLE.print("-" * os.get_terminal_size().columns)
 
 
-def get_logs() -> None:
+def get_logs(**kwargs: Dict[Any, Any]) -> None:
     pass
 
 
-def get_describe() -> None:
+def get_describe(**kwargs: Dict[Any, Any]) -> None:
     pass
 
 
-def print_help() -> None:
+def print_help(**kwargs: Dict[Any, Any]) -> None:
     pass
 
 
