@@ -104,7 +104,9 @@ def main(
 
         supported_actions = actions_dict.keys()
         if action_name not in supported_actions:
-            CONSOLE.print(f"Action '{action_name}' is not supported, please use a supported action {supported_actions}")
+            CONSOLE.print(
+                f"Action '{action_name}' is not supported, please use a supported action {tuple(supported_actions)}"
+            )
             continue
 
         if action_name == "exit":
