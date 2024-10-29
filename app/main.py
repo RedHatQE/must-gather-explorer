@@ -33,7 +33,7 @@ def main(
     must_gather_path = path
 
     CONSOLE.print(
-        "\n[bold cyan]Welcome to the must-gather-explorer\n" "Please wait while the must gather data is being parsed\n"
+        "\n[bold cyan]Welcome to the must-gather-explorer\nPlease wait while the must gather data is being parsed\n"
     )
 
     # Fill dictionaries for all files kinds
@@ -63,7 +63,7 @@ def main(
             with open(yaml_file_path) as fd:
                 resource_dictionary = yaml.safe_load(fd)
             resource_dict_metadata = resource_dictionary["metadata"]
-            all_resources.setdefault(f'{resource_dictionary["kind"]}'.lower(), []).append({
+            all_resources.setdefault(f"{resource_dictionary['kind']}".lower(), []).append({
                 "name": resource_dict_metadata.get("name", ""),
                 "namespace": resource_dict_metadata.get("namespace", ""),
                 "yaml_file": yaml_file_path,
