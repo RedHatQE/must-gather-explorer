@@ -1,4 +1,3 @@
-import json
 import os
 import sys
 from functools import lru_cache
@@ -6,15 +5,12 @@ from typing import Any, Dict, List
 
 import click
 import yaml
-from rich.console import Console
 from rich.prompt import Prompt
 from rich.table import Table
 
-from app.constants import ALIASES_FILE_PATH
-
-CONSOLE = Console()
-
-NAMESPACE_FLAG = "-n"
+from app.constants import HOW_TO_UPDATE_ALIASES_MESSAGE, CONSOLE
+from app.exceptions import MissingResourceKindAliasError, FailToReadJSONFileError
+from app.utils import read_aliases_file
 
 
 @click.command("must-gather-explorer")
@@ -115,11 +111,12 @@ def main(
             print_help()
             continue
 
+        namespace_flag = "-n"
         namespace_name = ""
-        if NAMESPACE_FLAG in commands_list:
-            namespace_index = commands_list.index(NAMESPACE_FLAG)
+        if namespace_flag in commands_list:
+            namespace_index = commands_list.index(namespace_flag)
             namespace_name = commands_list[namespace_index + 1]
-            commands_list.remove(NAMESPACE_FLAG)
+            commands_list.remove(namespace_flag)
             commands_list.remove(namespace_name)
 
         if not commands_list:
@@ -149,14 +146,19 @@ def main(
                 continue
             resource_name = commands_list[0]
 
-        resources_raw_data = get_cluster_resources_raw_data(
-            all_resources=all_resources, kind=resource_kind, name=resource_name, namespace=namespace_name
-        )
-        if not resources_raw_data:
-            CONSOLE.print(f"No resources found for {resource_kind} {resource_name} {namespace_name}")
-            continue
+        try:
+            resources_raw_data = get_cluster_resources_raw_data(
+                all_resources=all_resources, kind=resource_kind, name=resource_name, namespace=namespace_name
+            )
+            if not resources_raw_data:
+                CONSOLE.print(f"No resources found for {resource_kind} {resource_name} {namespace_name}")
+                continue
+            actions_dict[action_name](resources_raw_data, print_yaml)
 
-        actions_dict[action_name](resources_raw_data, print_yaml)
+        except FailToReadJSONFileError:
+            sys.exit(1)
+        except MissingResourceKindAliasError:
+            continue
 
 
 def get_resources(resources_raw_data: List[Dict[str, Any]], print_yaml: bool = False, **kwargs: Dict[Any, Any]) -> None:
@@ -238,21 +240,7 @@ def get_cluster_resources_raw_data(
 def get_resource_kind_by_alias(requested_kind: str) -> str:
     kind_lower = requested_kind.lower()
 
-    how_to_update_aliases_message = (
-        "How to update the resource aliases file: "
-        "https://github.com/RedHatQE/must-gather-explorer?tab=readme-ov-file#update-cluster-resources-aliases\n"
-    )
-
-    try:
-        with open(ALIASES_FILE_PATH) as aliases_file:
-            resources_aliases = json.load(aliases_file)
-    except Exception as exp:
-        CONSOLE.print(
-            f"[bold red]Error:[/bold red] Can't read the aliases_file\n"
-            f"Error details: {exp}\n"
-            f"{how_to_update_aliases_message}"
-        )
-        sys.exit(1)
+    resources_aliases = read_aliases_file()
 
     for kind, aliases in resources_aliases.items():
         if kind == kind_lower or kind_lower in aliases:
@@ -261,9 +249,9 @@ def get_resource_kind_by_alias(requested_kind: str) -> str:
     CONSOLE.print(
         f"[bold red]Error:[/bold red] Not valid resource kind '{kind_lower}', "
         f"please make sure it was typed correctly and alias file is up to date\n"
-        f"{how_to_update_aliases_message}"
+        f"{HOW_TO_UPDATE_ALIASES_MESSAGE}"
     )
-    sys.exit(2)
+    raise MissingResourceKindAliasError(requested_kind=requested_kind)
 
 
 if __name__ == "__main__":
