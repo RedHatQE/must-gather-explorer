@@ -5,11 +5,9 @@ from typing import Dict, List
 
 import click
 from pyhelper_utils.shell import run_command
-from rich.console import Console
 
-from app.constants import ALIASES_FILE_PATH
-
-CONSOLE = Console()
+from app.constants import ALIASES_FILE_PATH, CONSOLE
+from app.utils import read_aliases_file
 
 
 @click.command("update-resources-aliases")
@@ -22,11 +20,7 @@ def fill_api_resources_aliases() -> None:
         CONSOLE.print(f"Error message: {err}")
         sys.exit(1)
 
-    try:
-        with open(ALIASES_FILE_PATH) as aliases_file:
-            resources_aliases = json.load(aliases_file)
-    except Exception:
-        resources_aliases = {}
+    resources_aliases = read_aliases_file(raise_on_error=False)
 
     cli_resource_alias: Dict[str, List[str]] = {}
 
