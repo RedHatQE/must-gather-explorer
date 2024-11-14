@@ -11,6 +11,7 @@ from rich.prompt import Prompt
 from rich.table import Table
 
 from app.constants import ALIASES_FILE_PATH
+from app.exceptions import MissingResourceKindAliasError, FailToReadJSONFileError
 
 CONSOLE = Console()
 
@@ -149,14 +150,19 @@ def main(
                 continue
             resource_name = commands_list[0]
 
-        resources_raw_data = get_cluster_resources_raw_data(
-            all_resources=all_resources, kind=resource_kind, name=resource_name, namespace=namespace_name
-        )
-        if not resources_raw_data:
-            CONSOLE.print(f"No resources found for {resource_kind} {resource_name} {namespace_name}")
-            continue
+        try:
+            resources_raw_data = get_cluster_resources_raw_data(
+                all_resources=all_resources, kind=resource_kind, name=resource_name, namespace=namespace_name
+            )
+            if not resources_raw_data:
+                CONSOLE.print(f"No resources found for {resource_kind} {resource_name} {namespace_name}")
+                continue
+            actions_dict[action_name](resources_raw_data, print_yaml)
 
-        actions_dict[action_name](resources_raw_data, print_yaml)
+        except FailToReadJSONFileError:
+            sys.exit(1)
+        except MissingResourceKindAliasError:
+            continue
 
 
 def get_resources(resources_raw_data: List[Dict[str, Any]], print_yaml: bool = False, **kwargs: Dict[Any, Any]) -> None:
@@ -252,7 +258,7 @@ def get_resource_kind_by_alias(requested_kind: str) -> str:
             f"Error details: {exp}\n"
             f"{how_to_update_aliases_message}"
         )
-        sys.exit(1)
+        raise FailToReadJSONFileError(file_name=ALIASES_FILE_PATH)
 
     for kind, aliases in resources_aliases.items():
         if kind == kind_lower or kind_lower in aliases:
@@ -263,7 +269,7 @@ def get_resource_kind_by_alias(requested_kind: str) -> str:
         f"please make sure it was typed correctly and alias file is up to date\n"
         f"{how_to_update_aliases_message}"
     )
-    sys.exit(2)
+    raise MissingResourceKindAliasError(requested_kind=requested_kind)
 
 
 if __name__ == "__main__":
