@@ -37,8 +37,15 @@ get <resource_kind:mandatory> <-n namespace_name:optional> <resource_name_starts
 
 ```bash
 get Node # To get all Nodes
-get PersistentVolumeClaim hpp # To get all PVCs that name starts form 'hpp'
-get PersistentVolumeClaim -n openshift-storage hpp # To get all PVCs in 'openshift-storage' namespace that name starts form 'hpp'
+get PersistentVolumeClaim hpp # To get all PVCs when name starts from 'hpp'
+get pvc -n openshift-storage hpp # To get all PVCs in 'openshift-storage' namespace when name starts from 'hpp'
+```
+
+- To print the resource YAML, add `-oyaml` to the `get` command, for example:
+
+```bash
+get pvc hpp -oyaml # To print yamls of all PVCs when name starts from 'hpp'
+get pvc -n openshift-storage hpp -oyaml # To print yamls of all PVCs in 'openshift-storage' namespace when name starts from 'hpp'
 ```
 
 - Help:
