@@ -1,8 +1,10 @@
 import os
+
 import sys
 from functools import lru_cache
 from typing import Any, Dict, List
-
+from pathlib import Path
+from tqdm import tqdm
 import click
 import yaml
 from rich.prompt import Prompt
@@ -11,6 +13,9 @@ from rich.table import Table
 from app.constants import HOW_TO_UPDATE_ALIASES_MESSAGE, CONSOLE
 from app.exceptions import MissingResourceKindAliasError, FailToReadJSONFileError
 from app.utils import read_aliases_file
+from simple_logger.logger import get_logger
+
+LOGGER = get_logger(__name__)
 
 
 @click.command("must-gather-explorer")
@@ -18,63 +23,91 @@ from app.utils import read_aliases_file
     "-p",
     "--path",
     type=click.Path(exists=True),
+    required=True,
     help="""
     \b
     The full path to the must-gather folder
 """,
 )
-def main(
-    path: str,
-) -> None:
+@click.option("-v", "--verbose", is_flag=True, help="Enable verbose logs")
+def main(path: str, verbose: bool) -> None:
+    if verbose:
+        LOGGER.setLevel("DEBUG")
+
     must_gather_path = path
 
     CONSOLE.print(
-        "\n[bold cyan]Welcome to the must-gather-explorer\nPlease wait while the must gather data is being parsed\n"
+        """
+[bold cyan]Welcome to the must-gather-explorer
+Please wait while the must gather data is being parsed
+
+"""
     )
 
     # Fill dictionaries for all files kinds
     all_yaml_files: Dict[str, List[str]] = {}
     all_log_files: Dict[str, List[str]] = {}
-    for root, dirs, _ in os.walk(must_gather_path):
+    for root, dirs, _ in Path(must_gather_path).walk():
         for _dir in dirs:
-            for _file in os.listdir(os.path.join(root, _dir)):
-                file_extention = _file.rsplit(".", 1)
-                #  print(f"{_file=}, {file_extention[-1]=}")
-                if file_extention[-1] in ("yaml", "yml"):
-                    # print(os.path.join(root, _dir, _file))
-                    all_yaml_files.setdefault(os.path.join(root, _dir), []).append(_file)
+            _dir_path = Path(root, _dir)
+            for _file in _dir_path.iterdir():
+                if _file.is_dir():
+                    continue
+
+                file_extention = _file.suffix
+                if not file_extention:
+                    LOGGER.debug(f"Skipping file {_file}, file has no extension")
+                    continue
+
+                if file_extention in (".yaml", ".yml"):
+                    all_yaml_files.setdefault(str(_dir_path), []).append(_file.name)
 
                 # Poa may have several containers, the path to the log is:
                 # <path>/namespaces/openshift-ovn-kubernetes/pods/ovnkube-node-6vrt6/kubecfg-setup/kubecfg-setup/logs
                 # <path>/namespaces/openshift-ovn-kubernetes/pods/ovnkube-node-6vrt6/kube-rbac-proxy-node/kube-rbac-proxy-node/logs
-                elif file_extention[-1] == "log":
-                    all_log_files.setdefault(os.path.join(root, _dir), []).append(_file)
+                elif file_extention == ".log":
+                    all_log_files.setdefault(str(_dir_path), []).append(_file.name)
 
     # Fill dictionaries for all resource kinds
     # {Kind: [{”name”:”cdi-deployment”, : “yaml_file”: “path/../”, “namespace”: “openshift-cnv”}]}
+
     all_resources: Dict[str, Any] = {}
-    for yaml_path, yaml_files in all_yaml_files.items():
+    for yaml_path, yaml_files in tqdm(
+        all_yaml_files.items(),
+        desc="Parsing data",
+        colour="green",
+        dynamic_ncols=True,
+    ):
         for yaml_file in yaml_files:
-            yaml_file_path = os.path.join(yaml_path, yaml_file)
+            yaml_file_path = Path(yaml_path, yaml_file)
+
             with open(yaml_file_path) as fd:
-                resource_dictionary = yaml.safe_load(fd)
+                try:
+                    resource_dictionary = yaml.safe_load(fd)
+                except yaml.constructor.ConstructorError as exp:
+                    LOGGER.debug(f"Error parsing YAML file {yaml_file_path}: {exp}")
+                    continue
+
             resource_dict_metadata = resource_dictionary["metadata"]
-            all_resources.setdefault(f"{resource_dictionary['kind']}".lower(), []).append({
+            all_resources.setdefault(resource_dictionary["kind"].lower(), []).append({
                 "name": resource_dict_metadata.get("name", ""),
                 "namespace": resource_dict_metadata.get("namespace", ""),
                 "yaml_file": yaml_file_path,
             })
+
     if not all_resources:
         CONSOLE.print(
-            "[red]Can't parse the files \n"
-            "Please check that the --path points to the [bold]correct[/bold] and [bold]non-empty[/bold] must-gather folder"
+            """
+[red]Can't parse the files"
+Please check that the --path points to the [bold]correct[/bold] and [bold]non-empty[/bold] must-gather folder
+"""
         )
         sys.exit(1)
 
-    GET_ACTION = "get"
+    get_action = "get"
 
     actions_dict: Dict[str, Any] = {
-        GET_ACTION: get_resources,
+        get_action: get_resources,
         "logs": get_logs,
         "describe": get_describe,
         "exit": None,
@@ -83,7 +116,7 @@ def main(
 
     # Get user prompt
     while True:
-        user_command = Prompt.ask("Enter the command ")
+        user_command: str = Prompt.ask("Command")
         if not user_command:
             continue
 
@@ -95,14 +128,18 @@ def main(
         commands_list: List[str] = user_command.split()
 
         action_name = commands_list[0]
-        commands_list.remove(action_name)
-
         supported_actions = actions_dict.keys()
+
         if action_name not in supported_actions:
             CONSOLE.print(
-                f"Action '{action_name}' is not supported, please use a supported action {tuple(supported_actions)}"
+                f"""
+Action '{action_name}' is not supported, please use a supported action:
+    {"\n    ".join(supported_actions)}
+"""
             )
             continue
+
+        commands_list.remove(action_name)
 
         if action_name == "exit":
             sys.exit(0)
@@ -111,8 +148,8 @@ def main(
             print_help()
             continue
 
-        namespace_flag = "-n"
-        namespace_name = ""
+        namespace_flag: str = "-n"
+        namespace_name: str = ""
         if namespace_flag in commands_list:
             namespace_index = commands_list.index(namespace_flag)
             namespace_name = commands_list[namespace_index + 1]
@@ -133,8 +170,8 @@ def main(
         print_yaml = False
         yaml_flag = "-oyaml"
         if yaml_flag in commands_list:
-            if action_name != GET_ACTION:
-                CONSOLE.print(f"'{yaml_flag}' is only supported with '{GET_ACTION}' action")
+            if action_name != get_action:
+                CONSOLE.print(f"'{yaml_flag}' is only supported with '{get_action}' action")
                 continue
             print_yaml = True
             commands_list.remove(yaml_flag)
@@ -183,6 +220,7 @@ def print_resource_yaml(resources_raw_data: List[Dict[str, Any]]) -> None:
         except (FileNotFoundError, IOError) as e:
             CONSOLE.print(f"[red]Error opening file {raw_data['yaml_file']}: {e}")
             continue
+
         CONSOLE.print(resource_yaml_content)
         CONSOLE.print("-" * os.get_terminal_size().columns)
 
