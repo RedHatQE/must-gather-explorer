@@ -62,7 +62,7 @@ Please wait while the must gather data is being parsed
                 if file_extention in (".yaml", ".yml"):
                     all_yaml_files.setdefault(str(_dir_path), []).append(_file.name)
 
-                # Poa may have several containers, the path to the log is:
+                # Pod may have several containers, the path to the log is:
                 # <path>/namespaces/openshift-ovn-kubernetes/pods/ovnkube-node-6vrt6/kubecfg-setup/kubecfg-setup/logs
                 # <path>/namespaces/openshift-ovn-kubernetes/pods/ovnkube-node-6vrt6/kube-rbac-proxy-node/kube-rbac-proxy-node/logs
                 elif file_extention == ".log":

@@ -21,6 +21,8 @@ After successful installation, these CLI tools will be available:
 
 - Run the command:
 
+To run with debug logs pass `-v`/`--verbose` flag.
+
 ```bash
 must-gather-explorer --path=<path-to-must-gather-folder>
 ```
