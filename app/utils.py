@@ -8,6 +8,7 @@ def read_aliases_file(raise_on_error: bool = True) -> dict[str, list[str]]:
     try:
         with open(ALIASES_FILE_PATH) as aliases_file:
             return json.load(aliases_file)
+
     except (FileNotFoundError, json.JSONDecodeError) as exp:
         if raise_on_error:
             CONSOLE.print(
