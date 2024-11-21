@@ -10,9 +10,9 @@ import yaml
 from rich.prompt import Prompt
 from rich.table import Table
 
-from app.constants import HOW_TO_UPDATE_ALIASES_MESSAGE, CONSOLE
-from app.exceptions import MissingResourceKindAliasError, FailToReadJSONFileError
-from app.utils import read_aliases_file
+from must_gather_explorer.constants import HOW_TO_UPDATE_ALIASES_MESSAGE, CONSOLE
+from must_gather_explorer.exceptions import MissingResourceKindAliasError, FailToReadJSONFileError
+from must_gather_explorer.utils import read_aliases_file
 from simple_logger.logger import get_logger
 
 LOGGER = get_logger(__name__)
