@@ -17,7 +17,7 @@ show_error_codes = true
 warn_unused_ignores = true
 
 [tool.hatch.build.targets.wheel]
-packages = [ "app" ]
+packages = [ "must_gather_explorer" ]
 
 [tool.uv]
 dev-dependencies = [ "ipdb>=0.13.13", "ipython>=8.18.1" ]
@@ -49,8 +49,8 @@ dependencies = [
   text = "Apache-2.0 license"
 
   [project.scripts]
-  must-gather-explorer = "app.main:main"
-  must-gather-explorer-update-aliases = "app.resource_aliases:fill_api_resources_aliases"
+  must-gather-explorer = "must_gather_explorer.main:main"
+  must-gather-explorer-update-aliases = "must_gather_explorer.resource_aliases:fill_api_resources_aliases"
 
 [build-system]
 requires = [ "hatchling" ]

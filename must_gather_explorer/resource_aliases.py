@@ -6,8 +6,8 @@ from typing import Dict, List
 import click
 from pyhelper_utils.shell import run_command
 
-from app.constants import ALIASES_FILE_PATH, CONSOLE
-from app.utils import read_aliases_file
+from must_gather_explorer.constants import ALIASES_FILE_PATH, CONSOLE
+from must_gather_explorer.utils import read_aliases_file
 
 
 @click.command("update-resources-aliases")
