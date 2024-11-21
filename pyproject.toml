@@ -27,7 +27,7 @@ name = "must-gather-explorer"
 version = "0.1.4"
 description = "Tool to explore must-gather data"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.12"
 dependencies = [
   "click>=8.1.7",
   "pyhelper-utils>=0.0.42",
