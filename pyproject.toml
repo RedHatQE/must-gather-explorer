@@ -34,7 +34,7 @@ dependencies = [
   "python-simple-logger>=1.0.40",
   "pyyaml>=6.0.2",
   "rich>=13.9.2",
-  "tqdm>=4.67.0"
+  "tqdm>=4.67.0",
 ]
 
   [[project.authors]]

@@ -50,6 +50,14 @@ get pvc hpp -oyaml # To print yamls of all PVCs when name starts from 'hpp'
 get pvc -n openshift-storage hpp -oyaml # To print yamls of all PVCs in 'openshift-storage' namespace when name starts from 'hpp'
 ```
 
+- To print specific YAML fields, add `.<key>.<key>.<key>...` after `-oyaml`:
+
+```bash
+get node <node-name> -oyaml .status.nodeInfo
+get pvc <pvc-name-start-with> -oyaml .spec.storageClassName # To print .spec.storageClassName of all PVCs when name starts from <pvc-name-start-with>
+get pvc -n <namespace> <pvc-name-start-with> -oyaml .spec.accessModes # To print .spec.accessModes of all PVCs in 'namespace' when name starts from <pvc-name-start-with>
+```
+
 - Help:
 
 ```bash

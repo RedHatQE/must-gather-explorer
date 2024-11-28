@@ -1,7 +1,7 @@
 import os
 
 import sys
-from typing import Any, Dict, List
+from typing import Any
 from pathlib import Path
 from tqdm import tqdm
 import click
@@ -51,33 +51,11 @@ Please wait while the must gather data is being parsed
         sys.exit(1)
 
     # Fill dictionaries for all files kinds
-    all_yaml_files: Dict[str, List[str]] = {}
-    all_log_files: Dict[str, List[str]] = {}
-    for root, dirs, _ in Path(must_gather_path).walk():
-        for _dir in dirs:
-            _dir_path = Path(root, _dir)
-            for _file in _dir_path.iterdir():
-                if _file.is_dir():
-                    continue
-
-                file_extention = _file.suffix
-                if not file_extention:
-                    LOGGER.debug(f"Skipping file {_file}, file has no extension")
-                    continue
-
-                if file_extention in (".yaml", ".yml"):
-                    all_yaml_files.setdefault(str(_dir_path), []).append(_file.name)
-
-                # Pod may have several containers, the path to the log is:
-                # <path>/namespaces/openshift-ovn-kubernetes/pods/ovnkube-node-6vrt6/kubecfg-setup/kubecfg-setup/logs
-                # <path>/namespaces/openshift-ovn-kubernetes/pods/ovnkube-node-6vrt6/kube-rbac-proxy-node/kube-rbac-proxy-node/logs
-                elif file_extention == ".log":
-                    all_log_files.setdefault(str(_dir_path), []).append(_file.name)
+    all_yaml_files, _ = parse_all_files_fill_dictionaries_by_file_type(must_gather_path=must_gather_path)
 
     # Fill dictionaries for all resource kinds
     # {Kind: [{”name”:”cdi-deployment”, : “yaml_file”: “path/../”, “namespace”: “openshift-cnv”}]}
-
-    all_resources: Dict[str, Any] = {}
+    all_resources: dict[str, Any] = {}
     for yaml_path, yaml_files in tqdm(
         all_yaml_files.items(),
         desc="Parsing data",
@@ -112,7 +90,7 @@ Please check that the --path points to the [bold]correct[/bold] and [bold]non-em
 
     get_action = "get"
 
-    actions_dict: Dict[str, Any] = {
+    actions_dict: dict[str, Any] = {
         get_action: get_resources,
         "logs": get_logs,
         "describe": get_describe,
@@ -131,7 +109,7 @@ Please check that the --path points to the [bold]correct[/bold] and [bold]non-em
         # get PersistentVolumeClaim hpp
         # get PersistentVolumeClaim
 
-        commands_list: List[str] = user_command.split()
+        commands_list: list[str] = user_command.split()
 
         action_name = commands_list[0]
         supported_actions = actions_dict.keys()
@@ -175,12 +153,20 @@ Action '{action_name}' is not supported, please use a supported action:
         # get pvc -oyaml
         print_yaml = False
         yaml_flag = "-oyaml"
+        yaml_fields_to_get = ""  # .metadata.labels / .spec.source.http
         if yaml_flag in commands_list:
             if action_name != get_action:
                 CONSOLE.print(f"'{yaml_flag}' is only supported with '{get_action}' action")
                 continue
             print_yaml = True
             commands_list.remove(yaml_flag)
+
+            # get dv -n openshift-virtualization-os-images -oyaml .spec.source
+            if commands_list:
+                commands_list_last_value = commands_list[-1]
+                if commands_list_last_value.startswith("."):
+                    yaml_fields_to_get = commands_list_last_value
+                    commands_list.remove(yaml_fields_to_get)
 
         resource_name = ""
         if commands_list:
@@ -200,15 +186,51 @@ Action '{action_name}' is not supported, please use a supported action:
             if not resources_raw_data:
                 CONSOLE.print(f"No resources found for {resource_kind} {resource_name} {namespace_name}")
                 continue
-            actions_dict[action_name](resources_raw_data, print_yaml)
+
+            actions_dict[action_name](resources_raw_data, print_yaml, yaml_fields_to_get)
 
         except MissingResourceKindAliasError:
             continue
 
 
-def get_resources(resources_raw_data: List[Dict[str, Any]], print_yaml: bool = False, **kwargs: Dict[Any, Any]) -> None:
+def parse_all_files_fill_dictionaries_by_file_type(
+    must_gather_path: str,
+) -> tuple[dict[str, list[str]], dict[str, list[str]]]:
+    # Fill dictionaries for all files kinds
+    all_yaml_files: dict[str, list[str]] = {}
+    all_log_files: dict[str, list[str]] = {}
+    for root, dirs, _ in Path(must_gather_path).walk():
+        for _dir in dirs:
+            _dir_path = Path(root, _dir)
+            for _file in _dir_path.iterdir():
+                if _file.is_dir():
+                    continue
+
+                file_extention = _file.suffix
+                if not file_extention:
+                    LOGGER.debug(f"Skipping file {_file}, file has no extension")
+                    continue
+
+                if file_extention in (".yaml", ".yml"):
+                    all_yaml_files.setdefault(str(_dir_path), []).append(_file.name)
+
+                # Pod may have several containers, the path to the log is:
+                # <path>/namespaces/openshift-ovn-kubernetes/pods/ovnkube-node-6vrt6/kubecfg-setup/kubecfg-setup/logs
+                # <path>/namespaces/openshift-ovn-kubernetes/pods/ovnkube-node-6vrt6/kube-rbac-proxy-node/kube-rbac-proxy-node/logs
+                elif file_extention == ".log":
+                    all_log_files.setdefault(str(_dir_path), []).append(_file.name)
+
+    return all_yaml_files, all_log_files
+
+
+def get_resources(
+    resources_raw_data: list[dict[str, Any]],
+    print_yaml: bool = False,
+    yaml_fields_to_get: str = "",
+    **kwargs: dict[Any, Any],
+) -> None:
     if print_yaml:
-        print_resource_yaml(resources_raw_data=resources_raw_data)
+        print_resource_yaml(resources_raw_data=resources_raw_data, yaml_fields_to_get=yaml_fields_to_get)
     else:
         # Print table of Namespace, Name
         table = Table()
@@ -219,7 +241,7 @@ def get_resources(resources_raw_data: List[Dict[str, Any]], print_yaml: bool = F
         CONSOLE.print(table)
 
 
-def print_resource_yaml(resources_raw_data: List[Dict[str, Any]]) -> None:
+def print_resource_yaml(resources_raw_data: list[dict[str, Any]], yaml_fields_to_get: str = "") -> None:
     for raw_data in resources_raw_data:
         # Read resource yaml file from path in raw_data["yaml_file"]
         try:
@@ -229,26 +251,49 @@ def print_resource_yaml(resources_raw_data: List[Dict[str, Any]]) -> None:
             CONSOLE.print(f"[red]Error opening file {raw_data['yaml_file']}: {e}")
             continue
 
-        CONSOLE.print(resource_yaml_content)
-        CONSOLE.print("-" * os.get_terminal_size().columns)
+        # get dv -n openshift-images centos-stream8 -oyaml .spec.source
+        if yaml_fields_to_get:
+            print_specific_yaml_fields(
+                resource_yaml_content=resource_yaml_content, yaml_fields_to_get=yaml_fields_to_get
+            )
+        else:  # print full yaml
+            CONSOLE.print(resource_yaml_content)
+            CONSOLE.print("-" * os.get_terminal_size().columns)
 
 
-def get_logs(**kwargs: Dict[Any, Any]) -> None:
+def print_specific_yaml_fields(resource_yaml_content: str, yaml_fields_to_get: str) -> None:
+    resource_yaml_dict = yaml.safe_load(resource_yaml_content)
+    resource_metadata = resource_yaml_dict.get("metadata", {})
+    resource_name = resource_metadata.get("name")
+    resource_namespace = resource_metadata.get("namespace")
+    yaml_fields_dict_to_print = resource_yaml_dict
+    for yaml_key in filter(None, yaml_fields_to_get.split(".")):
+        yaml_fields_dict_to_print = yaml_fields_dict_to_print.get(yaml_key)
+        if not yaml_fields_dict_to_print:
+            CONSOLE.print(f"No field '{yaml_key}' for '{resource_name}' in '{resource_namespace}' namespace")
+            break
+    if yaml_fields_dict_to_print:
+        CONSOLE.print(yaml.dump(yaml_fields_dict_to_print))
+
+
+def get_logs(**kwargs: dict[Any, Any]) -> None:
+    CONSOLE.print("Not implemented yet")
     pass
 
 
-def get_describe(**kwargs: Dict[Any, Any]) -> None:
+def get_describe(**kwargs: dict[Any, Any]) -> None:
+    CONSOLE.print("Not implemented yet, please use 'get <resource_kind> ... -oyaml'")
     pass
 
 
-def print_help(**kwargs: Dict[Any, Any]) -> None:
+def print_help(**kwargs: dict[Any, Any]) -> None:
     pass
 
 
 def get_cluster_resources_raw_data(
-    resources_aliases: Any, all_resources: Dict[str, Any], kind: str, name: str, namespace: str
-) -> List[Dict[str, Any]]:
-    resources_list: List[Dict[str, Any]] = []
+    resources_aliases: Any, all_resources: dict[str, Any], kind: str, name: str, namespace: str
+) -> list[dict[str, Any]]:
+    resources_list: list[dict[str, Any]] = []
 
     resource_kind = get_resource_kind_by_alias(resources_aliases=resources_aliases, requested_kind=kind)
 
@@ -282,7 +327,7 @@ def get_cluster_resources_raw_data(
     return resources_list
 
 
-def get_resource_kind_by_alias(resources_aliases: Dict[str, List[str]], requested_kind: str) -> str:
+def get_resource_kind_by_alias(resources_aliases: dict[str, list[str]], requested_kind: str) -> str:
     kind_lower = requested_kind.lower()
 
     for kind, aliases in resources_aliases.items():
