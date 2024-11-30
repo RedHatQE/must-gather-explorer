@@ -44,6 +44,13 @@ Please wait while the must gather data is being parsed
 """
     )
 
+    # Fail fast if the aliases file is missing
+    try:
+        resources_aliases = read_aliases_file()
+    except (FailToReadJSONFileError, FileNotFoundError):
+        CONSOLE.print(f"[red]Can't read aliases file, {HOW_TO_UPDATE_ALIASES_MESSAGE}\n")
+        sys.exit(1)
+
     # Fill dictionaries for all files kinds
     all_yaml_files: Dict[str, List[str]] = {}
     all_log_files: Dict[str, List[str]] = {}
@@ -185,15 +192,17 @@ Action '{action_name}' is not supported, please use a supported action:
 
         try:
             resources_raw_data = get_cluster_resources_raw_data(
-                all_resources=all_resources, kind=resource_kind, name=resource_name, namespace=namespace_name
+                resources_aliases=resources_aliases,
+                all_resources=all_resources,
+                kind=resource_kind,
+                name=resource_name,
+                namespace=namespace_name,
             )
             if not resources_raw_data:
                 CONSOLE.print(f"No resources found for {resource_kind} {resource_name} {namespace_name}")
                 continue
             actions_dict[action_name](resources_raw_data, print_yaml)
 
-        except FailToReadJSONFileError:
-            sys.exit(1)
         except MissingResourceKindAliasError:
             continue
 
@@ -238,11 +247,11 @@ def print_help(**kwargs: Dict[Any, Any]) -> None:
 
 
 def get_cluster_resources_raw_data(
-    all_resources: Dict[str, Any], kind: str, name: str, namespace: str
+    resources_aliases: Any, all_resources: Dict[str, Any], kind: str, name: str, namespace: str
 ) -> List[Dict[str, Any]]:
     resources_list: List[Dict[str, Any]] = []
 
-    resource_kind = get_resource_kind_by_alias(requested_kind=kind)
+    resource_kind = get_resource_kind_by_alias(resources_aliases=resources_aliases, requested_kind=kind)
 
     for cluster_resource in all_resources.get(resource_kind, []):
         cluster_resource_name = cluster_resource.get("name")
@@ -275,10 +284,8 @@ def get_cluster_resources_raw_data(
 
 
 @lru_cache
-def get_resource_kind_by_alias(requested_kind: str) -> str:
+def get_resource_kind_by_alias(resources_aliases: Dict[str, List[str]], requested_kind: str) -> str:
     kind_lower = requested_kind.lower()
-
-    resources_aliases = read_aliases_file()
 
     for kind, aliases in resources_aliases.items():
         if kind == kind_lower or kind_lower in aliases:
