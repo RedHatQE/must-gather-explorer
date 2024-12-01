@@ -1,7 +1,6 @@
 import os
 
 import sys
-from functools import lru_cache
 from typing import Any, Dict, List
 from pathlib import Path
 from tqdm import tqdm
@@ -90,7 +89,7 @@ Please wait while the must gather data is being parsed
 
             with open(yaml_file_path) as fd:
                 try:
-                    resource_dictionary = yaml.safe_load(fd)
+                    resource_dictionary = yaml.load(fd, Loader=yaml.CSafeLoader)
                 except yaml.constructor.ConstructorError as exp:
                     LOGGER.debug(f"Error parsing YAML file {yaml_file_path}: {exp}")
                     continue
@@ -283,7 +282,6 @@ def get_cluster_resources_raw_data(
     return resources_list
 
 
-@lru_cache
 def get_resource_kind_by_alias(resources_aliases: Dict[str, List[str]], requested_kind: str) -> str:
     kind_lower = requested_kind.lower()
 
