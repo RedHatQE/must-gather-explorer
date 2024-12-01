@@ -1,6 +1,5 @@
 import json
 import os
-import sys
 import sysconfig
 from pathlib import Path
 from typing import Any
@@ -128,15 +127,11 @@ def must_gather_shell(
 
     log_action_str = "logs"
     describe_action_str = "describe"
-    exit_action_str = "exit"
-    help_action_str = "help"
 
     actions_dict: dict[str, Any] = {
         GET_ACTION_STR: get_resources,
         log_action_str: get_logs,
         describe_action_str: get_describe,
-        exit_action_str: exit_shell,
-        help_action_str: print_help,
     }
 
     commands_list: list[str] = user_command.split()
@@ -146,9 +141,6 @@ def must_gather_shell(
         return False
 
     commands_list.remove(action_name)
-
-    if action_name in (exit_action_str, help_action_str):
-        return actions_dict[action_name]()
 
     return parse_actions(
         commands_list=commands_list,
@@ -194,15 +186,6 @@ def get_logs(**kwargs: dict[Any, Any]) -> bool:
 def get_describe(**kwargs: dict[Any, Any]) -> bool:
     CONSOLE.print("Not implemented yet")
     return False
-
-
-def print_help(**kwargs: dict[Any, Any]) -> bool:
-    CONSOLE.print("Not implemented yet")
-    return False
-
-
-def exit_shell(**kwargs: dict[Any, Any]) -> bool:
-    sys.exit(0)
 
 
 def get_cluster_resources_raw_data(

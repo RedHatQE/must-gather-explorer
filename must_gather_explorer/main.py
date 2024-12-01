@@ -1,13 +1,12 @@
 import sys
 import click
-from rich.prompt import Prompt
+from must_gather_explorer.prompt_handler import MustGatherExplorerPrompt
 
 from must_gather_explorer.constants import HOW_TO_UPDATE_ALIASES_MESSAGE, CONSOLE
 from must_gather_explorer.exceptions import FailToReadJSONFileError
 from must_gather_explorer.utils import (
     get_all_resources,
     get_all_yaml_and_log_files,
-    must_gather_shell,
     read_aliases_file,
 )
 from simple_logger.logger import get_logger
@@ -58,17 +57,8 @@ Please wait while the must gather data is being parsed
         sys.exit(1)
 
     # Get user prompt
-    while True:
-        user_command: str = Prompt.ask("Command")
-        if not user_command:
-            continue
 
-        if not must_gather_shell(
-            user_command=user_command,
-            resources_aliases=resources_aliases,
-            all_resources=all_resources,
-        ):
-            continue
+    MustGatherExplorerPrompt(resources_aliases=resources_aliases, all_resources=all_resources).cmdloop()
 
 
 if __name__ == "__main__":
