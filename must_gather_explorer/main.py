@@ -270,7 +270,13 @@ def print_specific_yaml_fields(resource_yaml_content: str, yaml_fields_to_get: s
     for yaml_key in filter(None, yaml_fields_to_get.split(".")):
         yaml_fields_dict_to_print = yaml_fields_dict_to_print.get(yaml_key)
         if not yaml_fields_dict_to_print:
-            CONSOLE.print(f"No field '{yaml_key}' for '{resource_name}' in '{resource_namespace}' namespace")
+            # Some resources don't have name and namespace
+            error_message = f"No field '{yaml_key}' for {resource_yaml_dict.get('kind')} "
+            if resource_name:
+                error_message += f"'{resource_name}' "
+            if resource_namespace:
+                error_message += f"in '{resource_namespace}' namespace"
+            CONSOLE.print(error_message)
             break
     if yaml_fields_dict_to_print:
         CONSOLE.print(yaml.dump(yaml_fields_dict_to_print))
@@ -291,7 +297,7 @@ def print_help(**kwargs: dict[Any, Any]) -> None:
 
 
 def get_cluster_resources_raw_data(
-    resources_aliases: Any, all_resources: dict[str, Any], kind: str, name: str, namespace: str
+    resources_aliases: dict[str, list[str]], all_resources: dict[str, Any], kind: str, name: str, namespace: str
 ) -> list[dict[str, Any]]:
     resources_list: list[dict[str, Any]] = []
 
