@@ -199,7 +199,6 @@ def get_cluster_resources_raw_data(
         cluster_resource_name = cluster_resource.get("name")
         cluster_resource_namespace = cluster_resource.get("namespace")
 
-        # kind, name, namespace
         if name and namespace:
             if (
                 cluster_resource_namespace == namespace

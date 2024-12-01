@@ -56,9 +56,8 @@ Please wait while the must gather data is being parsed
     if not all_resources:
         sys.exit(1)
 
-    # Get user prompt
-
-    MustGatherExplorerPrompt(resources_aliases=resources_aliases, all_resources=all_resources).cmdloop()
+    sys.argv = [sys.argv[0]]  # Remove all cick options from sys.argv
+    sys.exit(MustGatherExplorerPrompt(resources_aliases=resources_aliases, all_resources=all_resources).cmdloop())
 
 
 if __name__ == "__main__":
