@@ -1,7 +1,6 @@
 import json
 import shlex
 import sys
-from typing import Dict, List
 
 import click
 from pyhelper_utils.shell import run_command
@@ -22,7 +21,7 @@ def fill_api_resources_aliases() -> None:
 
     resources_aliases = read_aliases_file(raise_on_error=False)
 
-    cli_resource_alias: Dict[str, List[str]] = {}
+    cli_resource_alias: dict[str, list[str]] = {}
 
     for line in out.splitlines():
         # line example:
@@ -32,7 +31,7 @@ def fill_api_resources_aliases() -> None:
         split_line = line.split()
 
         # add NAME to the list of aliases
-        alias_list: List[str] = [split_line[0]]  # alias_list = ['virtualmachines']
+        alias_list: list[str] = [split_line[0]]  # alias_list = ['virtualmachines']
 
         line_len = len(split_line)
 
