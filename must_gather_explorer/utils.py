@@ -135,11 +135,7 @@ def must_gather_shell(
     }
 
     commands_list: list[str] = user_command.split()
-
     action_name = commands_list[0]
-    if not is_usr_command_supported(action_name=action_name, actions_dict=actions_dict):
-        return False
-
     commands_list.remove(action_name)
 
     return parse_actions(
@@ -237,20 +233,6 @@ def get_resource_kind_by_alias(resources_aliases: dict[str, list[str]], requeste
         f"{HOW_TO_UPDATE_ALIASES_MESSAGE}"
     )
     raise MissingResourceKindAliasError(requested_kind=requested_kind)
-
-
-def is_usr_command_supported(action_name: str, actions_dict: dict[str, Any]) -> bool:
-    supported_actions = actions_dict.keys()
-
-    if action_name not in supported_actions:
-        CONSOLE.print(
-            f"""
-Action '{action_name}' is not supported, please use a supported action:
-{"\n    ".join(supported_actions)}
-"""
-        )
-        return False
-    return True
 
 
 def parse_actions(

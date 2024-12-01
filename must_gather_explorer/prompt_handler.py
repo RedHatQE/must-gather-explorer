@@ -42,7 +42,7 @@ class MustGatherExplorerPrompt(cmd2.Cmd):
 
     example_parser = cmd2.Cmd2ArgumentParser(description="get the must-gather data for a specific resource")
     example_parser.add_argument("-n", "--namespace", choices_provider=namespaces, help="Namespace of the resource")
-    example_parser.add_argument("-k", "--kind", choices_provider=kinds, help="Kind of the resource")
+    example_parser.add_argument("-k", "--kind", required=True, choices_provider=kinds, help="Kind of the resource")
     example_parser.add_argument("-oyaml", action="store_true", help="Output the must-gather data in YAML format")
     example_parser.add_argument("--name", help="Name of the resource or prefix of the name to search for")
 
