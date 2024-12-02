@@ -34,11 +34,12 @@ class MustGatherExplorerPrompt(cmd2.Cmd):
         return namespaces
 
     def kinds(self) -> list[str]:
-        _kinds: list[str] = []
-        _kinds.extend(list(self.resources_aliases.keys()))
-        [_kinds.extend(_kind) for _kind in self.resources_aliases.values()]  # type: ignore
-
-        return _kinds
+        return list(
+            set(
+                list(self.resources_aliases.keys())
+                + [kind for kinds in self.resources_aliases.values() for kind in kinds]
+            )
+        )
 
     example_parser = cmd2.Cmd2ArgumentParser(description="get the must-gather data for a specific resource")
     example_parser.add_argument("-n", "--namespace", choices_provider=namespaces, help="Namespace of the resource")
