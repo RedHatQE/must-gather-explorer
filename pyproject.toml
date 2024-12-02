@@ -24,7 +24,7 @@ dev-dependencies = [ "ipdb>=0.13.13", "ipython>=8.18.1" ]
 
 [project]
 name = "must-gather-explorer"
-version = "0.1.6"
+version = "0.1.7"
 description = "Tool to explore must-gather data"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -36,7 +36,7 @@ dependencies = [
   "python-simple-logger>=1.0.40",
   "pyyaml>=6.0.2",
   "rich>=13.9.2",
-  "tqdm>=4.67.0",
+  "tqdm>=4.67.0"
 ]
 
   [[project.authors]]
