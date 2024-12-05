@@ -127,7 +127,7 @@ def must_gather_shell(
     resource_name: str = "",
     oyaml: bool = False,
     yaml_fields: str = "",
-) -> bool:
+) -> None:
     """
     When this function return False it means that we continue if the loop in the main function
     """
@@ -141,7 +141,7 @@ def must_gather_shell(
         describe_action_str: get_describe,
     }
 
-    return parse_actions(
+    call_actions(
         action=action,
         actions_dict=actions_dict,
         resources_aliases=resources_aliases,
@@ -272,7 +272,7 @@ def get_resource_kind_by_alias(resources_aliases: dict[str, list[str]], requeste
     raise MissingResourceKindAliasError(requested_kind=requested_kind)
 
 
-def parse_actions(
+def call_actions(
     actions_dict: dict[str, Any],
     resources_aliases: dict[str, list[str]],
     all_resources: dict[str, Any],
@@ -282,25 +282,16 @@ def parse_actions(
     resource_name: str = "",
     oyaml: bool = False,
     yaml_fields: str = "",
-) -> bool:
-    # if "-oyaml" passed, change print_yaml to True
-    # get pvc -n openshift-cnv -oyaml
-    # get pvc -n openshift-cnv hpp -oyaml
-    # get pvc -oyaml
+) -> None:
+    resources_raw_data = get_cluster_resources_raw_data(
+        resources_aliases=resources_aliases,
+        all_resources=all_resources,
+        kind=kind,
+        name=resource_name,
+        namespace=namespace,
+    )
+    if not resources_raw_data:
+        CONSOLE.print(f"No resources found for {kind} {resource_name} {namespace}")
+        return
 
-    try:
-        resources_raw_data = get_cluster_resources_raw_data(
-            resources_aliases=resources_aliases,
-            all_resources=all_resources,
-            kind=kind,
-            name=resource_name,
-            namespace=namespace,
-        )
-        if not resources_raw_data:
-            CONSOLE.print(f"No resources found for {kind} {resource_name} {namespace}")
-            return False
-        actions_dict[action](resources_raw_data, oyaml, yaml_fields)
-
-    except MissingResourceKindAliasError:
-        return False
-    return False
+    actions_dict[action](resources_raw_data, oyaml, yaml_fields)

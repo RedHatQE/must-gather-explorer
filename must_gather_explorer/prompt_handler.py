@@ -65,10 +65,9 @@ class MustGatherExplorerPrompt(cmd2.Cmd):
         """
         yaml_fields = args.yaml_fields
         oyaml = args.oyaml
-        if yaml_fields:
-            if not oyaml:
-                CONSOLE.print("[red]yaml-fields can only be used with -oyaml flag")
-                return
+        if yaml_fields and not oyaml:
+            CONSOLE.print("[red]yaml-fields can only be used with -oyaml flag")
+            return
 
         list_of_args = args.args
         resource_name = ""
