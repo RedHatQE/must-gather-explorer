@@ -119,7 +119,14 @@ Please check that the --path points to the [bold]correct[/bold] and [bold]non-em
 
 
 def must_gather_shell(
-    user_command: str, resources_aliases: dict[str, list[str]], all_resources: dict[str, Any]
+    resources_aliases: dict[str, list[str]],
+    all_resources: dict[str, Any],
+    action: str,
+    kind: str,
+    namespace: str = "",
+    resource_name: str = "",
+    oyaml: bool = False,
+    yaml_fields: str = "",
 ) -> bool:
     """
     When this function return False it means that we continue if the loop in the main function
@@ -134,27 +141,27 @@ def must_gather_shell(
         describe_action_str: get_describe,
     }
 
-    commands_list: list[str] = user_command.split()
-    action_name = commands_list[0]
-    commands_list.remove(action_name)
-
     return parse_actions(
-        commands_list=commands_list,
-        action_name=action_name,
+        action=action,
         actions_dict=actions_dict,
         resources_aliases=resources_aliases,
         all_resources=all_resources,
+        kind=kind,
+        namespace=namespace,
+        resource_name=resource_name,
+        oyaml=oyaml,
+        yaml_fields=yaml_fields,
     )
 
 
 def get_resources(
     resources_raw_data: list[dict[str, Any]],
-    print_yaml: bool = False,
-    yaml_fields_to_get: str = "",
+    oyaml: bool = False,
+    yaml_fields: str = "",
     **kwargs: dict[Any, Any],
 ) -> None:
-    if print_yaml:
-        print_resource_yaml(resources_raw_data=resources_raw_data, yaml_fields_to_get=yaml_fields_to_get)
+    if oyaml:
+        print_resource_yaml(resources_raw_data=resources_raw_data, yaml_fields=yaml_fields)
     else:
         # Print table of Namespace, Name
         table = Table()
@@ -165,7 +172,7 @@ def get_resources(
         CONSOLE.print(table)
 
 
-def print_resource_yaml(resources_raw_data: list[dict[str, Any]], yaml_fields_to_get: str = "") -> None:
+def print_resource_yaml(resources_raw_data: list[dict[str, Any]], yaml_fields: str = "") -> None:
     for raw_data in resources_raw_data:
         # Read resource yaml file from path in raw_data["yaml_file"]
         try:
@@ -176,10 +183,8 @@ def print_resource_yaml(resources_raw_data: list[dict[str, Any]], yaml_fields_to
             continue
 
         # get dv -n openshift-images centos-stream8 -oyaml .spec.source
-        if yaml_fields_to_get:
-            print_specific_yaml_fields(
-                resource_yaml_content=resource_yaml_content, yaml_fields_to_get=yaml_fields_to_get
-            )
+        if yaml_fields:
+            print_specific_yaml_fields(resource_yaml_content=resource_yaml_content, yaml_fields_to_get=yaml_fields)
         else:  # print full yaml
             CONSOLE.print(resource_yaml_content)
             CONSOLE.print("-" * os.get_terminal_size().columns)
@@ -268,69 +273,33 @@ def get_resource_kind_by_alias(resources_aliases: dict[str, list[str]], requeste
 
 
 def parse_actions(
-    commands_list: list[str],
-    action_name: str,
     actions_dict: dict[str, Any],
     resources_aliases: dict[str, list[str]],
     all_resources: dict[str, Any],
+    action: str,
+    kind: str,
+    namespace: str = "",
+    resource_name: str = "",
+    oyaml: bool = False,
+    yaml_fields: str = "",
 ) -> bool:
-    namespace_flag: str = "-n"
-    namespace_name: str = ""
-
-    if not commands_list:
-        CONSOLE.print("Please pass the resource Kind")
-        return False
-
-    if namespace_flag in commands_list:
-        namespace_index = commands_list.index(namespace_flag)
-        namespace_name = commands_list[namespace_index + 1]
-        commands_list.remove(namespace_flag)
-        commands_list.remove(namespace_name)
-
-    resource_kind = commands_list[0]
-    commands_list.remove(resource_kind)
-
     # if "-oyaml" passed, change print_yaml to True
     # get pvc -n openshift-cnv -oyaml
     # get pvc -n openshift-cnv hpp -oyaml
     # get pvc -oyaml
-    print_yaml = False
-    yaml_flag = "-oyaml"
-    yaml_fields_to_get = ""  # .metadata.labels / .spec.source.http
-    if yaml_flag in commands_list:
-        if action_name != GET_ACTION_STR:
-            CONSOLE.print(f"'{yaml_flag}' is only supported with '{GET_ACTION_STR}' action")
-            return False
-        print_yaml = True
-        commands_list.remove(yaml_flag)
-
-        # get dv -n openshift-virtualization-os-images -oyaml .spec.source
-        if commands_list:
-            commands_list_last_value = commands_list[-1]
-            if commands_list_last_value.startswith("."):
-                yaml_fields_to_get = commands_list_last_value
-                commands_list.remove(yaml_fields_to_get)
-
-    resource_name = ""
-    if commands_list:
-        resource_name = commands_list[0]
-        commands_list.remove(resource_name)
-        if commands_list:
-            CONSOLE.print(f"[red]Too many params passed in: {commands_list}, run 'help' for help\n")
-            return False
 
     try:
         resources_raw_data = get_cluster_resources_raw_data(
             resources_aliases=resources_aliases,
             all_resources=all_resources,
-            kind=resource_kind,
+            kind=kind,
             name=resource_name,
-            namespace=namespace_name,
+            namespace=namespace,
         )
         if not resources_raw_data:
-            CONSOLE.print(f"No resources found for {resource_kind} {resource_name} {namespace_name}")
+            CONSOLE.print(f"No resources found for {kind} {resource_name} {namespace}")
             return False
-        actions_dict[action_name](resources_raw_data, print_yaml, yaml_fields_to_get)
+        actions_dict[action](resources_raw_data, oyaml, yaml_fields)
 
     except MissingResourceKindAliasError:
         return False

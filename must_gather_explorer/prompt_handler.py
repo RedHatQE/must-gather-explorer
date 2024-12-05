@@ -45,10 +45,15 @@ class MustGatherExplorerPrompt(cmd2.Cmd):
     example_parser = cmd2.Cmd2ArgumentParser(description="get the must-gather data for a specific resource")
     example_parser.add_argument("get", help="Kind of the resource")
     example_parser.add_argument("args", nargs="*", help="Resource name or partial name")
-    example_parser.add_argument("-n", "--namespace", choices_provider=namespaces, help="Namespace of the resource")
+    example_parser.add_argument(
+        "-n", "--namespace", default="", choices_provider=namespaces, help="Namespace of the resource"
+    )
     example_parser.add_argument("-oyaml", action="store_true", help="Output the must-gather data in YAML format")
     example_parser.add_argument(
-        "-f", "--yaml-fields", default="", help="Print specified yaml field path, like .spec.source"
+        "-f",
+        "--yaml-fields",
+        default="",
+        help="Print specified yaml field path, like .spec.source",
     )
 
     @cmd2.with_argparser(example_parser)
@@ -58,6 +63,13 @@ class MustGatherExplorerPrompt(cmd2.Cmd):
             Usage: get <resource_name>
             suported flags: -n <namespace>, -oyaml
         """
+        yaml_fields = args.yaml_fields
+        oyaml = args.oyaml
+        if yaml_fields:
+            if not oyaml:
+                CONSOLE.print("[red]yaml-fields can only be used with -oyaml flag")
+                return
+
         list_of_args = args.args
         resource_name = ""
         if list_of_args:
@@ -66,9 +78,13 @@ class MustGatherExplorerPrompt(cmd2.Cmd):
                 return
             resource_name = list_of_args[0]
 
-        # TODO pass user_command as the separate arguments
         must_gather_shell(
-            user_command=f"get {args.get} {f'-n {args.namespace}' if args.namespace else ''} {resource_name} {'-oyaml' if args.oyaml else ''} {args.yaml_fields}",
+            action="get",
+            kind=args.get,
+            namespace=args.namespace,
+            resource_name=resource_name,
+            oyaml=oyaml,
+            yaml_fields=yaml_fields,
             resources_aliases=self.resources_aliases,
             all_resources=self.all_resources,
         )
