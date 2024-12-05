@@ -61,8 +61,8 @@ class MustGatherExplorerPrompt(cmd2.Cmd):
         list_of_args = args.args
         resource_name = ""
         if list_of_args:
-            if len(list_of_args) > 2:
-                CONSOLE.print(f"Too many args {list_of_args}")
+            if len(list_of_args) > 1:
+                CONSOLE.print(f"[red]Too many args {list_of_args}")
                 return
             resource_name = list_of_args[0]
 
