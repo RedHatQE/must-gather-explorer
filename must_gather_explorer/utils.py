@@ -291,7 +291,9 @@ def call_actions(
         namespace=namespace,
     )
     if not resources_raw_data:
-        CONSOLE.print(f"No resources found for {kind} {resource_name} {namespace}")
+        CONSOLE.print(
+            f"No resources found for `{kind}` {'name': {resource_name} if {resource_name} else ''} in {'namespace': {namespace} if {namespace} elsea ''}"
+        )
         return
 
     actions_dict[action](resources_raw_data, oyaml, yaml_fields)
