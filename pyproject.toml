@@ -24,7 +24,7 @@ dev-dependencies = [ "ipdb>=0.13.13", "ipython>=8.18.1" ]
 
 [project]
 name = "must-gather-explorer"
-version = "0.1.7"
+version = "0.1.8"
 description = "Tool to explore must-gather data"
 readme = "README.md"
 requires-python = ">=3.12"
