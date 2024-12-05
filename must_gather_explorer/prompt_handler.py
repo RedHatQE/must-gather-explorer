@@ -2,6 +2,7 @@ import cmd2
 import argparse
 from typing import Any
 
+from must_gather_explorer.constants import CONSOLE
 from must_gather_explorer.utils import must_gather_shell
 
 
@@ -42,10 +43,10 @@ class MustGatherExplorerPrompt(cmd2.Cmd):
         )
 
     example_parser = cmd2.Cmd2ArgumentParser(description="get the must-gather data for a specific resource")
+    example_parser.add_argument("get", help="Kind of the resource")
+    example_parser.add_argument("args", nargs="*", help="Resource name or partial name")
     example_parser.add_argument("-n", "--namespace", choices_provider=namespaces, help="Namespace of the resource")
-    example_parser.add_argument("-k", "--kind", required=True, choices_provider=kinds, help="Kind of the resource")
     example_parser.add_argument("-oyaml", action="store_true", help="Output the must-gather data in YAML format")
-    example_parser.add_argument("--name", help="Name of the resource or prefix of the name to search for")
 
     @cmd2.with_argparser(example_parser)
     def do_get(self, args: argparse.Namespace) -> None:
@@ -54,8 +55,16 @@ class MustGatherExplorerPrompt(cmd2.Cmd):
             Usage: get <resource_name>
             suported flags: -n <namespace>, -oyaml
         """
+        list_of_args = args.args
+        resource_name = ""
+        if list_of_args:
+            if len(list_of_args) > 1:
+                CONSOLE.print(f"Too many args {list_of_args}")
+                return
+            resource_name = list_of_args[0]
+
         must_gather_shell(
-            user_command=f"get {args.kind} {f'-n {args.namespace}' if args.namespace else ''} {'-oyaml' if args.oyaml else ''} {args.name if args.name else ''}",
+            user_command=f"get {args.get} {f'-n {args.namespace}' if args.namespace else ''} {resource_name} {'-oyaml' if args.oyaml else ''}",
             resources_aliases=self.resources_aliases,
             all_resources=self.all_resources,
         )
