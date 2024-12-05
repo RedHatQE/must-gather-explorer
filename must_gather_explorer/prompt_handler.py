@@ -47,6 +47,9 @@ class MustGatherExplorerPrompt(cmd2.Cmd):
     example_parser.add_argument("args", nargs="*", help="Resource name or partial name")
     example_parser.add_argument("-n", "--namespace", choices_provider=namespaces, help="Namespace of the resource")
     example_parser.add_argument("-oyaml", action="store_true", help="Output the must-gather data in YAML format")
+    example_parser.add_argument(
+        "-f", "--yaml-fields", default="", help="Print specified yaml field path, like .spec.source"
+    )
 
     @cmd2.with_argparser(example_parser)
     def do_get(self, args: argparse.Namespace) -> None:
@@ -58,13 +61,15 @@ class MustGatherExplorerPrompt(cmd2.Cmd):
         list_of_args = args.args
         resource_name = ""
         if list_of_args:
-            if len(list_of_args) > 1:
+            # supported args: resource name and yaml fields path like .spec.source
+            if len(list_of_args) > 2:
                 CONSOLE.print(f"Too many args {list_of_args}")
                 return
             resource_name = list_of_args[0]
 
+        # TODO pass user_command as the separate arguments
         must_gather_shell(
-            user_command=f"get {args.get} {f'-n {args.namespace}' if args.namespace else ''} {resource_name} {'-oyaml' if args.oyaml else ''}",
+            user_command=f"get {args.get} {f'-n {args.namespace}' if args.namespace else ''} {resource_name} {'-oyaml' if args.oyaml else ''} {args.yaml_fields}",
             resources_aliases=self.resources_aliases,
             all_resources=self.all_resources,
         )
