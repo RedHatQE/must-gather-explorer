@@ -1,0 +1,7 @@
+---
+apiVersion: hco.kubevirt.io/v1beta1
+items: []
+kind: HyperConvergedList
+metadata:
+  continue: ""
+  resourceVersion: "13502831"

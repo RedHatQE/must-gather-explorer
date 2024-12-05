@@ -291,8 +291,10 @@ def call_actions(
         namespace=namespace,
     )
     if not resources_raw_data:
+        name = resource_name if resource_name else ""
+        namespace = namespace if namespace else ""
         CONSOLE.print(
-            f"No resources found for `{kind}` {'name': {resource_name} if {resource_name} else ''} in {'namespace': {namespace} if {namespace} elsea ''}"
+            f"No resources found for `{kind}` {f'with {name}' if name else ''} {f'in {namespace}' if namespace else ''}"
         )
         return
 

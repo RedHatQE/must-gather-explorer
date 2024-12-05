@@ -1,0 +1,7 @@
+---
+apiVersion: kubevirt.io/v1
+items: []
+kind: KubeVirtList
+metadata:
+  continue: ""
+  resourceVersion: "13502832"

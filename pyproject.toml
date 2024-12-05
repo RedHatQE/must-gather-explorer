@@ -33,10 +33,12 @@ dependencies = [
   "cmd2>=2.5.7",
   "gnureadline>=8.2.13",
   "pyhelper-utils>=0.0.42",
+  "pytest-cov>=6.0.0",
+  "pytest>=8.3.4",
   "python-simple-logger>=1.0.40",
   "pyyaml>=6.0.2",
   "rich>=13.9.2",
-  "tqdm>=4.67.0"
+  "tqdm>=4.67.0",
 ]
 
   [[project.authors]]

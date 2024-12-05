@@ -42,26 +42,26 @@ class MustGatherExplorerPrompt(cmd2.Cmd):
             )
         )
 
-    example_parser = cmd2.Cmd2ArgumentParser(description="get the must-gather data for a specific resource")
-    example_parser.add_argument("get", help="Kind of the resource")
-    example_parser.add_argument("args", nargs="*", help="Resource name or partial name")
-    example_parser.add_argument(
+    get_parser = cmd2.Cmd2ArgumentParser(description="get the must-gather data for a specific resource")
+    get_parser.add_argument("get", help="Kind of the resource")
+    get_parser.add_argument("args", nargs="*", help="Resource name or partial name")
+    get_parser.add_argument(
         "-n", "--namespace", default="", choices_provider=namespaces, help="Namespace of the resource"
     )
-    example_parser.add_argument("-oyaml", action="store_true", help="Output the must-gather data in YAML format")
-    example_parser.add_argument(
+    get_parser.add_argument("-oyaml", action="store_true", help="Output the must-gather data in YAML format")
+    get_parser.add_argument(
         "-f",
         "--yaml-fields",
         default="",
         help="Print specified yaml field path, like .spec.source",
     )
 
-    @cmd2.with_argparser(example_parser)
+    @cmd2.with_argparser(get_parser)
     def do_get(self, args: argparse.Namespace) -> None:
         """
         Get the must-gather data for a specific resource.
-            Usage: get <resource_name>
-            suported flags: -n <namespace>, -oyaml
+            Usage: get <resource_name> <options:resourcename|partialname>
+            suported flags: -n <namespace>, -oyaml, -f <yaml_field_path>
         """
         yaml_fields = args.yaml_fields
         oyaml = args.oyaml

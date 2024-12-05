@@ -1,0 +1,36 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  creationTimestamp: "2024-11-20T10:26:42Z"
+  managedFields:
+  - apiVersion: rbac.authorization.k8s.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:ownerReferences:
+          k:{"uid":"42c8be4e-ff84-4d25-a4b5-aeaf24eb6450"}: {}
+      f:roleRef: {}
+      f:subjects: {}
+    manager: cluster-network-operator/operconfig
+    operation: Apply
+    time: "2024-11-20T10:26:42Z"
+  name: network-diagnostics
+  namespace: kube-system
+  ownerReferences:
+  - apiVersion: operator.openshift.io/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Network
+    name: cluster
+    uid: 42c8be4e-ff84-4d25-a4b5-aeaf24eb6450
+  resourceVersion: "3827"
+  uid: 6d5421d4-a0da-4c53-a9d7-896b49ce4997
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: extension-apiserver-authentication-reader
+subjects:
+- kind: ServiceAccount
+  name: network-diagnostics
+  namespace: openshift-network-diagnostics

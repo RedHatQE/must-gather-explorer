@@ -1,0 +1,1202 @@
+
+[
+	{
+		"namespace":"kube-system",
+		"name":"csi-nfs-node-b2kfm",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"liveness-probe",
+				"resources": {
+					"limits": {
+						"cpu": "0"
+					},
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			},
+			{
+				"name":"node-driver-registrar",
+				"resources": {
+					"limits": {
+						"cpu": "0"
+					},
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			},
+			{
+				"name":"nfs",
+				"resources": {
+					"limits": {
+						"cpu": "0"
+					},
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-cluster-csi-drivers",
+		"name":"openstack-cinder-csi-driver-node-pfpdr",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"csi-driver",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			},
+			{
+				"name":"csi-liveness-probe",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			},
+			{
+				"name":"csi-node-driver-registrar",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-cluster-node-tuning-operator",
+		"name":"tuned-zmhd9",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"tuned",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-cnv",
+		"name":"bridge-marker-mgdsp",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"bridge-marker",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-cnv",
+		"name":"cdi-apiserver-785bb87687-wgnp7",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"cdi-apiserver",
+				"resources": {
+					"requests": {
+						"cpu": "100m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-cnv",
+		"name":"cdi-operator-576f954c7f-7p2dn",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"cdi-operator",
+				"resources": {
+					"requests": {
+						"cpu": "100m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-cnv",
+		"name":"cdi-uploadproxy-5bfc5bb54d-q5nrw",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"cdi-uploadproxy",
+				"resources": {
+					"requests": {
+						"cpu": "100m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-cnv",
+		"name":"cluster-network-addons-operator-6c9d845c8f-dhhq2",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"cluster-network-addons-operator",
+				"resources": {
+					"requests": {
+						"cpu": "50m"
+					}
+				}
+			},
+			{
+				"name":"kube-rbac-proxy",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-cnv",
+		"name":"hco-operator-5dc446c994-dxkzc",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"hyperconverged-cluster-operator",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-cnv",
+		"name":"hostpath-provisioner-operator-6897b4c4cc-n2jl5",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"hostpath-provisioner-operator",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-cnv",
+		"name":"kube-cni-linux-bridge-plugin-zp7zx",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"cni-plugins",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-cnv",
+		"name":"kubevirt-apiserver-proxy-646b6c5f5f-9wlrx",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"kubevirt-apiserver-proxy",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-cnv",
+		"name":"virt-handler-8cdwp",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"virt-handler",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-cnv",
+		"name":"virt-operator-5b987fcd6f-7cqxb",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"virt-operator",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-cnv",
+		"name":"virt-template-validator-56b7fdfdf9-2fj64",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"webhook",
+				"resources": {
+					"requests": {
+						"cpu": "50m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-dns",
+		"name":"dns-default-tjpkf",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"dns",
+				"resources": {
+					"requests": {
+						"cpu": "50m"
+					}
+				}
+			},
+			{
+				"name":"kube-rbac-proxy",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-dns",
+		"name":"node-resolver-nvcrp",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"dns-node-resolver",
+				"resources": {
+					"requests": {
+						"cpu": "5m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-image-registry",
+		"name":"node-ca-lwgdr",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"node-ca",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-ingress-canary",
+		"name":"ingress-canary-9zqq5",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"serve-healthcheck-canary",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-local-storage",
+		"name":"diskmaker-discovery-wnxqq",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"diskmaker-discovery",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			},
+			{
+				"name":"kube-rbac-proxy",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-local-storage",
+		"name":"diskmaker-manager-n9pwp",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"diskmaker-manager",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			},
+			{
+				"name":"kube-rbac-proxy",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-local-storage",
+		"name":"local-storage-operator-69fd8f99f-qsn98",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"local-storage-operator",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-machine-config-operator",
+		"name":"kube-rbac-proxy-crio-qemtv-05-s8dvn-worker-0-dfzxc",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"kube-rbac-proxy-crio",
+				"resources": {
+					"requests": {
+						"cpu": "20m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-machine-config-operator",
+		"name":"machine-config-daemon-2n7ch",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"machine-config-daemon",
+				"resources": {
+					"requests": {
+						"cpu": "20m"
+					}
+				}
+			},
+			{
+				"name":"kube-rbac-proxy",
+				"resources": {
+					"requests": {
+						"cpu": "20m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-manila-csi-driver",
+		"name":"csi-nodeplugin-nfsplugin-fwvv5",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"csi-driver",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-manila-csi-driver",
+		"name":"openstack-manila-csi-nodeplugin-hbrbk",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"csi-driver",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			},
+			{
+				"name":"csi-node-driver-registrar",
+				"resources": {
+					"requests": {
+						"cpu": "5m"
+					}
+				}
+			},
+			{
+				"name":"csi-liveness-probe",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-marketplace",
+		"name":"certified-operators-v417-dk6hk",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"registry-server",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-marketplace",
+		"name":"hco-catalogsource-jms6r",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"registry-server",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-marketplace",
+		"name":"ocs-catalogsource-l892n",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"registry-server",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-monitoring",
+		"name":"node-exporter-kr2sh",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"node-exporter",
+				"resources": {
+					"requests": {
+						"cpu": "8m"
+					}
+				}
+			},
+			{
+				"name":"kube-rbac-proxy",
+				"resources": {
+					"requests": {
+						"cpu": "1m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-mtv",
+		"name":"forklift-operator-7cdbcc7f4-rsj7r",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"forklift-operator",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-multus",
+		"name":"multus-additional-cni-plugins-frkwj",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"kube-multus-additional-cni-plugins",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-multus",
+		"name":"multus-tj4qn",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"kube-multus",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-multus",
+		"name":"network-metrics-daemon-h5cx7",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"network-metrics-daemon",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			},
+			{
+				"name":"kube-rbac-proxy",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-must-gather-c2t94",
+		"name":"perf-node-gather-daemonset-9wtgx",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Guaranteed",
+		"containers": [
+			{
+				"name":"node-probe",
+				"resources": {
+					"limits": {
+						"cpu": "100m"
+					},
+					"requests": {
+						"cpu": "100m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-network-diagnostics",
+		"name":"network-check-target-j7pnw",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"network-check-target-container",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-network-operator",
+		"name":"iptables-alerter-n5bmk",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"iptables-alerter",
+				"resources": {
+					"limits": {
+						"cpu": "10m"
+					},
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-nmstate",
+		"name":"nmstate-console-plugin-5d95d44f6-dnmdm",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"nmstate-console-plugin",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-nmstate",
+		"name":"nmstate-handler-x7tzw",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"nmstate-handler",
+				"resources": {
+					"requests": {
+						"cpu": "100m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-openstack-infra",
+		"name":"coredns-qemtv-05-s8dvn-worker-0-dfzxc",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"coredns",
+				"resources": {
+					"requests": {
+						"cpu": "100m"
+					}
+				}
+			},
+			{
+				"name":"coredns-monitor",
+				"resources": {
+					"requests": {
+						"cpu": "100m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-openstack-infra",
+		"name":"keepalived-qemtv-05-s8dvn-worker-0-dfzxc",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"keepalived",
+				"resources": {
+					"requests": {
+						"cpu": "100m"
+					}
+				}
+			},
+			{
+				"name":"keepalived-monitor",
+				"resources": {
+					"requests": {
+						"cpu": "100m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-ovn-kubernetes",
+		"name":"ovnkube-node-5njvh",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"ovn-controller",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			},
+			{
+				"name":"ovn-acl-logging",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			},
+			{
+				"name":"kube-rbac-proxy-node",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			},
+			{
+				"name":"kube-rbac-proxy-ovn-metrics",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			},
+			{
+				"name":"northd",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			},
+			{
+				"name":"nbdb",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			},
+			{
+				"name":"sbdb",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			},
+			{
+				"name":"ovnkube-controller",
+				"resources": {
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-storage",
+		"name":"ceph-csi-controller-manager-5cd455f664-26pmm",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"kube-rbac-proxy",
+				"resources": {
+					"limits": {
+						"cpu": "500m"
+					},
+					"requests": {
+						"cpu": "5m"
+					}
+				}
+			},
+			{
+				"name":"manager",
+				"resources": {
+					"limits": {
+						"cpu": "500m"
+					},
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-storage",
+		"name":"csi-addons-controller-manager-7c76c749dc-kfcv2",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"kube-rbac-proxy",
+				"resources": {
+					"limits": {
+						"cpu": "500m"
+					},
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			},
+			{
+				"name":"manager",
+				"resources": {
+					"limits": {
+						"cpu": "1"
+					},
+					"requests": {
+						"cpu": "10m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-storage",
+		"name":"csi-cephfsplugin-4g62v",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "BestEffort",
+		"containers": [
+			{
+				"name":"driver-registrar"
+			},
+			{
+				"name":"csi-cephfsplugin"
+			},
+			{
+				"name":"log-collector"
+			}
+		]
+	},
+	{
+		"namespace":"openshift-storage",
+		"name":"csi-cephfsplugin-provisioner-6b567888bc-4lc4c",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "BestEffort",
+		"containers": [
+			{
+				"name":"csi-attacher"
+			},
+			{
+				"name":"csi-snapshotter"
+			},
+			{
+				"name":"csi-resizer"
+			},
+			{
+				"name":"csi-provisioner"
+			},
+			{
+				"name":"csi-cephfsplugin"
+			},
+			{
+				"name":"csi-addons"
+			},
+			{
+				"name":"log-collector"
+			}
+		]
+	},
+	{
+		"namespace":"openshift-storage",
+		"name":"csi-rbdplugin-f54df",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "BestEffort",
+		"containers": [
+			{
+				"name":"driver-registrar"
+			},
+			{
+				"name":"csi-rbdplugin"
+			},
+			{
+				"name":"csi-addons"
+			},
+			{
+				"name":"log-collector"
+			}
+		]
+	},
+	{
+		"namespace":"openshift-storage",
+		"name":"noobaa-operator-5b855b8569-9bjj7",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Guaranteed",
+		"containers": [
+			{
+				"name":"noobaa-operator",
+				"resources": {
+					"limits": {
+						"cpu": "250m"
+					},
+					"requests": {
+						"cpu": "250m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-storage",
+		"name":"ocs-metrics-exporter-686b8c4f96-hgj48",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"kube-rbac-proxy-main",
+				"resources": {
+					"limits": {
+						"cpu": "50m"
+					},
+					"requests": {
+						"cpu": "50m"
+					}
+				}
+			},
+			{
+				"name":"kube-rbac-proxy-self",
+				"resources": {
+					"limits": {
+						"cpu": "50m"
+					},
+					"requests": {
+						"cpu": "50m"
+					}
+				}
+			},
+			{
+				"name":"ocs-metrics-exporter",
+				"resources": {
+					"requests": {
+						"cpu": "50m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-storage",
+		"name":"ocs-provider-server-6fc6b96868-2bqh9",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "BestEffort",
+		"containers": [
+			{
+				"name":"ocs-provider-api-server"
+			}
+		]
+	},
+	{
+		"namespace":"openshift-storage",
+		"name":"odf-console-59c569cbf9-r74bs",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Guaranteed",
+		"containers": [
+			{
+				"name":"odf-console",
+				"resources": {
+					"limits": {
+						"cpu": "100m"
+					},
+					"requests": {
+						"cpu": "100m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-storage",
+		"name":"odf-operator-controller-manager-7b6bc8cb49-dwbvp",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "Burstable",
+		"containers": [
+			{
+				"name":"kube-rbac-proxy"
+			},
+			{
+				"name":"manager",
+				"resources": {
+					"limits": {
+						"cpu": "200m"
+					},
+					"requests": {
+						"cpu": "200m"
+					}
+				}
+			}
+		]
+	},
+	{
+		"namespace":"openshift-storage",
+		"name":"rook-ceph-crashcollector-qemtv-05-s8dvn-worker-0-dfzxc-646p2hwp",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "BestEffort",
+		"containers": [
+			{
+				"name":"ceph-crash"
+			}
+		]
+	},
+	{
+		"namespace":"openshift-storage",
+		"name":"rook-ceph-exporter-qemtv-05-s8dvn-worker-0-dfzxc-58b9f4df4blwxj",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "BestEffort",
+		"containers": [
+			{
+				"name":"ceph-exporter"
+			}
+		]
+	},
+	{
+		"namespace":"openshift-storage",
+		"name":"rook-ceph-mds-ocs-storagecluster-cephfilesystem-a-d9dd79b8trptc",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "BestEffort",
+		"containers": [
+			{
+				"name":"mds",
+				"resources": {
+					"requests": {
+						"cpu": "0"
+					}
+				}
+			},
+			{
+				"name":"log-collector"
+			}
+		]
+	},
+	{
+		"namespace":"openshift-storage",
+		"name":"rook-ceph-mon-a-58dbc5b5fd-6bcqh",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "BestEffort",
+		"containers": [
+			{
+				"name":"mon",
+				"resources": {
+					"requests": {
+						"cpu": "0"
+					}
+				}
+			},
+			{
+				"name":"log-collector"
+			}
+		]
+	},
+	{
+		"namespace":"openshift-storage",
+		"name":"rook-ceph-operator-757667b597-8qkm4",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "BestEffort",
+		"containers": [
+			{
+				"name":"rook-ceph-operator"
+			}
+		]
+	},
+	{
+		"namespace":"openshift-storage",
+		"name":"rook-ceph-osd-0-745b55d7d6-ggr4c",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "BestEffort",
+		"containers": [
+			{
+				"name":"osd",
+				"resources": {
+					"requests": {
+						"cpu": "0"
+					}
+				}
+			},
+			{
+				"name":"log-collector"
+			}
+		]
+	},
+	{
+		"namespace":"recycle-pvs",
+		"name":"recycle-pvs-64598945c5-mdmlg",
+		"nodeName":"qemtv-05-s8dvn-worker-0-dfzxc",
+		"qosClass": "BestEffort",
+		"containers": [
+			{
+				"name":"recycle-pvs"
+			}
+		]
+	}
+]

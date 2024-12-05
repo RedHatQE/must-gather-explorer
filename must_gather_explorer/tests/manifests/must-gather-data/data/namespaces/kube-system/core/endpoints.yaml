@@ -1,0 +1,74 @@
+---
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Endpoints
+  metadata:
+    creationTimestamp: "2024-11-20T10:42:13Z"
+    labels:
+      app.kubernetes.io/managed-by: prometheus-operator
+      app.kubernetes.io/name: kubelet
+      k8s-app: kubelet
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:app.kubernetes.io/managed-by: {}
+            f:app.kubernetes.io/name: {}
+            f:k8s-app: {}
+        f:subsets: {}
+      manager: PrometheusOperator
+      operation: Update
+      time: "2024-11-20T10:42:13Z"
+    name: kubelet
+    namespace: kube-system
+    resourceVersion: "24990"
+    uid: 9dd27401-a35f-4bbd-bc98-bebfd8e3493f
+  subsets:
+  - addresses:
+    - ip: 192.168.1.93
+      targetRef:
+        kind: Node
+        name: qemtv-05-s8dvn-master-0
+        uid: dee623d9-72e0-4635-b8cb-cb62b8b11eb0
+    - ip: 192.168.3.30
+      targetRef:
+        kind: Node
+        name: qemtv-05-s8dvn-master-1
+        uid: 451e91cf-7273-4ef3-8251-91f4c9ad646a
+    - ip: 192.168.0.166
+      targetRef:
+        kind: Node
+        name: qemtv-05-s8dvn-master-2
+        uid: 15808441-5163-41ec-9757-aa464b7ca16d
+    - ip: 192.168.1.254
+      targetRef:
+        kind: Node
+        name: qemtv-05-s8dvn-worker-0-486zc
+        uid: f724ddb7-957f-4da5-81c5-5a08e01e8da1
+    - ip: 192.168.3.154
+      targetRef:
+        kind: Node
+        name: qemtv-05-s8dvn-worker-0-8qpfm
+        uid: cbe2b86d-e0cc-4fb8-aaf7-46a9a9b983d6
+    - ip: 192.168.1.72
+      targetRef:
+        kind: Node
+        name: qemtv-05-s8dvn-worker-0-dfzxc
+        uid: 208ef46f-7c8d-400b-a142-a4c3b2eb6e90
+    ports:
+    - name: https-metrics
+      port: 10250
+      protocol: TCP
+    - name: http-metrics
+      port: 10255
+      protocol: TCP
+    - name: cadvisor
+      port: 4194
+      protocol: TCP
+kind: EndpointsList
+metadata:
+  resourceVersion: "13502837"

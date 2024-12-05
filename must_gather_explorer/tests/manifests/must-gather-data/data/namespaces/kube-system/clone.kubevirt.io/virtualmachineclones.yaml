@@ -1,0 +1,7 @@
+---
+apiVersion: clone.kubevirt.io/v1alpha1
+items: []
+kind: VirtualMachineCloneList
+metadata:
+  continue: ""
+  resourceVersion: "13502831"
