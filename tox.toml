@@ -1,0 +1,11 @@
+skipsdist = true
+
+envlist = ["pytest", "unused-code"]
+
+[env.unused-code]
+deps = ["python-utility-scripts"]
+commands = [["pyutils-unusedcode"]]
+
+[env.pytest]
+deps = ["uv"]
+commands = [["uv", "run", "pytest", "-s", "must_gather_explorer/tests"]]
