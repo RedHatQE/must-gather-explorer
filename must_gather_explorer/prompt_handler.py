@@ -61,7 +61,6 @@ class MustGatherExplorerPrompt(cmd2.Cmd):
         list_of_args = args.args
         resource_name = ""
         if list_of_args:
-            # supported args: resource name and yaml fields path like .spec.source
             if len(list_of_args) > 2:
                 CONSOLE.print(f"Too many args {list_of_args}")
                 return
