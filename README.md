@@ -32,22 +32,22 @@ Once you executed the command, you will enter the must-gather-explorer shell `En
 - Get the resources:
 
 ```bash
-get -k <resource_kind:mandatory> -n <namespace_name:optional> --name <resource_name_starts_with:optional>
+get <resource_kind:mandatory> <resource_name_starts_with:optional> -n <namespace_name:optional>
 ```
 
 - Example:
 
 ```bash
-get -k Node # To get all Nodes
-get -k PersistentVolumeClaim --name hpp # To get all PVCs when name starts from 'hpp'
-get -k pvc -n openshift-storage --name hpp # To get all PVCs in 'openshift-storage' namespace when name starts from 'hpp'
+get Node # To get all Nodes
+get PersistentVolumeClaim hpp # To get all PVCs when name starts from 'hpp'
+get pvc hpp -n openshift-storage  # To get all PVCs in 'openshift-storage' namespace when name starts from 'hpp'
 ```
 
 - To print the resource YAML, add `-oyaml` to the `get` command, for example:
 
 ```bash
-get -k pvc --name hpp -oyaml # To print yamls of all PVCs when name starts from 'hpp'
-get -k pvc -n openshift-storage --name hpp -oyaml # To print yamls of all PVCs in 'openshift-storage' namespace when name starts from 'hpp'
+get pvc hpp -oyaml # To print yamls of all PVCs when name starts from 'hpp'
+get pvc hpp -n openshift-storage  -oyaml # To print yamls of all PVCs in 'openshift-storage' namespace when name starts from 'hpp'
 ```
 
 - To print specific YAML fields, add `-f .<key>.<key>.<key>...` after `-oyaml`:
@@ -55,7 +55,7 @@ get -k pvc -n openshift-storage --name hpp -oyaml # To print yamls of all PVCs i
 ```bash
 get node <node-name> -oyaml -f .status.nodeInfo
 get pvc <pvc-name-start-with> -oyaml -f .spec.storageClassName # To print .spec.storageClassName of all PVCs when name starts from <pvc-name-start-with>
-get pvc -n <namespace> <pvc-name-start-with> -oyaml -f .spec.accessModes # To print .spec.accessModes of all PVCs in 'namespace' when name starts from <pvc-name-start-with>
+get pvc <pvc-name-start-with> -n <namespace>  -oyaml -f .spec.accessModes # To print .spec.accessModes of all PVCs in 'namespace' when name starts from <pvc-name-start-with>
 ```
 
 - Help:
