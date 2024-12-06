@@ -17,10 +17,16 @@ After successful installation, these CLI tools will be available:
 - must-gather-explorer
 - must-gather-explorer-update-aliases
 
-Run in container:
+Using container (with Docker or Podman):
 
 ```bash
-docker/podman run -it --rm -v <path-to-must-gather-folder>:/data <TBD>/must-gather-explorer
+docker run --rm -v <path-to-must-gather-folder>:/data ghcr.io/redhatqe/must-gather-explorer:latest
+```
+
+or
+
+```bash
+podman run --rm -v <path-to-must-gather-folder>:/data ghcr.io/redhatqe/must-gather-explorer:latest
 ```
 
 ## How to use
