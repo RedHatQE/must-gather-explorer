@@ -17,6 +17,12 @@ After successful installation, these CLI tools will be available:
 - must-gather-explorer
 - must-gather-explorer-update-aliases
 
+Run in container:
+
+```bash
+docker/podman run -it --rm -v <path-to-must-gather-folder>:/data <TBD>/must-gather-explorer
+```
+
 ## How to use
 
 - Run the command:
