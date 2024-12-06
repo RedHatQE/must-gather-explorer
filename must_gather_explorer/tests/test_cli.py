@@ -47,7 +47,9 @@ def yaml_files():
 
 @pytest.fixture(scope="module")
 def prompt_handler(aliases_file, yaml_files):
-    yield MustGatherExplorerPrompt(aliases_file, yaml_files)
+    app = MustGatherExplorerPrompt(aliases_file, yaml_files)
+    app.onecmd_plus_hooks("set debug true")
+    yield app
 
 
 @pytest.mark.parametrize(
