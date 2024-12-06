@@ -187,7 +187,12 @@ def print_resource_yaml(resources_raw_data: list[dict[str, Any]], yaml_fields: s
             print_specific_yaml_fields(resource_yaml_content=resource_yaml_content, yaml_fields_to_get=yaml_fields)
         else:  # print full yaml
             CONSOLE.print(resource_yaml_content)
-            CONSOLE.print("-" * os.get_terminal_size().columns)
+            try:
+                terminal_size = os.get_terminal_size()
+            except OSError:
+                terminal_size = os.terminal_size((80, 20))
+
+            CONSOLE.print("-" * terminal_size.columns)
 
 
 def print_specific_yaml_fields(resource_yaml_content: str, yaml_fields_to_get: str) -> None:
