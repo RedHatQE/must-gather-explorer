@@ -118,42 +118,6 @@ Please check that the --path points to the [bold]correct[/bold] and [bold]non-em
     return all_resources
 
 
-def must_gather_shell(
-    resources_aliases: dict[str, list[str]],
-    all_resources: dict[str, Any],
-    action: str,
-    kind: str,
-    namespace: str = "",
-    resource_name: str = "",
-    oyaml: bool = False,
-    yaml_fields: str = "",
-) -> None:
-    """
-    When this function return False it means that we continue if the loop in the main function
-    """
-
-    log_action_str = "logs"
-    describe_action_str = "describe"
-
-    actions_dict: dict[str, Any] = {
-        GET_ACTION_STR: get_resources,
-        log_action_str: get_logs,
-        describe_action_str: get_describe,
-    }
-
-    call_actions(
-        action=action,
-        actions_dict=actions_dict,
-        resources_aliases=resources_aliases,
-        all_resources=all_resources,
-        kind=kind,
-        namespace=namespace,
-        resource_name=resource_name,
-        oyaml=oyaml,
-        yaml_fields=yaml_fields,
-    )
-
-
 def get_resources(
     resources_raw_data: list[dict[str, Any]],
     oyaml: bool = False,
@@ -278,7 +242,6 @@ def get_resource_kind_by_alias(resources_aliases: dict[str, list[str]], requeste
 
 
 def call_actions(
-    actions_dict: dict[str, Any],
     resources_aliases: dict[str, list[str]],
     all_resources: dict[str, Any],
     action: str,
@@ -288,6 +251,12 @@ def call_actions(
     oyaml: bool = False,
     yaml_fields: str = "",
 ) -> None:
+    actions_dict: dict[str, Any] = {
+        GET_ACTION_STR: get_resources,
+        "logs": get_logs,
+        "describe": get_describe,
+    }
+
     resources_raw_data = get_cluster_resources_raw_data(
         resources_aliases=resources_aliases,
         all_resources=all_resources,
