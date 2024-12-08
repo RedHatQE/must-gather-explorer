@@ -181,10 +181,7 @@ def print_specific_yaml_fields(resource_yaml_content: str, yaml_fields_to_get: s
             break
 
     if yaml_fields_dict_to_print:
-        title = f"[bold][blue] {yaml_fields_to_get}:[bold][green] ["
-
-        if resource_kind:
-            title += f"Kind: {resource_kind} "
+        title = f"[bold][blue] {yaml_fields_to_get}:[bold][green] [Kind: {resource_kind}"
 
         if resource_name:
             title += f"Name: {resource_name} "
