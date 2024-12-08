@@ -1,0 +1,7 @@
+---
+apiVersion: instancetype.kubevirt.io/v1beta1
+items: []
+kind: VirtualMachinePreferenceList
+metadata:
+  continue: ""
+  resourceVersion: "13502832"

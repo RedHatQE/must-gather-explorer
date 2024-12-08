@@ -1,0 +1,3688 @@
+---
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2024-11-26T10:06:22Z"
+    generateName: csi-nfs-controller-c54d89cd5-
+    labels:
+      app: csi-nfs-controller
+      pod-template-hash: c54d89cd5
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:generateName: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:pod-template-hash: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"63366d10-de4f-4e2d-a443-164d5ff7dd28"}: {}
+        f:spec:
+          f:containers:
+            k:{"name":"csi-provisioner"}:
+              .: {}
+              f:args: {}
+              f:env:
+                .: {}
+                k:{"name":"ADDRESS"}:
+                  .: {}
+                  f:name: {}
+                  f:value: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:name: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:memory: {}
+                f:requests:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+              f:volumeMounts:
+                .: {}
+                k:{"mountPath":"/csi"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+            k:{"name":"liveness-probe"}:
+              .: {}
+              f:args: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:name: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:memory: {}
+                f:requests:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+              f:volumeMounts:
+                .: {}
+                k:{"mountPath":"/csi"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+            k:{"name":"nfs"}:
+              .: {}
+              f:args: {}
+              f:env:
+                .: {}
+                k:{"name":"CSI_ENDPOINT"}:
+                  .: {}
+                  f:name: {}
+                  f:value: {}
+                k:{"name":"NODE_ID"}:
+                  .: {}
+                  f:name: {}
+                  f:valueFrom:
+                    .: {}
+                    f:fieldRef: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:livenessProbe:
+                .: {}
+                f:failureThreshold: {}
+                f:httpGet:
+                  .: {}
+                  f:path: {}
+                  f:port: {}
+                  f:scheme: {}
+                f:initialDelaySeconds: {}
+                f:periodSeconds: {}
+                f:successThreshold: {}
+                f:timeoutSeconds: {}
+              f:name: {}
+              f:ports:
+                .: {}
+                k:{"containerPort":29652,"protocol":"TCP"}:
+                  .: {}
+                  f:containerPort: {}
+                  f:hostPort: {}
+                  f:name: {}
+                  f:protocol: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:memory: {}
+                f:requests:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+              f:securityContext:
+                .: {}
+                f:allowPrivilegeEscalation: {}
+                f:capabilities:
+                  .: {}
+                  f:add: {}
+                f:privileged: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+              f:volumeMounts:
+                .: {}
+                k:{"mountPath":"/csi"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+                k:{"mountPath":"/var/lib/kubelet/pods"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:mountPropagation: {}
+                  f:name: {}
+          f:dnsPolicy: {}
+          f:enableServiceLinks: {}
+          f:hostNetwork: {}
+          f:nodeSelector: {}
+          f:priorityClassName: {}
+          f:restartPolicy: {}
+          f:schedulerName: {}
+          f:securityContext: {}
+          f:serviceAccount: {}
+          f:serviceAccountName: {}
+          f:terminationGracePeriodSeconds: {}
+          f:tolerations: {}
+          f:volumes:
+            .: {}
+            k:{"name":"pods-mount-dir"}:
+              .: {}
+              f:hostPath:
+                .: {}
+                f:path: {}
+                f:type: {}
+              f:name: {}
+            k:{"name":"socket-dir"}:
+              .: {}
+              f:emptyDir: {}
+              f:name: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2024-11-26T10:06:22Z"
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:conditions:
+            k:{"type":"ContainersReady"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Initialized"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"PodReadyToStartContainers"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Ready"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+          f:containerStatuses: {}
+          f:hostIP: {}
+          f:hostIPs: {}
+          f:phase: {}
+          f:podIP: {}
+          f:podIPs:
+            .: {}
+            k:{"ip":"192.168.0.166"}:
+              .: {}
+              f:ip: {}
+          f:startTime: {}
+      manager: kubelet
+      operation: Update
+      subresource: status
+      time: "2024-11-26T10:06:30Z"
+    name: csi-nfs-controller-c54d89cd5-gbd5s
+    namespace: kube-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: csi-nfs-controller-c54d89cd5
+      uid: 63366d10-de4f-4e2d-a443-164d5ff7dd28
+    resourceVersion: "7268839"
+    uid: 87e28ef0-8b44-4e34-8fa5-49c3d5659cdd
+  spec:
+    containers:
+    - args:
+      - -v=2
+      - --csi-address=$(ADDRESS)
+      - --leader-election
+      - --leader-election-namespace=kube-system
+      - --extra-create-metadata=true
+      env:
+      - name: ADDRESS
+        value: /csi/csi.sock
+      image: registry.k8s.io/sig-storage/csi-provisioner:v3.2.0
+      imagePullPolicy: IfNotPresent
+      name: csi-provisioner
+      resources:
+        limits:
+          memory: 400Mi
+        requests:
+          cpu: 10m
+          memory: 20Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-npx6p
+        readOnly: true
+    - args:
+      - --csi-address=/csi/csi.sock
+      - --probe-timeout=3s
+      - --health-port=29652
+      - --v=2
+      image: registry.k8s.io/sig-storage/livenessprobe:v2.7.0
+      imagePullPolicy: IfNotPresent
+      name: liveness-probe
+      resources:
+        limits:
+          memory: 100Mi
+        requests:
+          cpu: 10m
+          memory: 20Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-npx6p
+        readOnly: true
+    - args:
+      - -v=5
+      - --nodeid=$(NODE_ID)
+      - --endpoint=$(CSI_ENDPOINT)
+      env:
+      - name: NODE_ID
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      - name: CSI_ENDPOINT
+        value: unix:///csi/csi.sock
+      image: registry.k8s.io/sig-storage/nfsplugin:v4.1.0
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        failureThreshold: 5
+        httpGet:
+          path: /healthz
+          port: healthz
+          scheme: HTTP
+        initialDelaySeconds: 30
+        periodSeconds: 30
+        successThreshold: 1
+        timeoutSeconds: 10
+      name: nfs
+      ports:
+      - containerPort: 29652
+        hostPort: 29652
+        name: healthz
+        protocol: TCP
+      resources:
+        limits:
+          memory: 200Mi
+        requests:
+          cpu: 10m
+          memory: 20Mi
+      securityContext:
+        allowPrivilegeEscalation: true
+        capabilities:
+          add:
+          - SYS_ADMIN
+        privileged: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/lib/kubelet/pods
+        mountPropagation: Bidirectional
+        name: pods-mount-dir
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-npx6p
+        readOnly: true
+    dnsPolicy: Default
+    enableServiceLinks: true
+    hostNetwork: true
+    imagePullSecrets:
+    - name: csi-nfs-controller-sa-dockercfg-d7knk
+    nodeName: qemtv-05-s8dvn-master-2
+    nodeSelector:
+      kubernetes.io/os: linux
+    preemptionPolicy: PreemptLowerPriority
+    priority: 2000000000
+    priorityClassName: system-cluster-critical
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: csi-nfs-controller-sa
+    serviceAccountName: csi-nfs-controller-sa
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/master
+      operator: Exists
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/controlplane
+      operator: Exists
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/control-plane
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    volumes:
+    - hostPath:
+        path: /var/lib/kubelet/pods
+        type: Directory
+      name: pods-mount-dir
+    - emptyDir: {}
+      name: socket-dir
+    - name: kube-api-access-npx6p
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+        - configMap:
+            items:
+            - key: service-ca.crt
+              path: service-ca.crt
+            name: openshift-service-ca.crt
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:30Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:22Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:30Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:30Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:22Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://8b9ee0ff8ae85316e436740c091500a938376804426ac5faa368d81070f7a368
+      image: registry.k8s.io/sig-storage/csi-provisioner:v3.2.0
+      imageID: registry.k8s.io/sig-storage/csi-provisioner@sha256:8027dd89dfd93741e06afced6ab6d6862dcb2a4b21f90070ae5802f46a894534
+      lastState: {}
+      name: csi-provisioner
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-11-26T10:06:25Z"
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-npx6p
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: cri-o://58be22edbcc220fdc26d1f5add051d5c173c97824d306d164e052e5627adde95
+      image: registry.k8s.io/sig-storage/livenessprobe:v2.7.0
+      imageID: registry.k8s.io/sig-storage/livenessprobe@sha256:933940f13b3ea0abc62e656c1aa5c5b47c04b15d71250413a6b821bd0c58b94e
+      lastState: {}
+      name: liveness-probe
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-11-26T10:06:26Z"
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-npx6p
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: cri-o://669cf61bfcd3d97900ea41ce64d072581505550c67a5b81e653e85a054384ed4
+      image: registry.k8s.io/sig-storage/nfsplugin:v4.1.0
+      imageID: registry.k8s.io/sig-storage/nfsplugin@sha256:a34c15c963a86da9720090f44c904f49d52b0454784f27017bb863ccbf0537a2
+      lastState: {}
+      name: nfs
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-11-26T10:06:30Z"
+      volumeMounts:
+      - mountPath: /var/lib/kubelet/pods
+        name: pods-mount-dir
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-npx6p
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 192.168.0.166
+    hostIPs:
+    - ip: 192.168.0.166
+    phase: Running
+    podIP: 192.168.0.166
+    podIPs:
+    - ip: 192.168.0.166
+    qosClass: Burstable
+    startTime: "2024-11-26T10:06:22Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2024-11-26T10:06:23Z"
+    generateName: csi-nfs-node-
+    labels:
+      app: csi-nfs-node
+      controller-revision-hash: 6748f6f7ff
+      pod-template-generation: "1"
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:generateName: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:controller-revision-hash: {}
+            f:pod-template-generation: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"efbe7d06-98e0-4f90-b53b-780298cfdb8e"}: {}
+        f:spec:
+          f:affinity:
+            .: {}
+            f:nodeAffinity:
+              .: {}
+              f:requiredDuringSchedulingIgnoredDuringExecution: {}
+          f:containers:
+            k:{"name":"liveness-probe"}:
+              .: {}
+              f:args: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:name: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:memory: {}
+                f:requests:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+              f:volumeMounts:
+                .: {}
+                k:{"mountPath":"/csi"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+            k:{"name":"nfs"}:
+              .: {}
+              f:args: {}
+              f:env:
+                .: {}
+                k:{"name":"CSI_ENDPOINT"}:
+                  .: {}
+                  f:name: {}
+                  f:value: {}
+                k:{"name":"NODE_ID"}:
+                  .: {}
+                  f:name: {}
+                  f:valueFrom:
+                    .: {}
+                    f:fieldRef: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:livenessProbe:
+                .: {}
+                f:failureThreshold: {}
+                f:httpGet:
+                  .: {}
+                  f:path: {}
+                  f:port: {}
+                  f:scheme: {}
+                f:initialDelaySeconds: {}
+                f:periodSeconds: {}
+                f:successThreshold: {}
+                f:timeoutSeconds: {}
+              f:name: {}
+              f:ports:
+                .: {}
+                k:{"containerPort":29653,"protocol":"TCP"}:
+                  .: {}
+                  f:containerPort: {}
+                  f:hostPort: {}
+                  f:name: {}
+                  f:protocol: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:memory: {}
+                f:requests:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+              f:securityContext:
+                .: {}
+                f:allowPrivilegeEscalation: {}
+                f:capabilities:
+                  .: {}
+                  f:add: {}
+                f:privileged: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+              f:volumeMounts:
+                .: {}
+                k:{"mountPath":"/csi"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+                k:{"mountPath":"/var/lib/kubelet/pods"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:mountPropagation: {}
+                  f:name: {}
+            k:{"name":"node-driver-registrar"}:
+              .: {}
+              f:args: {}
+              f:env:
+                .: {}
+                k:{"name":"DRIVER_REG_SOCK_PATH"}:
+                  .: {}
+                  f:name: {}
+                  f:value: {}
+                k:{"name":"KUBE_NODE_NAME"}:
+                  .: {}
+                  f:name: {}
+                  f:valueFrom:
+                    .: {}
+                    f:fieldRef: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:livenessProbe:
+                .: {}
+                f:exec:
+                  .: {}
+                  f:command: {}
+                f:failureThreshold: {}
+                f:initialDelaySeconds: {}
+                f:periodSeconds: {}
+                f:successThreshold: {}
+                f:timeoutSeconds: {}
+              f:name: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:memory: {}
+                f:requests:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+              f:volumeMounts:
+                .: {}
+                k:{"mountPath":"/csi"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+                k:{"mountPath":"/registration"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+          f:dnsPolicy: {}
+          f:enableServiceLinks: {}
+          f:hostNetwork: {}
+          f:nodeSelector: {}
+          f:restartPolicy: {}
+          f:schedulerName: {}
+          f:securityContext: {}
+          f:serviceAccount: {}
+          f:serviceAccountName: {}
+          f:terminationGracePeriodSeconds: {}
+          f:tolerations: {}
+          f:volumes:
+            .: {}
+            k:{"name":"pods-mount-dir"}:
+              .: {}
+              f:hostPath:
+                .: {}
+                f:path: {}
+                f:type: {}
+              f:name: {}
+            k:{"name":"registration-dir"}:
+              .: {}
+              f:hostPath:
+                .: {}
+                f:path: {}
+                f:type: {}
+              f:name: {}
+            k:{"name":"socket-dir"}:
+              .: {}
+              f:hostPath:
+                .: {}
+                f:path: {}
+                f:type: {}
+              f:name: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2024-11-26T10:06:23Z"
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:conditions:
+            k:{"type":"ContainersReady"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Initialized"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"PodReadyToStartContainers"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Ready"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+          f:containerStatuses: {}
+          f:hostIP: {}
+          f:hostIPs: {}
+          f:phase: {}
+          f:podIP: {}
+          f:podIPs:
+            .: {}
+            k:{"ip":"192.168.1.254"}:
+              .: {}
+              f:ip: {}
+          f:startTime: {}
+      manager: kubelet
+      operation: Update
+      subresource: status
+      time: "2024-11-26T10:06:29Z"
+    name: csi-nfs-node-2r5tx
+    namespace: kube-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DaemonSet
+      name: csi-nfs-node
+      uid: efbe7d06-98e0-4f90-b53b-780298cfdb8e
+    resourceVersion: "7268798"
+    uid: 6e975567-6c57-40f8-ad37-6b0a9d4a65d7
+  spec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchFields:
+            - key: metadata.name
+              operator: In
+              values:
+              - qemtv-05-s8dvn-worker-0-486zc
+    containers:
+    - args:
+      - --csi-address=/csi/csi.sock
+      - --probe-timeout=3s
+      - --health-port=29653
+      - --v=2
+      image: registry.k8s.io/sig-storage/livenessprobe:v2.7.0
+      imagePullPolicy: IfNotPresent
+      name: liveness-probe
+      resources:
+        limits:
+          memory: 100Mi
+        requests:
+          cpu: 10m
+          memory: 20Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-trz54
+        readOnly: true
+    - args:
+      - --v=2
+      - --csi-address=/csi/csi.sock
+      - --kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)
+      env:
+      - name: DRIVER_REG_SOCK_PATH
+        value: /var/lib/kubelet/plugins/csi-nfsplugin/csi.sock
+      - name: KUBE_NODE_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      image: registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.5.1
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        exec:
+          command:
+          - /csi-node-driver-registrar
+          - --kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)
+          - --mode=kubelet-registration-probe
+        failureThreshold: 3
+        initialDelaySeconds: 30
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 15
+      name: node-driver-registrar
+      resources:
+        limits:
+          memory: 100Mi
+        requests:
+          cpu: 10m
+          memory: 20Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /registration
+        name: registration-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-trz54
+        readOnly: true
+    - args:
+      - -v=5
+      - --nodeid=$(NODE_ID)
+      - --endpoint=$(CSI_ENDPOINT)
+      env:
+      - name: NODE_ID
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      - name: CSI_ENDPOINT
+        value: unix:///csi/csi.sock
+      image: registry.k8s.io/sig-storage/nfsplugin:v4.1.0
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        failureThreshold: 5
+        httpGet:
+          path: /healthz
+          port: healthz
+          scheme: HTTP
+        initialDelaySeconds: 30
+        periodSeconds: 30
+        successThreshold: 1
+        timeoutSeconds: 10
+      name: nfs
+      ports:
+      - containerPort: 29653
+        hostPort: 29653
+        name: healthz
+        protocol: TCP
+      resources:
+        limits:
+          memory: 300Mi
+        requests:
+          cpu: 10m
+          memory: 20Mi
+      securityContext:
+        allowPrivilegeEscalation: true
+        capabilities:
+          add:
+          - SYS_ADMIN
+        privileged: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/lib/kubelet/pods
+        mountPropagation: Bidirectional
+        name: pods-mount-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-trz54
+        readOnly: true
+    dnsPolicy: Default
+    enableServiceLinks: true
+    hostNetwork: true
+    imagePullSecrets:
+    - name: csi-nfs-node-sa-dockercfg-f9r8v
+    nodeName: qemtv-05-s8dvn-worker-0-486zc
+    nodeSelector:
+      kubernetes.io/os: linux
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: csi-nfs-node-sa
+    serviceAccountName: csi-nfs-node-sa
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - operator: Exists
+    volumes:
+    - hostPath:
+        path: /var/lib/kubelet/plugins/csi-nfsplugin
+        type: DirectoryOrCreate
+      name: socket-dir
+    - hostPath:
+        path: /var/lib/kubelet/pods
+        type: Directory
+      name: pods-mount-dir
+    - hostPath:
+        path: /var/lib/kubelet/plugins_registry
+        type: Directory
+      name: registration-dir
+    - name: kube-api-access-trz54
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+        - configMap:
+            items:
+            - key: service-ca.crt
+              path: service-ca.crt
+            name: openshift-service-ca.crt
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:29Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:23Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:29Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:29Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:23Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://5975e7398ed68f816784985dbf0620e00a6ca21a89659dce6f0e4f74731de61d
+      image: registry.k8s.io/sig-storage/livenessprobe:v2.7.0
+      imageID: registry.k8s.io/sig-storage/livenessprobe@sha256:933940f13b3ea0abc62e656c1aa5c5b47c04b15d71250413a6b821bd0c58b94e
+      lastState: {}
+      name: liveness-probe
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-11-26T10:06:25Z"
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-trz54
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: cri-o://8a8e30710a316e131fe2391dd9e99ae94eae1e9caf089644ae1b75c2255fd2cb
+      image: registry.k8s.io/sig-storage/nfsplugin:v4.1.0
+      imageID: registry.k8s.io/sig-storage/nfsplugin@sha256:a34c15c963a86da9720090f44c904f49d52b0454784f27017bb863ccbf0537a2
+      lastState: {}
+      name: nfs
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-11-26T10:06:28Z"
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/lib/kubelet/pods
+        name: pods-mount-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-trz54
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: cri-o://e604024889d08a2c4dbc19b5d92869217e93ab773ead6ade8159adbb0f6e9f5b
+      image: registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.5.1
+      imageID: registry.k8s.io/sig-storage/csi-node-driver-registrar@sha256:0103eee7c35e3e0b5cd8cdca9850dc71c793cdeb6669d8be7a89440da2d06ae4
+      lastState: {}
+      name: node-driver-registrar
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-11-26T10:06:26Z"
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /registration
+        name: registration-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-trz54
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 192.168.1.254
+    hostIPs:
+    - ip: 192.168.1.254
+    phase: Running
+    podIP: 192.168.1.254
+    podIPs:
+    - ip: 192.168.1.254
+    qosClass: Burstable
+    startTime: "2024-11-26T10:06:23Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2024-11-26T10:06:23Z"
+    generateName: csi-nfs-node-
+    labels:
+      app: csi-nfs-node
+      controller-revision-hash: 6748f6f7ff
+      pod-template-generation: "1"
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:generateName: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:controller-revision-hash: {}
+            f:pod-template-generation: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"efbe7d06-98e0-4f90-b53b-780298cfdb8e"}: {}
+        f:spec:
+          f:affinity:
+            .: {}
+            f:nodeAffinity:
+              .: {}
+              f:requiredDuringSchedulingIgnoredDuringExecution: {}
+          f:containers:
+            k:{"name":"liveness-probe"}:
+              .: {}
+              f:args: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:name: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:memory: {}
+                f:requests:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+              f:volumeMounts:
+                .: {}
+                k:{"mountPath":"/csi"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+            k:{"name":"nfs"}:
+              .: {}
+              f:args: {}
+              f:env:
+                .: {}
+                k:{"name":"CSI_ENDPOINT"}:
+                  .: {}
+                  f:name: {}
+                  f:value: {}
+                k:{"name":"NODE_ID"}:
+                  .: {}
+                  f:name: {}
+                  f:valueFrom:
+                    .: {}
+                    f:fieldRef: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:livenessProbe:
+                .: {}
+                f:failureThreshold: {}
+                f:httpGet:
+                  .: {}
+                  f:path: {}
+                  f:port: {}
+                  f:scheme: {}
+                f:initialDelaySeconds: {}
+                f:periodSeconds: {}
+                f:successThreshold: {}
+                f:timeoutSeconds: {}
+              f:name: {}
+              f:ports:
+                .: {}
+                k:{"containerPort":29653,"protocol":"TCP"}:
+                  .: {}
+                  f:containerPort: {}
+                  f:hostPort: {}
+                  f:name: {}
+                  f:protocol: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:memory: {}
+                f:requests:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+              f:securityContext:
+                .: {}
+                f:allowPrivilegeEscalation: {}
+                f:capabilities:
+                  .: {}
+                  f:add: {}
+                f:privileged: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+              f:volumeMounts:
+                .: {}
+                k:{"mountPath":"/csi"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+                k:{"mountPath":"/var/lib/kubelet/pods"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:mountPropagation: {}
+                  f:name: {}
+            k:{"name":"node-driver-registrar"}:
+              .: {}
+              f:args: {}
+              f:env:
+                .: {}
+                k:{"name":"DRIVER_REG_SOCK_PATH"}:
+                  .: {}
+                  f:name: {}
+                  f:value: {}
+                k:{"name":"KUBE_NODE_NAME"}:
+                  .: {}
+                  f:name: {}
+                  f:valueFrom:
+                    .: {}
+                    f:fieldRef: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:livenessProbe:
+                .: {}
+                f:exec:
+                  .: {}
+                  f:command: {}
+                f:failureThreshold: {}
+                f:initialDelaySeconds: {}
+                f:periodSeconds: {}
+                f:successThreshold: {}
+                f:timeoutSeconds: {}
+              f:name: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:memory: {}
+                f:requests:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+              f:volumeMounts:
+                .: {}
+                k:{"mountPath":"/csi"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+                k:{"mountPath":"/registration"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+          f:dnsPolicy: {}
+          f:enableServiceLinks: {}
+          f:hostNetwork: {}
+          f:nodeSelector: {}
+          f:restartPolicy: {}
+          f:schedulerName: {}
+          f:securityContext: {}
+          f:serviceAccount: {}
+          f:serviceAccountName: {}
+          f:terminationGracePeriodSeconds: {}
+          f:tolerations: {}
+          f:volumes:
+            .: {}
+            k:{"name":"pods-mount-dir"}:
+              .: {}
+              f:hostPath:
+                .: {}
+                f:path: {}
+                f:type: {}
+              f:name: {}
+            k:{"name":"registration-dir"}:
+              .: {}
+              f:hostPath:
+                .: {}
+                f:path: {}
+                f:type: {}
+              f:name: {}
+            k:{"name":"socket-dir"}:
+              .: {}
+              f:hostPath:
+                .: {}
+                f:path: {}
+                f:type: {}
+              f:name: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2024-11-26T10:06:23Z"
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:conditions:
+            k:{"type":"ContainersReady"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Initialized"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"PodReadyToStartContainers"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Ready"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+          f:containerStatuses: {}
+          f:hostIP: {}
+          f:hostIPs: {}
+          f:phase: {}
+          f:podIP: {}
+          f:podIPs:
+            .: {}
+            k:{"ip":"192.168.1.72"}:
+              .: {}
+              f:ip: {}
+          f:startTime: {}
+      manager: kubelet
+      operation: Update
+      subresource: status
+      time: "2024-11-26T10:06:28Z"
+    name: csi-nfs-node-b2kfm
+    namespace: kube-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DaemonSet
+      name: csi-nfs-node
+      uid: efbe7d06-98e0-4f90-b53b-780298cfdb8e
+    resourceVersion: "7268784"
+    uid: 9d858dea-299d-4e26-b9ce-b2388b8e8fbc
+  spec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchFields:
+            - key: metadata.name
+              operator: In
+              values:
+              - qemtv-05-s8dvn-worker-0-dfzxc
+    containers:
+    - args:
+      - --csi-address=/csi/csi.sock
+      - --probe-timeout=3s
+      - --health-port=29653
+      - --v=2
+      image: registry.k8s.io/sig-storage/livenessprobe:v2.7.0
+      imagePullPolicy: IfNotPresent
+      name: liveness-probe
+      resources:
+        limits:
+          memory: 100Mi
+        requests:
+          cpu: 10m
+          memory: 20Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-8czdr
+        readOnly: true
+    - args:
+      - --v=2
+      - --csi-address=/csi/csi.sock
+      - --kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)
+      env:
+      - name: DRIVER_REG_SOCK_PATH
+        value: /var/lib/kubelet/plugins/csi-nfsplugin/csi.sock
+      - name: KUBE_NODE_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      image: registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.5.1
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        exec:
+          command:
+          - /csi-node-driver-registrar
+          - --kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)
+          - --mode=kubelet-registration-probe
+        failureThreshold: 3
+        initialDelaySeconds: 30
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 15
+      name: node-driver-registrar
+      resources:
+        limits:
+          memory: 100Mi
+        requests:
+          cpu: 10m
+          memory: 20Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /registration
+        name: registration-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-8czdr
+        readOnly: true
+    - args:
+      - -v=5
+      - --nodeid=$(NODE_ID)
+      - --endpoint=$(CSI_ENDPOINT)
+      env:
+      - name: NODE_ID
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      - name: CSI_ENDPOINT
+        value: unix:///csi/csi.sock
+      image: registry.k8s.io/sig-storage/nfsplugin:v4.1.0
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        failureThreshold: 5
+        httpGet:
+          path: /healthz
+          port: healthz
+          scheme: HTTP
+        initialDelaySeconds: 30
+        periodSeconds: 30
+        successThreshold: 1
+        timeoutSeconds: 10
+      name: nfs
+      ports:
+      - containerPort: 29653
+        hostPort: 29653
+        name: healthz
+        protocol: TCP
+      resources:
+        limits:
+          memory: 300Mi
+        requests:
+          cpu: 10m
+          memory: 20Mi
+      securityContext:
+        allowPrivilegeEscalation: true
+        capabilities:
+          add:
+          - SYS_ADMIN
+        privileged: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/lib/kubelet/pods
+        mountPropagation: Bidirectional
+        name: pods-mount-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-8czdr
+        readOnly: true
+    dnsPolicy: Default
+    enableServiceLinks: true
+    hostNetwork: true
+    imagePullSecrets:
+    - name: csi-nfs-node-sa-dockercfg-f9r8v
+    nodeName: qemtv-05-s8dvn-worker-0-dfzxc
+    nodeSelector:
+      kubernetes.io/os: linux
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: csi-nfs-node-sa
+    serviceAccountName: csi-nfs-node-sa
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - operator: Exists
+    volumes:
+    - hostPath:
+        path: /var/lib/kubelet/plugins/csi-nfsplugin
+        type: DirectoryOrCreate
+      name: socket-dir
+    - hostPath:
+        path: /var/lib/kubelet/pods
+        type: Directory
+      name: pods-mount-dir
+    - hostPath:
+        path: /var/lib/kubelet/plugins_registry
+        type: Directory
+      name: registration-dir
+    - name: kube-api-access-8czdr
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+        - configMap:
+            items:
+            - key: service-ca.crt
+              path: service-ca.crt
+            name: openshift-service-ca.crt
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:28Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:23Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:28Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:28Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:23Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://76bc5e09a6f0d57375efb62efe072ccbe117ce4012f77c5feca3918fc7f13659
+      image: registry.k8s.io/sig-storage/livenessprobe:v2.7.0
+      imageID: registry.k8s.io/sig-storage/livenessprobe@sha256:933940f13b3ea0abc62e656c1aa5c5b47c04b15d71250413a6b821bd0c58b94e
+      lastState: {}
+      name: liveness-probe
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-11-26T10:06:25Z"
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-8czdr
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: cri-o://141e6161228fa0f01843d1f60b0f324092307dfdc8ff33dfe9f5e72bfaccf3a4
+      image: registry.k8s.io/sig-storage/nfsplugin:v4.1.0
+      imageID: registry.k8s.io/sig-storage/nfsplugin@sha256:a34c15c963a86da9720090f44c904f49d52b0454784f27017bb863ccbf0537a2
+      lastState: {}
+      name: nfs
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-11-26T10:06:28Z"
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/lib/kubelet/pods
+        name: pods-mount-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-8czdr
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: cri-o://3214c0db6b04d05012cbc698837287706e90c2ea3b126158231346eb63ce8d14
+      image: registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.5.1
+      imageID: registry.k8s.io/sig-storage/csi-node-driver-registrar@sha256:0103eee7c35e3e0b5cd8cdca9850dc71c793cdeb6669d8be7a89440da2d06ae4
+      lastState: {}
+      name: node-driver-registrar
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-11-26T10:06:26Z"
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /registration
+        name: registration-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-8czdr
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 192.168.1.72
+    hostIPs:
+    - ip: 192.168.1.72
+    phase: Running
+    podIP: 192.168.1.72
+    podIPs:
+    - ip: 192.168.1.72
+    qosClass: Burstable
+    startTime: "2024-11-26T10:06:23Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2024-11-26T10:06:23Z"
+    generateName: csi-nfs-node-
+    labels:
+      app: csi-nfs-node
+      controller-revision-hash: 6748f6f7ff
+      pod-template-generation: "1"
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:generateName: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:controller-revision-hash: {}
+            f:pod-template-generation: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"efbe7d06-98e0-4f90-b53b-780298cfdb8e"}: {}
+        f:spec:
+          f:affinity:
+            .: {}
+            f:nodeAffinity:
+              .: {}
+              f:requiredDuringSchedulingIgnoredDuringExecution: {}
+          f:containers:
+            k:{"name":"liveness-probe"}:
+              .: {}
+              f:args: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:name: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:memory: {}
+                f:requests:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+              f:volumeMounts:
+                .: {}
+                k:{"mountPath":"/csi"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+            k:{"name":"nfs"}:
+              .: {}
+              f:args: {}
+              f:env:
+                .: {}
+                k:{"name":"CSI_ENDPOINT"}:
+                  .: {}
+                  f:name: {}
+                  f:value: {}
+                k:{"name":"NODE_ID"}:
+                  .: {}
+                  f:name: {}
+                  f:valueFrom:
+                    .: {}
+                    f:fieldRef: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:livenessProbe:
+                .: {}
+                f:failureThreshold: {}
+                f:httpGet:
+                  .: {}
+                  f:path: {}
+                  f:port: {}
+                  f:scheme: {}
+                f:initialDelaySeconds: {}
+                f:periodSeconds: {}
+                f:successThreshold: {}
+                f:timeoutSeconds: {}
+              f:name: {}
+              f:ports:
+                .: {}
+                k:{"containerPort":29653,"protocol":"TCP"}:
+                  .: {}
+                  f:containerPort: {}
+                  f:hostPort: {}
+                  f:name: {}
+                  f:protocol: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:memory: {}
+                f:requests:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+              f:securityContext:
+                .: {}
+                f:allowPrivilegeEscalation: {}
+                f:capabilities:
+                  .: {}
+                  f:add: {}
+                f:privileged: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+              f:volumeMounts:
+                .: {}
+                k:{"mountPath":"/csi"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+                k:{"mountPath":"/var/lib/kubelet/pods"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:mountPropagation: {}
+                  f:name: {}
+            k:{"name":"node-driver-registrar"}:
+              .: {}
+              f:args: {}
+              f:env:
+                .: {}
+                k:{"name":"DRIVER_REG_SOCK_PATH"}:
+                  .: {}
+                  f:name: {}
+                  f:value: {}
+                k:{"name":"KUBE_NODE_NAME"}:
+                  .: {}
+                  f:name: {}
+                  f:valueFrom:
+                    .: {}
+                    f:fieldRef: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:livenessProbe:
+                .: {}
+                f:exec:
+                  .: {}
+                  f:command: {}
+                f:failureThreshold: {}
+                f:initialDelaySeconds: {}
+                f:periodSeconds: {}
+                f:successThreshold: {}
+                f:timeoutSeconds: {}
+              f:name: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:memory: {}
+                f:requests:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+              f:volumeMounts:
+                .: {}
+                k:{"mountPath":"/csi"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+                k:{"mountPath":"/registration"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+          f:dnsPolicy: {}
+          f:enableServiceLinks: {}
+          f:hostNetwork: {}
+          f:nodeSelector: {}
+          f:restartPolicy: {}
+          f:schedulerName: {}
+          f:securityContext: {}
+          f:serviceAccount: {}
+          f:serviceAccountName: {}
+          f:terminationGracePeriodSeconds: {}
+          f:tolerations: {}
+          f:volumes:
+            .: {}
+            k:{"name":"pods-mount-dir"}:
+              .: {}
+              f:hostPath:
+                .: {}
+                f:path: {}
+                f:type: {}
+              f:name: {}
+            k:{"name":"registration-dir"}:
+              .: {}
+              f:hostPath:
+                .: {}
+                f:path: {}
+                f:type: {}
+              f:name: {}
+            k:{"name":"socket-dir"}:
+              .: {}
+              f:hostPath:
+                .: {}
+                f:path: {}
+                f:type: {}
+              f:name: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2024-11-26T10:06:23Z"
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:conditions:
+            k:{"type":"ContainersReady"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Initialized"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"PodReadyToStartContainers"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Ready"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+          f:containerStatuses: {}
+          f:hostIP: {}
+          f:hostIPs: {}
+          f:phase: {}
+          f:podIP: {}
+          f:podIPs:
+            .: {}
+            k:{"ip":"192.168.3.30"}:
+              .: {}
+              f:ip: {}
+          f:startTime: {}
+      manager: kubelet
+      operation: Update
+      subresource: status
+      time: "2024-11-26T10:06:32Z"
+    name: csi-nfs-node-h8hpp
+    namespace: kube-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DaemonSet
+      name: csi-nfs-node
+      uid: efbe7d06-98e0-4f90-b53b-780298cfdb8e
+    resourceVersion: "7268890"
+    uid: 8f816114-2221-4552-816c-35a14ff07891
+  spec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchFields:
+            - key: metadata.name
+              operator: In
+              values:
+              - qemtv-05-s8dvn-master-1
+    containers:
+    - args:
+      - --csi-address=/csi/csi.sock
+      - --probe-timeout=3s
+      - --health-port=29653
+      - --v=2
+      image: registry.k8s.io/sig-storage/livenessprobe:v2.7.0
+      imagePullPolicy: IfNotPresent
+      name: liveness-probe
+      resources:
+        limits:
+          memory: 100Mi
+        requests:
+          cpu: 10m
+          memory: 20Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-m45c2
+        readOnly: true
+    - args:
+      - --v=2
+      - --csi-address=/csi/csi.sock
+      - --kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)
+      env:
+      - name: DRIVER_REG_SOCK_PATH
+        value: /var/lib/kubelet/plugins/csi-nfsplugin/csi.sock
+      - name: KUBE_NODE_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      image: registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.5.1
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        exec:
+          command:
+          - /csi-node-driver-registrar
+          - --kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)
+          - --mode=kubelet-registration-probe
+        failureThreshold: 3
+        initialDelaySeconds: 30
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 15
+      name: node-driver-registrar
+      resources:
+        limits:
+          memory: 100Mi
+        requests:
+          cpu: 10m
+          memory: 20Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /registration
+        name: registration-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-m45c2
+        readOnly: true
+    - args:
+      - -v=5
+      - --nodeid=$(NODE_ID)
+      - --endpoint=$(CSI_ENDPOINT)
+      env:
+      - name: NODE_ID
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      - name: CSI_ENDPOINT
+        value: unix:///csi/csi.sock
+      image: registry.k8s.io/sig-storage/nfsplugin:v4.1.0
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        failureThreshold: 5
+        httpGet:
+          path: /healthz
+          port: healthz
+          scheme: HTTP
+        initialDelaySeconds: 30
+        periodSeconds: 30
+        successThreshold: 1
+        timeoutSeconds: 10
+      name: nfs
+      ports:
+      - containerPort: 29653
+        hostPort: 29653
+        name: healthz
+        protocol: TCP
+      resources:
+        limits:
+          memory: 300Mi
+        requests:
+          cpu: 10m
+          memory: 20Mi
+      securityContext:
+        allowPrivilegeEscalation: true
+        capabilities:
+          add:
+          - SYS_ADMIN
+        privileged: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/lib/kubelet/pods
+        mountPropagation: Bidirectional
+        name: pods-mount-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-m45c2
+        readOnly: true
+    dnsPolicy: Default
+    enableServiceLinks: true
+    hostNetwork: true
+    imagePullSecrets:
+    - name: csi-nfs-node-sa-dockercfg-f9r8v
+    nodeName: qemtv-05-s8dvn-master-1
+    nodeSelector:
+      kubernetes.io/os: linux
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: csi-nfs-node-sa
+    serviceAccountName: csi-nfs-node-sa
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - operator: Exists
+    volumes:
+    - hostPath:
+        path: /var/lib/kubelet/plugins/csi-nfsplugin
+        type: DirectoryOrCreate
+      name: socket-dir
+    - hostPath:
+        path: /var/lib/kubelet/pods
+        type: Directory
+      name: pods-mount-dir
+    - hostPath:
+        path: /var/lib/kubelet/plugins_registry
+        type: Directory
+      name: registration-dir
+    - name: kube-api-access-m45c2
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+        - configMap:
+            items:
+            - key: service-ca.crt
+              path: service-ca.crt
+            name: openshift-service-ca.crt
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:32Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:23Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:32Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:32Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:23Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://3c33c85881dbbc2fb2f316732823748b729e009dd3b201b03d13f1959eb0a4e3
+      image: registry.k8s.io/sig-storage/livenessprobe:v2.7.0
+      imageID: registry.k8s.io/sig-storage/livenessprobe@sha256:933940f13b3ea0abc62e656c1aa5c5b47c04b15d71250413a6b821bd0c58b94e
+      lastState: {}
+      name: liveness-probe
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-11-26T10:06:26Z"
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-m45c2
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: cri-o://d5463793d8ef4801744c3bcd7bdd2e195188c949f93207edc46e6111789dd8b1
+      image: registry.k8s.io/sig-storage/nfsplugin:v4.1.0
+      imageID: registry.k8s.io/sig-storage/nfsplugin@sha256:a34c15c963a86da9720090f44c904f49d52b0454784f27017bb863ccbf0537a2
+      lastState: {}
+      name: nfs
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-11-26T10:06:32Z"
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/lib/kubelet/pods
+        name: pods-mount-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-m45c2
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: cri-o://dd5efa66fc96fde2be35d475bf1c7350b393a65bc7d9eb789c1cad9761153cc4
+      image: registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.5.1
+      imageID: registry.k8s.io/sig-storage/csi-node-driver-registrar@sha256:0103eee7c35e3e0b5cd8cdca9850dc71c793cdeb6669d8be7a89440da2d06ae4
+      lastState: {}
+      name: node-driver-registrar
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-11-26T10:06:28Z"
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /registration
+        name: registration-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-m45c2
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 192.168.3.30
+    hostIPs:
+    - ip: 192.168.3.30
+    phase: Running
+    podIP: 192.168.3.30
+    podIPs:
+    - ip: 192.168.3.30
+    qosClass: Burstable
+    startTime: "2024-11-26T10:06:23Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2024-11-26T10:06:23Z"
+    generateName: csi-nfs-node-
+    labels:
+      app: csi-nfs-node
+      controller-revision-hash: 6748f6f7ff
+      pod-template-generation: "1"
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:generateName: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:controller-revision-hash: {}
+            f:pod-template-generation: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"efbe7d06-98e0-4f90-b53b-780298cfdb8e"}: {}
+        f:spec:
+          f:affinity:
+            .: {}
+            f:nodeAffinity:
+              .: {}
+              f:requiredDuringSchedulingIgnoredDuringExecution: {}
+          f:containers:
+            k:{"name":"liveness-probe"}:
+              .: {}
+              f:args: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:name: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:memory: {}
+                f:requests:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+              f:volumeMounts:
+                .: {}
+                k:{"mountPath":"/csi"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+            k:{"name":"nfs"}:
+              .: {}
+              f:args: {}
+              f:env:
+                .: {}
+                k:{"name":"CSI_ENDPOINT"}:
+                  .: {}
+                  f:name: {}
+                  f:value: {}
+                k:{"name":"NODE_ID"}:
+                  .: {}
+                  f:name: {}
+                  f:valueFrom:
+                    .: {}
+                    f:fieldRef: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:livenessProbe:
+                .: {}
+                f:failureThreshold: {}
+                f:httpGet:
+                  .: {}
+                  f:path: {}
+                  f:port: {}
+                  f:scheme: {}
+                f:initialDelaySeconds: {}
+                f:periodSeconds: {}
+                f:successThreshold: {}
+                f:timeoutSeconds: {}
+              f:name: {}
+              f:ports:
+                .: {}
+                k:{"containerPort":29653,"protocol":"TCP"}:
+                  .: {}
+                  f:containerPort: {}
+                  f:hostPort: {}
+                  f:name: {}
+                  f:protocol: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:memory: {}
+                f:requests:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+              f:securityContext:
+                .: {}
+                f:allowPrivilegeEscalation: {}
+                f:capabilities:
+                  .: {}
+                  f:add: {}
+                f:privileged: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+              f:volumeMounts:
+                .: {}
+                k:{"mountPath":"/csi"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+                k:{"mountPath":"/var/lib/kubelet/pods"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:mountPropagation: {}
+                  f:name: {}
+            k:{"name":"node-driver-registrar"}:
+              .: {}
+              f:args: {}
+              f:env:
+                .: {}
+                k:{"name":"DRIVER_REG_SOCK_PATH"}:
+                  .: {}
+                  f:name: {}
+                  f:value: {}
+                k:{"name":"KUBE_NODE_NAME"}:
+                  .: {}
+                  f:name: {}
+                  f:valueFrom:
+                    .: {}
+                    f:fieldRef: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:livenessProbe:
+                .: {}
+                f:exec:
+                  .: {}
+                  f:command: {}
+                f:failureThreshold: {}
+                f:initialDelaySeconds: {}
+                f:periodSeconds: {}
+                f:successThreshold: {}
+                f:timeoutSeconds: {}
+              f:name: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:memory: {}
+                f:requests:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+              f:volumeMounts:
+                .: {}
+                k:{"mountPath":"/csi"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+                k:{"mountPath":"/registration"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+          f:dnsPolicy: {}
+          f:enableServiceLinks: {}
+          f:hostNetwork: {}
+          f:nodeSelector: {}
+          f:restartPolicy: {}
+          f:schedulerName: {}
+          f:securityContext: {}
+          f:serviceAccount: {}
+          f:serviceAccountName: {}
+          f:terminationGracePeriodSeconds: {}
+          f:tolerations: {}
+          f:volumes:
+            .: {}
+            k:{"name":"pods-mount-dir"}:
+              .: {}
+              f:hostPath:
+                .: {}
+                f:path: {}
+                f:type: {}
+              f:name: {}
+            k:{"name":"registration-dir"}:
+              .: {}
+              f:hostPath:
+                .: {}
+                f:path: {}
+                f:type: {}
+              f:name: {}
+            k:{"name":"socket-dir"}:
+              .: {}
+              f:hostPath:
+                .: {}
+                f:path: {}
+                f:type: {}
+              f:name: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2024-11-26T10:06:23Z"
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:conditions:
+            k:{"type":"ContainersReady"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Initialized"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"PodReadyToStartContainers"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Ready"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+          f:containerStatuses: {}
+          f:hostIP: {}
+          f:hostIPs: {}
+          f:phase: {}
+          f:podIP: {}
+          f:podIPs:
+            .: {}
+            k:{"ip":"192.168.3.154"}:
+              .: {}
+              f:ip: {}
+          f:startTime: {}
+      manager: kubelet
+      operation: Update
+      subresource: status
+      time: "2024-11-26T10:06:28Z"
+    name: csi-nfs-node-jp29g
+    namespace: kube-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DaemonSet
+      name: csi-nfs-node
+      uid: efbe7d06-98e0-4f90-b53b-780298cfdb8e
+    resourceVersion: "7268787"
+    uid: 4e6baeb7-d310-45a9-ae76-a463fadee0d8
+  spec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchFields:
+            - key: metadata.name
+              operator: In
+              values:
+              - qemtv-05-s8dvn-worker-0-8qpfm
+    containers:
+    - args:
+      - --csi-address=/csi/csi.sock
+      - --probe-timeout=3s
+      - --health-port=29653
+      - --v=2
+      image: registry.k8s.io/sig-storage/livenessprobe:v2.7.0
+      imagePullPolicy: IfNotPresent
+      name: liveness-probe
+      resources:
+        limits:
+          memory: 100Mi
+        requests:
+          cpu: 10m
+          memory: 20Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-9stk6
+        readOnly: true
+    - args:
+      - --v=2
+      - --csi-address=/csi/csi.sock
+      - --kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)
+      env:
+      - name: DRIVER_REG_SOCK_PATH
+        value: /var/lib/kubelet/plugins/csi-nfsplugin/csi.sock
+      - name: KUBE_NODE_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      image: registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.5.1
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        exec:
+          command:
+          - /csi-node-driver-registrar
+          - --kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)
+          - --mode=kubelet-registration-probe
+        failureThreshold: 3
+        initialDelaySeconds: 30
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 15
+      name: node-driver-registrar
+      resources:
+        limits:
+          memory: 100Mi
+        requests:
+          cpu: 10m
+          memory: 20Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /registration
+        name: registration-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-9stk6
+        readOnly: true
+    - args:
+      - -v=5
+      - --nodeid=$(NODE_ID)
+      - --endpoint=$(CSI_ENDPOINT)
+      env:
+      - name: NODE_ID
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      - name: CSI_ENDPOINT
+        value: unix:///csi/csi.sock
+      image: registry.k8s.io/sig-storage/nfsplugin:v4.1.0
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        failureThreshold: 5
+        httpGet:
+          path: /healthz
+          port: healthz
+          scheme: HTTP
+        initialDelaySeconds: 30
+        periodSeconds: 30
+        successThreshold: 1
+        timeoutSeconds: 10
+      name: nfs
+      ports:
+      - containerPort: 29653
+        hostPort: 29653
+        name: healthz
+        protocol: TCP
+      resources:
+        limits:
+          memory: 300Mi
+        requests:
+          cpu: 10m
+          memory: 20Mi
+      securityContext:
+        allowPrivilegeEscalation: true
+        capabilities:
+          add:
+          - SYS_ADMIN
+        privileged: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/lib/kubelet/pods
+        mountPropagation: Bidirectional
+        name: pods-mount-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-9stk6
+        readOnly: true
+    dnsPolicy: Default
+    enableServiceLinks: true
+    hostNetwork: true
+    imagePullSecrets:
+    - name: csi-nfs-node-sa-dockercfg-f9r8v
+    nodeName: qemtv-05-s8dvn-worker-0-8qpfm
+    nodeSelector:
+      kubernetes.io/os: linux
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: csi-nfs-node-sa
+    serviceAccountName: csi-nfs-node-sa
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - operator: Exists
+    volumes:
+    - hostPath:
+        path: /var/lib/kubelet/plugins/csi-nfsplugin
+        type: DirectoryOrCreate
+      name: socket-dir
+    - hostPath:
+        path: /var/lib/kubelet/pods
+        type: Directory
+      name: pods-mount-dir
+    - hostPath:
+        path: /var/lib/kubelet/plugins_registry
+        type: Directory
+      name: registration-dir
+    - name: kube-api-access-9stk6
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+        - configMap:
+            items:
+            - key: service-ca.crt
+              path: service-ca.crt
+            name: openshift-service-ca.crt
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:28Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:23Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:28Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:28Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:23Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://c76e3ea6dae4e44cc9050edf2ca8c0f890c663705ae35625e4f0b923545fabe6
+      image: registry.k8s.io/sig-storage/livenessprobe:v2.7.0
+      imageID: registry.k8s.io/sig-storage/livenessprobe@sha256:933940f13b3ea0abc62e656c1aa5c5b47c04b15d71250413a6b821bd0c58b94e
+      lastState: {}
+      name: liveness-probe
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-11-26T10:06:25Z"
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-9stk6
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: cri-o://6df487325714acee7f5368af9d5c8e0b7529f00421e8c5e8d443afc3e1db2b85
+      image: registry.k8s.io/sig-storage/nfsplugin:v4.1.0
+      imageID: registry.k8s.io/sig-storage/nfsplugin@sha256:a34c15c963a86da9720090f44c904f49d52b0454784f27017bb863ccbf0537a2
+      lastState: {}
+      name: nfs
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-11-26T10:06:28Z"
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/lib/kubelet/pods
+        name: pods-mount-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-9stk6
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: cri-o://c55d20b1878704d956ed3fb5d9a406e00412b2314a3ed806ebada003a8744573
+      image: registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.5.1
+      imageID: registry.k8s.io/sig-storage/csi-node-driver-registrar@sha256:0103eee7c35e3e0b5cd8cdca9850dc71c793cdeb6669d8be7a89440da2d06ae4
+      lastState: {}
+      name: node-driver-registrar
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-11-26T10:06:26Z"
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /registration
+        name: registration-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-9stk6
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 192.168.3.154
+    hostIPs:
+    - ip: 192.168.3.154
+    phase: Running
+    podIP: 192.168.3.154
+    podIPs:
+    - ip: 192.168.3.154
+    qosClass: Burstable
+    startTime: "2024-11-26T10:06:23Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2024-11-26T10:06:23Z"
+    generateName: csi-nfs-node-
+    labels:
+      app: csi-nfs-node
+      controller-revision-hash: 6748f6f7ff
+      pod-template-generation: "1"
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:generateName: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:controller-revision-hash: {}
+            f:pod-template-generation: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"efbe7d06-98e0-4f90-b53b-780298cfdb8e"}: {}
+        f:spec:
+          f:affinity:
+            .: {}
+            f:nodeAffinity:
+              .: {}
+              f:requiredDuringSchedulingIgnoredDuringExecution: {}
+          f:containers:
+            k:{"name":"liveness-probe"}:
+              .: {}
+              f:args: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:name: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:memory: {}
+                f:requests:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+              f:volumeMounts:
+                .: {}
+                k:{"mountPath":"/csi"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+            k:{"name":"nfs"}:
+              .: {}
+              f:args: {}
+              f:env:
+                .: {}
+                k:{"name":"CSI_ENDPOINT"}:
+                  .: {}
+                  f:name: {}
+                  f:value: {}
+                k:{"name":"NODE_ID"}:
+                  .: {}
+                  f:name: {}
+                  f:valueFrom:
+                    .: {}
+                    f:fieldRef: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:livenessProbe:
+                .: {}
+                f:failureThreshold: {}
+                f:httpGet:
+                  .: {}
+                  f:path: {}
+                  f:port: {}
+                  f:scheme: {}
+                f:initialDelaySeconds: {}
+                f:periodSeconds: {}
+                f:successThreshold: {}
+                f:timeoutSeconds: {}
+              f:name: {}
+              f:ports:
+                .: {}
+                k:{"containerPort":29653,"protocol":"TCP"}:
+                  .: {}
+                  f:containerPort: {}
+                  f:hostPort: {}
+                  f:name: {}
+                  f:protocol: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:memory: {}
+                f:requests:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+              f:securityContext:
+                .: {}
+                f:allowPrivilegeEscalation: {}
+                f:capabilities:
+                  .: {}
+                  f:add: {}
+                f:privileged: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+              f:volumeMounts:
+                .: {}
+                k:{"mountPath":"/csi"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+                k:{"mountPath":"/var/lib/kubelet/pods"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:mountPropagation: {}
+                  f:name: {}
+            k:{"name":"node-driver-registrar"}:
+              .: {}
+              f:args: {}
+              f:env:
+                .: {}
+                k:{"name":"DRIVER_REG_SOCK_PATH"}:
+                  .: {}
+                  f:name: {}
+                  f:value: {}
+                k:{"name":"KUBE_NODE_NAME"}:
+                  .: {}
+                  f:name: {}
+                  f:valueFrom:
+                    .: {}
+                    f:fieldRef: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:livenessProbe:
+                .: {}
+                f:exec:
+                  .: {}
+                  f:command: {}
+                f:failureThreshold: {}
+                f:initialDelaySeconds: {}
+                f:periodSeconds: {}
+                f:successThreshold: {}
+                f:timeoutSeconds: {}
+              f:name: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:memory: {}
+                f:requests:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+              f:volumeMounts:
+                .: {}
+                k:{"mountPath":"/csi"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+                k:{"mountPath":"/registration"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+          f:dnsPolicy: {}
+          f:enableServiceLinks: {}
+          f:hostNetwork: {}
+          f:nodeSelector: {}
+          f:restartPolicy: {}
+          f:schedulerName: {}
+          f:securityContext: {}
+          f:serviceAccount: {}
+          f:serviceAccountName: {}
+          f:terminationGracePeriodSeconds: {}
+          f:tolerations: {}
+          f:volumes:
+            .: {}
+            k:{"name":"pods-mount-dir"}:
+              .: {}
+              f:hostPath:
+                .: {}
+                f:path: {}
+                f:type: {}
+              f:name: {}
+            k:{"name":"registration-dir"}:
+              .: {}
+              f:hostPath:
+                .: {}
+                f:path: {}
+                f:type: {}
+              f:name: {}
+            k:{"name":"socket-dir"}:
+              .: {}
+              f:hostPath:
+                .: {}
+                f:path: {}
+                f:type: {}
+              f:name: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2024-11-26T10:06:23Z"
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:conditions:
+            k:{"type":"ContainersReady"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Initialized"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"PodReadyToStartContainers"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Ready"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+          f:containerStatuses: {}
+          f:hostIP: {}
+          f:hostIPs: {}
+          f:phase: {}
+          f:podIP: {}
+          f:podIPs:
+            .: {}
+            k:{"ip":"192.168.1.93"}:
+              .: {}
+              f:ip: {}
+          f:startTime: {}
+      manager: kubelet
+      operation: Update
+      subresource: status
+      time: "2024-11-26T10:06:30Z"
+    name: csi-nfs-node-ktfpc
+    namespace: kube-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DaemonSet
+      name: csi-nfs-node
+      uid: efbe7d06-98e0-4f90-b53b-780298cfdb8e
+    resourceVersion: "7268828"
+    uid: 334c321a-01fe-4ff6-8b58-cb7a58c1dd50
+  spec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchFields:
+            - key: metadata.name
+              operator: In
+              values:
+              - qemtv-05-s8dvn-master-0
+    containers:
+    - args:
+      - --csi-address=/csi/csi.sock
+      - --probe-timeout=3s
+      - --health-port=29653
+      - --v=2
+      image: registry.k8s.io/sig-storage/livenessprobe:v2.7.0
+      imagePullPolicy: IfNotPresent
+      name: liveness-probe
+      resources:
+        limits:
+          memory: 100Mi
+        requests:
+          cpu: 10m
+          memory: 20Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-xbnpn
+        readOnly: true
+    - args:
+      - --v=2
+      - --csi-address=/csi/csi.sock
+      - --kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)
+      env:
+      - name: DRIVER_REG_SOCK_PATH
+        value: /var/lib/kubelet/plugins/csi-nfsplugin/csi.sock
+      - name: KUBE_NODE_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      image: registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.5.1
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        exec:
+          command:
+          - /csi-node-driver-registrar
+          - --kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)
+          - --mode=kubelet-registration-probe
+        failureThreshold: 3
+        initialDelaySeconds: 30
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 15
+      name: node-driver-registrar
+      resources:
+        limits:
+          memory: 100Mi
+        requests:
+          cpu: 10m
+          memory: 20Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /registration
+        name: registration-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-xbnpn
+        readOnly: true
+    - args:
+      - -v=5
+      - --nodeid=$(NODE_ID)
+      - --endpoint=$(CSI_ENDPOINT)
+      env:
+      - name: NODE_ID
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      - name: CSI_ENDPOINT
+        value: unix:///csi/csi.sock
+      image: registry.k8s.io/sig-storage/nfsplugin:v4.1.0
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        failureThreshold: 5
+        httpGet:
+          path: /healthz
+          port: healthz
+          scheme: HTTP
+        initialDelaySeconds: 30
+        periodSeconds: 30
+        successThreshold: 1
+        timeoutSeconds: 10
+      name: nfs
+      ports:
+      - containerPort: 29653
+        hostPort: 29653
+        name: healthz
+        protocol: TCP
+      resources:
+        limits:
+          memory: 300Mi
+        requests:
+          cpu: 10m
+          memory: 20Mi
+      securityContext:
+        allowPrivilegeEscalation: true
+        capabilities:
+          add:
+          - SYS_ADMIN
+        privileged: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/lib/kubelet/pods
+        mountPropagation: Bidirectional
+        name: pods-mount-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-xbnpn
+        readOnly: true
+    dnsPolicy: Default
+    enableServiceLinks: true
+    hostNetwork: true
+    imagePullSecrets:
+    - name: csi-nfs-node-sa-dockercfg-f9r8v
+    nodeName: qemtv-05-s8dvn-master-0
+    nodeSelector:
+      kubernetes.io/os: linux
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: csi-nfs-node-sa
+    serviceAccountName: csi-nfs-node-sa
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - operator: Exists
+    volumes:
+    - hostPath:
+        path: /var/lib/kubelet/plugins/csi-nfsplugin
+        type: DirectoryOrCreate
+      name: socket-dir
+    - hostPath:
+        path: /var/lib/kubelet/pods
+        type: Directory
+      name: pods-mount-dir
+    - hostPath:
+        path: /var/lib/kubelet/plugins_registry
+        type: Directory
+      name: registration-dir
+    - name: kube-api-access-xbnpn
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+        - configMap:
+            items:
+            - key: service-ca.crt
+              path: service-ca.crt
+            name: openshift-service-ca.crt
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:30Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:23Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:30Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:30Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:23Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://8942d6c6381e5ff215715acf26ce65ff9c1d373e82e7bf3a06a20bc8ee50e831
+      image: registry.k8s.io/sig-storage/livenessprobe:v2.7.0
+      imageID: registry.k8s.io/sig-storage/livenessprobe@sha256:933940f13b3ea0abc62e656c1aa5c5b47c04b15d71250413a6b821bd0c58b94e
+      lastState: {}
+      name: liveness-probe
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-11-26T10:06:25Z"
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-xbnpn
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: cri-o://1ff19fe58ee2d5c3dc5b6c81818a9c8e513fdd6d6141d6f1c4bba7c3796512da
+      image: registry.k8s.io/sig-storage/nfsplugin:v4.1.0
+      imageID: registry.k8s.io/sig-storage/nfsplugin@sha256:a34c15c963a86da9720090f44c904f49d52b0454784f27017bb863ccbf0537a2
+      lastState: {}
+      name: nfs
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-11-26T10:06:29Z"
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/lib/kubelet/pods
+        name: pods-mount-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-xbnpn
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: cri-o://f23dc2f81c37868f96b03ce5cc68e284deae298a2e662d2067f06d48d19404fe
+      image: registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.5.1
+      imageID: registry.k8s.io/sig-storage/csi-node-driver-registrar@sha256:0103eee7c35e3e0b5cd8cdca9850dc71c793cdeb6669d8be7a89440da2d06ae4
+      lastState: {}
+      name: node-driver-registrar
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-11-26T10:06:26Z"
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /registration
+        name: registration-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-xbnpn
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 192.168.1.93
+    hostIPs:
+    - ip: 192.168.1.93
+    phase: Running
+    podIP: 192.168.1.93
+    podIPs:
+    - ip: 192.168.1.93
+    qosClass: Burstable
+    startTime: "2024-11-26T10:06:23Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2024-11-26T10:06:23Z"
+    generateName: csi-nfs-node-
+    labels:
+      app: csi-nfs-node
+      controller-revision-hash: 6748f6f7ff
+      pod-template-generation: "1"
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:generateName: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:controller-revision-hash: {}
+            f:pod-template-generation: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"efbe7d06-98e0-4f90-b53b-780298cfdb8e"}: {}
+        f:spec:
+          f:affinity:
+            .: {}
+            f:nodeAffinity:
+              .: {}
+              f:requiredDuringSchedulingIgnoredDuringExecution: {}
+          f:containers:
+            k:{"name":"liveness-probe"}:
+              .: {}
+              f:args: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:name: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:memory: {}
+                f:requests:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+              f:volumeMounts:
+                .: {}
+                k:{"mountPath":"/csi"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+            k:{"name":"nfs"}:
+              .: {}
+              f:args: {}
+              f:env:
+                .: {}
+                k:{"name":"CSI_ENDPOINT"}:
+                  .: {}
+                  f:name: {}
+                  f:value: {}
+                k:{"name":"NODE_ID"}:
+                  .: {}
+                  f:name: {}
+                  f:valueFrom:
+                    .: {}
+                    f:fieldRef: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:livenessProbe:
+                .: {}
+                f:failureThreshold: {}
+                f:httpGet:
+                  .: {}
+                  f:path: {}
+                  f:port: {}
+                  f:scheme: {}
+                f:initialDelaySeconds: {}
+                f:periodSeconds: {}
+                f:successThreshold: {}
+                f:timeoutSeconds: {}
+              f:name: {}
+              f:ports:
+                .: {}
+                k:{"containerPort":29653,"protocol":"TCP"}:
+                  .: {}
+                  f:containerPort: {}
+                  f:hostPort: {}
+                  f:name: {}
+                  f:protocol: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:memory: {}
+                f:requests:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+              f:securityContext:
+                .: {}
+                f:allowPrivilegeEscalation: {}
+                f:capabilities:
+                  .: {}
+                  f:add: {}
+                f:privileged: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+              f:volumeMounts:
+                .: {}
+                k:{"mountPath":"/csi"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+                k:{"mountPath":"/var/lib/kubelet/pods"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:mountPropagation: {}
+                  f:name: {}
+            k:{"name":"node-driver-registrar"}:
+              .: {}
+              f:args: {}
+              f:env:
+                .: {}
+                k:{"name":"DRIVER_REG_SOCK_PATH"}:
+                  .: {}
+                  f:name: {}
+                  f:value: {}
+                k:{"name":"KUBE_NODE_NAME"}:
+                  .: {}
+                  f:name: {}
+                  f:valueFrom:
+                    .: {}
+                    f:fieldRef: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:livenessProbe:
+                .: {}
+                f:exec:
+                  .: {}
+                  f:command: {}
+                f:failureThreshold: {}
+                f:initialDelaySeconds: {}
+                f:periodSeconds: {}
+                f:successThreshold: {}
+                f:timeoutSeconds: {}
+              f:name: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:memory: {}
+                f:requests:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+              f:volumeMounts:
+                .: {}
+                k:{"mountPath":"/csi"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+                k:{"mountPath":"/registration"}:
+                  .: {}
+                  f:mountPath: {}
+                  f:name: {}
+          f:dnsPolicy: {}
+          f:enableServiceLinks: {}
+          f:hostNetwork: {}
+          f:nodeSelector: {}
+          f:restartPolicy: {}
+          f:schedulerName: {}
+          f:securityContext: {}
+          f:serviceAccount: {}
+          f:serviceAccountName: {}
+          f:terminationGracePeriodSeconds: {}
+          f:tolerations: {}
+          f:volumes:
+            .: {}
+            k:{"name":"pods-mount-dir"}:
+              .: {}
+              f:hostPath:
+                .: {}
+                f:path: {}
+                f:type: {}
+              f:name: {}
+            k:{"name":"registration-dir"}:
+              .: {}
+              f:hostPath:
+                .: {}
+                f:path: {}
+                f:type: {}
+              f:name: {}
+            k:{"name":"socket-dir"}:
+              .: {}
+              f:hostPath:
+                .: {}
+                f:path: {}
+                f:type: {}
+              f:name: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2024-11-26T10:06:23Z"
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:conditions:
+            k:{"type":"ContainersReady"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Initialized"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"PodReadyToStartContainers"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Ready"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+          f:containerStatuses: {}
+          f:hostIP: {}
+          f:hostIPs: {}
+          f:phase: {}
+          f:podIP: {}
+          f:podIPs:
+            .: {}
+            k:{"ip":"192.168.0.166"}:
+              .: {}
+              f:ip: {}
+          f:startTime: {}
+      manager: kubelet
+      operation: Update
+      subresource: status
+      time: "2024-11-26T10:06:30Z"
+    name: csi-nfs-node-scnwm
+    namespace: kube-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DaemonSet
+      name: csi-nfs-node
+      uid: efbe7d06-98e0-4f90-b53b-780298cfdb8e
+    resourceVersion: "7268841"
+    uid: 1a3cab46-af44-4413-b86f-5c58ab4c3d72
+  spec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchFields:
+            - key: metadata.name
+              operator: In
+              values:
+              - qemtv-05-s8dvn-master-2
+    containers:
+    - args:
+      - --csi-address=/csi/csi.sock
+      - --probe-timeout=3s
+      - --health-port=29653
+      - --v=2
+      image: registry.k8s.io/sig-storage/livenessprobe:v2.7.0
+      imagePullPolicy: IfNotPresent
+      name: liveness-probe
+      resources:
+        limits:
+          memory: 100Mi
+        requests:
+          cpu: 10m
+          memory: 20Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-q82kl
+        readOnly: true
+    - args:
+      - --v=2
+      - --csi-address=/csi/csi.sock
+      - --kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)
+      env:
+      - name: DRIVER_REG_SOCK_PATH
+        value: /var/lib/kubelet/plugins/csi-nfsplugin/csi.sock
+      - name: KUBE_NODE_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      image: registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.5.1
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        exec:
+          command:
+          - /csi-node-driver-registrar
+          - --kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)
+          - --mode=kubelet-registration-probe
+        failureThreshold: 3
+        initialDelaySeconds: 30
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 15
+      name: node-driver-registrar
+      resources:
+        limits:
+          memory: 100Mi
+        requests:
+          cpu: 10m
+          memory: 20Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /registration
+        name: registration-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-q82kl
+        readOnly: true
+    - args:
+      - -v=5
+      - --nodeid=$(NODE_ID)
+      - --endpoint=$(CSI_ENDPOINT)
+      env:
+      - name: NODE_ID
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      - name: CSI_ENDPOINT
+        value: unix:///csi/csi.sock
+      image: registry.k8s.io/sig-storage/nfsplugin:v4.1.0
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        failureThreshold: 5
+        httpGet:
+          path: /healthz
+          port: healthz
+          scheme: HTTP
+        initialDelaySeconds: 30
+        periodSeconds: 30
+        successThreshold: 1
+        timeoutSeconds: 10
+      name: nfs
+      ports:
+      - containerPort: 29653
+        hostPort: 29653
+        name: healthz
+        protocol: TCP
+      resources:
+        limits:
+          memory: 300Mi
+        requests:
+          cpu: 10m
+          memory: 20Mi
+      securityContext:
+        allowPrivilegeEscalation: true
+        capabilities:
+          add:
+          - SYS_ADMIN
+        privileged: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/lib/kubelet/pods
+        mountPropagation: Bidirectional
+        name: pods-mount-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-q82kl
+        readOnly: true
+    dnsPolicy: Default
+    enableServiceLinks: true
+    hostNetwork: true
+    imagePullSecrets:
+    - name: csi-nfs-node-sa-dockercfg-f9r8v
+    nodeName: qemtv-05-s8dvn-master-2
+    nodeSelector:
+      kubernetes.io/os: linux
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: csi-nfs-node-sa
+    serviceAccountName: csi-nfs-node-sa
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - operator: Exists
+    volumes:
+    - hostPath:
+        path: /var/lib/kubelet/plugins/csi-nfsplugin
+        type: DirectoryOrCreate
+      name: socket-dir
+    - hostPath:
+        path: /var/lib/kubelet/pods
+        type: Directory
+      name: pods-mount-dir
+    - hostPath:
+        path: /var/lib/kubelet/plugins_registry
+        type: Directory
+      name: registration-dir
+    - name: kube-api-access-q82kl
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+        - configMap:
+            items:
+            - key: service-ca.crt
+              path: service-ca.crt
+            name: openshift-service-ca.crt
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:30Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:23Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:30Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:30Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2024-11-26T10:06:23Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: cri-o://d5e102d493f3acdfe881c90bf932ffa48efe4f3325c83ad7a85f5b13a08d7ed7
+      image: registry.k8s.io/sig-storage/livenessprobe:v2.7.0
+      imageID: registry.k8s.io/sig-storage/livenessprobe@sha256:933940f13b3ea0abc62e656c1aa5c5b47c04b15d71250413a6b821bd0c58b94e
+      lastState: {}
+      name: liveness-probe
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-11-26T10:06:26Z"
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-q82kl
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: cri-o://c4671214f98b7638fbdfea71923f3db7c8c7532f6c4ff5b5f2abf6b567a69f02
+      image: registry.k8s.io/sig-storage/nfsplugin:v4.1.0
+      imageID: registry.k8s.io/sig-storage/nfsplugin@sha256:a34c15c963a86da9720090f44c904f49d52b0454784f27017bb863ccbf0537a2
+      lastState: {}
+      name: nfs
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-11-26T10:06:30Z"
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/lib/kubelet/pods
+        name: pods-mount-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-q82kl
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: cri-o://c1d2539a9d164fe49d5109a844a11ef09eac01d8b753de3787acebda13777ad0
+      image: registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.5.1
+      imageID: registry.k8s.io/sig-storage/csi-node-driver-registrar@sha256:0103eee7c35e3e0b5cd8cdca9850dc71c793cdeb6669d8be7a89440da2d06ae4
+      lastState: {}
+      name: node-driver-registrar
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2024-11-26T10:06:28Z"
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /registration
+        name: registration-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-q82kl
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 192.168.0.166
+    hostIPs:
+    - ip: 192.168.0.166
+    phase: Running
+    podIP: 192.168.0.166
+    podIPs:
+    - ip: 192.168.0.166
+    qosClass: Burstable
+    startTime: "2024-11-26T10:06:23Z"
+kind: PodList
+metadata:
+  resourceVersion: "13502831"

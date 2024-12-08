@@ -1,0 +1,7 @@
+---
+apiVersion: pool.kubevirt.io/v1alpha1
+items: []
+kind: VirtualMachinePoolList
+metadata:
+  continue: ""
+  resourceVersion: "13502832"

@@ -1,0 +1,7 @@
+---
+apiVersion: cdi.kubevirt.io/v1beta1
+items: []
+kind: DataImportCronList
+metadata:
+  continue: ""
+  resourceVersion: "13502831"

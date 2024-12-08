@@ -1,0 +1,7 @@
+---
+apiVersion: kubevirt.io/v1
+items: []
+kind: VirtualMachineInstanceMigrationList
+metadata:
+  continue: ""
+  resourceVersion: "13502832"
