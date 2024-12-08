@@ -164,7 +164,7 @@ def print_specific_yaml_fields(resource_yaml_content: str, yaml_fields_to_get: s
     resource_metadata = resource_yaml_dict.get("metadata", {})
     resource_name = resource_metadata.get("name")
     resource_namespace = resource_metadata.get("namespace")
-    resource_kind = resource_yaml_dict.get("kind")
+    resource_kind = resource_yaml_dict["kind"]
     yaml_fields_dict_to_print = resource_yaml_dict
     for yaml_key in filter(None, yaml_fields_to_get.split(".")):
         yaml_fields_dict_to_print = yaml_fields_dict_to_print.get(yaml_key)
