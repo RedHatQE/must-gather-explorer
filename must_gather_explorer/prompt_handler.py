@@ -43,7 +43,7 @@ class MustGatherExplorerPrompt(cmd2.Cmd):
         )
 
     get_parser = cmd2.Cmd2ArgumentParser(description="get the must-gather data for a specific resource")
-    get_parser.add_argument("get", help="Kind of the resource")
+    get_parser.add_argument("get", choices_provider=kinds, help="Kind of the resource")
     get_parser.add_argument("args", nargs="*", help="Resource name or partial name")
     get_parser.add_argument(
         "-n", "--namespace", default="", choices_provider=namespaces, help="Namespace of the resource"
