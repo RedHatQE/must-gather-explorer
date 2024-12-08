@@ -286,7 +286,7 @@ def call_actions(
         name = resource_name if resource_name else ""
         namespace = namespace if namespace else ""
         CONSOLE.print(
-            f"No resources found for `{kind}` {f'with {name}' if name else ''} {f'in {namespace}' if namespace else ''}"
+            f"No resources found for `{kind}` {f'that match the name {name}' if name else ''} {f'in {namespace}' if namespace else ''}"
         )
         return
 
