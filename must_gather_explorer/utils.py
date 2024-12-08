@@ -146,7 +146,7 @@ def print_resource_yaml(resources_raw_data: list[dict[str, Any]], yaml_fields: s
             CONSOLE.print(f"[red]Error opening file {raw_data['yaml_file']}: {e}")
             continue
 
-        # get dv -n openshift-images centos-stream8 -oyaml .spec.source
+        # get dv centos-stream8 -n openshift-images -oyaml -f .spec.source
         if yaml_fields:
             print_specific_yaml_fields(resource_yaml_content=resource_yaml_content, yaml_fields_to_get=yaml_fields)
         else:  # print full yaml
@@ -164,19 +164,34 @@ def print_specific_yaml_fields(resource_yaml_content: str, yaml_fields_to_get: s
     resource_metadata = resource_yaml_dict.get("metadata", {})
     resource_name = resource_metadata.get("name")
     resource_namespace = resource_metadata.get("namespace")
+    resource_kind = resource_yaml_dict["kind"]
     yaml_fields_dict_to_print = resource_yaml_dict
     for yaml_key in filter(None, yaml_fields_to_get.split(".")):
         yaml_fields_dict_to_print = yaml_fields_dict_to_print.get(yaml_key)
         if not yaml_fields_dict_to_print:
             # Some resources don't have name and namespace
-            error_message = f"No field '{yaml_key}' for {resource_yaml_dict.get('kind')} "
+            error_message = f"No field '{yaml_key}' for {resource_kind} "
             if resource_name:
                 error_message += f"'{resource_name}' "
+
             if resource_namespace:
                 error_message += f"in '{resource_namespace}' namespace"
+
             CONSOLE.print(error_message)
             break
+
     if yaml_fields_dict_to_print:
+        title = f"[bold][blue] {yaml_fields_to_get}:[bold][green] [Kind: {resource_kind}"
+
+        if resource_name:
+            title += f"Name: {resource_name} "
+
+        if resource_namespace:
+            title += f"Namespace: {resource_namespace}"
+
+        title += "]\n"
+
+        CONSOLE.print(title)
         CONSOLE.print(yaml.dump(yaml_fields_dict_to_print))
 
 
@@ -268,7 +283,7 @@ def call_actions(
         name = resource_name if resource_name else ""
         namespace = namespace if namespace else ""
         CONSOLE.print(
-            f"No resources found for `{kind}` {f'with {name}' if name else ''} {f'in {namespace}' if namespace else ''}"
+            f"No resources found for `{kind}` {f'that match the name {name}' if name else ''} {f'in {namespace}' if namespace else ''}"
         )
         return
 
