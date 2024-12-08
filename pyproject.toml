@@ -4,11 +4,11 @@ addopts = [
   "--cov-config=pyproject.toml",
   "--cov-report=html",
   "--cov-report=term",
-  "--cov=must_gather_explorer",
+  "--cov=must_gather_explorer"
 ]
 
 [tool.coverage.run]
-omit = ["tests/*"]
+omit = [ "tests/*" ]
 
 [tool.coverage.report]
 fail_under = 60
@@ -23,8 +23,8 @@ line-length = 120
 fix = true
 output-format = "grouped"
 
-[tool.ruff.format]
-exclude = [".git", ".venv", ".mypy_cache", ".tox", "__pycache__"]
+  [tool.ruff.format]
+  exclude = [ ".git", ".venv", ".mypy_cache", ".tox", "__pycache__" ]
 
 [tool.mypy]
 check_untyped_defs = true
@@ -36,14 +36,14 @@ show_error_codes = true
 warn_unused_ignores = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["must_gather_explorer"]
+packages = [ "must_gather_explorer" ]
 
 [tool.uv]
-dev-dependencies = ["ipdb>=0.13.13", "ipython>=8.18.1"]
+dev-dependencies = [ "ipdb>=0.13.13", "ipython>=8.18.1" ]
 
 [project]
 name = "must-gather-explorer"
-version = "0.1.8"
+version = "0.1.9"
 description = "Tool to explore must-gather data"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -57,24 +57,24 @@ dependencies = [
   "python-simple-logger>=1.0.40",
   "pyyaml>=6.0.2",
   "rich>=13.9.2",
-  "tqdm>=4.67.0",
+  "tqdm>=4.67.0"
 ]
 
-[[project.authors]]
-name = "Jenia Peimer"
-email = "jpeimer@redhat.com"
+  [[project.authors]]
+  name = "Jenia Peimer"
+  email = "jpeimer@redhat.com"
 
-[[project.authors]]
-name = "Meni Yakove"
-email = "myakove@gmail.com"
+  [[project.authors]]
+  name = "Meni Yakove"
+  email = "myakove@gmail.com"
 
-[project.license]
-text = "Apache-2.0 license"
+  [project.license]
+  text = "Apache-2.0 license"
 
-[project.scripts]
-must-gather-explorer = "must_gather_explorer.main:main"
-must-gather-explorer-update-aliases = "must_gather_explorer.resource_aliases:fill_api_resources_aliases"
+  [project.scripts]
+  must-gather-explorer = "must_gather_explorer.main:main"
+  must-gather-explorer-update-aliases = "must_gather_explorer.resource_aliases:fill_api_resources_aliases"
 
 [build-system]
-requires = ["hatchling"]
+requires = [ "hatchling" ]
 build-backend = "hatchling.build"
