@@ -36,7 +36,7 @@ repos:
       - id: detect-secrets
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.8.1
+    rev: v0.8.2
     hooks:
       - id: ruff
       - id: ruff-format
@@ -54,6 +54,6 @@ repos:
         additional_dependencies: [types-PyYAML, types-requests]
 
   - repo: https://github.com/DavidAnson/markdownlint-cli2
-    rev: v0.15.0
+    rev: v0.16.0
     hooks:
       - id: markdownlint-cli2
