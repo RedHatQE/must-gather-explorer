@@ -1,7 +1,0 @@
----
-apiVersion: cdi.kubevirt.io/v1beta1
-items: []
-kind: DataSourceList
-metadata:
-  continue: ""
-  resourceVersion: "13502831"
