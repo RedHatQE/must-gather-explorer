@@ -208,7 +208,7 @@ def get_describe(**kwargs: dict[Any, Any]) -> bool:
 
 
 def get_cluster_resources_raw_data(
-    resources_aliases: Any, all_resources: dict[str, Any], kind: str, name: str, namespace: str
+    resources_aliases: Any, all_resources: dict[str, Any], kind: str, name: str = "", namespace: str = ""
 ) -> list[dict[str, Any]]:
     resources_list: list[dict[str, Any]] = []
 
