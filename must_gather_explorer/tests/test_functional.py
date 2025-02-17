@@ -12,6 +12,7 @@ from must_gather_explorer.utils import (
 )
 
 from io import StringIO
+import pytest
 
 
 class Capturing(list):
@@ -57,12 +58,21 @@ def test_get_resource_kind_by_alias():
 
 
 # TODO add parameters for different querries (pod, node, with yaml, with yaml fields, with name, with partial name)
-def test_get_resources():
+@pytest.mark.parametrize(
+    "kind, name, namespace, expected_output_1, expected_output_2",
+    [
+        pytest.param("pod", None, None, "csi-nfs-controller-c54d89cd5-gbd5s", "csi-nfs-node-2r5tx"),
+        pytest.param("pod", "csi-nfs", None, "csi-nfs-controller-c54d89cd5-gbd5s", "csi-nfs-node-2r5tx"),
+        pytest.param("pod", "csi-nfs", "kube-system", "csi-nfs-controller-c54d89cd5-gbd5s", "csi-nfs-node-2r5tx"),
+        pytest.param("node", None, None, "infd-vrf-418t2-2lnlk-master-0", "infd-vrf-418t2-2lnlk-worker-0-5ddfx"),
+    ],
+)
+def test_get_resources(kind, name, namespace, expected_output_1, expected_output_2):
     all_yaml_files, _ = get_all_yaml_and_log_files(must_gather_path=MUST_GATHER_PATH_FOR_TESTS)
     all_resources_dict = get_all_resources(all_yaml_files=all_yaml_files)
     aliases = read_aliases_file()
     cluster_resources_raw_data = get_cluster_resources_raw_data(
-        all_resources=all_resources_dict, resources_aliases=aliases, kind="pod"
+        all_resources=all_resources_dict, resources_aliases=aliases, kind=kind, name=name, namespace=namespace
     )
 
     with Capturing() as output:
@@ -70,5 +80,5 @@ def test_get_resources():
 
     output_string = "\n".join(output)
 
-    for item in ("NAMESPACE", "NAME", "kube-system", "csi-nfs-controller-c54d89cd5-gbd5s", "csi-nfs-node-2r5tx"):
+    for item in ("NAMESPACE", "NAME", namespace, expected_output_1, expected_output_2):
         assert item in output_string
