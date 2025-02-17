@@ -30,27 +30,27 @@
         "nodes"
     ],
     "persistentvolumeclaim": [
-        "persistentvolumeclaims",
-        "pvc"
+        "pvc",
+        "persistentvolumeclaims"
     ],
     "persistentvolume": [
         "persistentvolumes",
         "pv"
     ],
     "pod": [
-        "pods",
-        "po"
+        "po",
+        "pods"
     ],
     "podtemplate": [
         "podtemplates"
     ],
     "replicationcontroller": [
-        "replicationcontrollers",
-        "rc"
+        "rc",
+        "replicationcontrollers"
     ],
     "resourcequota": [
-        "resourcequotas",
-        "quota"
+        "quota",
+        "resourcequotas"
     ],
     "secret": [
         "secrets"
@@ -60,12 +60,12 @@
         "serviceaccounts"
     ],
     "service": [
-        "svc",
-        "services"
+        "services",
+        "svc"
     ],
     "aaq": [
-        "aaq",
-        "aaqs"
+        "aaqs",
+        "aaq"
     ],
     "mutatingwebhookconfiguration": [
         "mutatingwebhookconfigurations"
@@ -80,9 +80,9 @@
         "validatingwebhookconfigurations"
     ],
     "customresourcedefinition": [
-        "customresourcedefinitions",
+        "crds",
         "crd",
-        "crds"
+        "customresourcedefinitions"
     ],
     "apiservice": [
         "apiservices"
@@ -106,8 +106,8 @@
         "replicasets"
     ],
     "statefulset": [
-        "sts",
-        "statefulsets"
+        "statefulsets",
+        "sts"
     ],
     "deploymentconfig": [
         "deploymentconfigs",
@@ -164,8 +164,8 @@
         "clusterautoscalers"
     ],
     "machineautoscaler": [
-        "ma",
-        "machineautoscalers"
+        "machineautoscalers",
+        "ma"
     ],
     "cronjob": [
         "cronjobs",
@@ -175,8 +175,8 @@
         "jobs"
     ],
     "buildconfig": [
-        "bc",
-        "buildconfigs"
+        "buildconfigs",
+        "bc"
     ],
     "build": [
         "builds"
@@ -189,23 +189,23 @@
         "cdis"
     ],
     "dataimportcron": [
-        "dic",
         "dics",
+        "dic",
         "dataimportcrons"
     ],
     "datasource": [
-        "das",
-        "datasources"
+        "datasources",
+        "das"
     ],
     "datavolume": [
-        "datavolumes",
         "dv",
-        "dvs"
+        "dvs",
+        "datavolumes"
     ],
     "objecttransfer": [
-        "ot",
+        "objecttransfers",
         "ots",
-        "objecttransfers"
+        "ot"
     ],
     "storageprofile": [
         "storageprofiles"
@@ -238,8 +238,8 @@
         "cephclusters"
     ],
     "cephcosidriver": [
-        "cephcosidrivers",
-        "cephcosi"
+        "cephcosi",
+        "cephcosidrivers"
     ],
     "cephfilesystemmirror": [
         "cephfilesystemmirrors"
@@ -251,8 +251,8 @@
         "cephfilesystemsubvolumegroups"
     ],
     "cephnfs": [
-        "nfs",
-        "cephnfses"
+        "cephnfses",
+        "nfs"
     ],
     "cephobjectrealm": [
         "cephobjectrealms"
@@ -275,13 +275,13 @@
         "cephrbdmirrors"
     ],
     "certificatesigningrequest": [
-        "csr",
-        "certificatesigningrequests"
+        "certificatesigningrequests",
+        "csr"
     ],
     "virtualmachineclone": [
         "vmclones",
-        "virtualmachineclones",
-        "vmclone"
+        "vmclone",
+        "virtualmachineclones"
     ],
     "cloudprivateipconfig": [
         "cloudprivateipconfigs"
@@ -322,15 +322,15 @@
         "images"
     ],
     "imagetagmirrorset": [
-        "itms",
-        "imagetagmirrorsets"
+        "imagetagmirrorsets",
+        "itms"
     ],
     "infrastructure": [
         "infrastructures"
     ],
     "ingress": [
-        "ing",
-        "ingresses"
+        "ingresses",
+        "ing"
     ],
     "network": [
         "networks"
@@ -417,9 +417,9 @@
         "endpointslices"
     ],
     "virtualmachineexport": [
+        "virtualmachineexports",
         "vmexports",
-        "vmexport",
-        "virtualmachineexports"
+        "vmexport"
     ],
     "flowschema": [
         "flowschemas"
@@ -433,13 +433,13 @@
         "openstackvolumepopulators"
     ],
     "ovirtvolumepopulator": [
-        "ovirtvolumepopulators",
         "ovvp",
-        "ovvps"
+        "ovvps",
+        "ovirtvolumepopulators"
     ],
     "hyperconverged": [
-        "hco",
         "hyperconvergeds",
+        "hco",
         "hcos"
     ],
     "helmchartrepository": [
@@ -455,8 +455,8 @@
         "imagesignatures"
     ],
     "imagestreamimage": [
-        "isimage",
-        "imagestreamimages"
+        "imagestreamimages",
+        "isimage"
     ],
     "imagestreamimport": [
         "imagestreamimports"
@@ -465,8 +465,8 @@
         "imagestreammappings"
     ],
     "imagestream": [
-        "is",
-        "imagestreams"
+        "imagestreams",
+        "is"
     ],
     "imagestreamtag": [
         "imagestreamtags",
@@ -483,45 +483,45 @@
         "imagepruners"
     ],
     "metal3remediation": [
-        "m3r",
         "m3remediation",
+        "m3r",
         "metal3remediations"
     ],
     "metal3remediationtemplate": [
-        "metal3remediationtemplates",
+        "m3rt",
         "m3remediationtemplates",
-        "metal3remediationtemplate",
-        "m3remediationtemplate",
         "metal3rt",
-        "m3rt"
+        "metal3remediationtemplates",
+        "m3remediationtemplate",
+        "metal3remediationtemplate"
     ],
     "dnsrecord": [
         "dnsrecords"
     ],
     "virtualmachineclusterinstancetype": [
-        "vmcf",
         "vmclusterinstancetype",
-        "vmclusterinstancetypes",
         "vmcfs",
+        "vmclusterinstancetypes",
+        "vmcf",
         "virtualmachineclusterinstancetypes"
     ],
     "virtualmachineclusterpreference": [
         "virtualmachineclusterpreferences",
-        "vmcp",
-        "vmcps"
+        "vmcps",
+        "vmcp"
     ],
     "virtualmachineinstancetype": [
-        "vminstancetype",
-        "vmfs",
+        "vmf",
         "vminstancetypes",
-        "virtualmachineinstancetypes",
-        "vmf"
+        "vmfs",
+        "vminstancetype",
+        "virtualmachineinstancetypes"
     ],
     "virtualmachinepreference": [
-        "virtualmachinepreferences",
+        "vmps",
         "vmprefs",
         "vmp",
-        "vmps",
+        "virtualmachinepreferences",
         "vmpref"
     ],
     "ipaddressclaim": [
@@ -531,8 +531,8 @@
         "ipaddresses"
     ],
     "networkattachmentdefinition": [
-        "network-attachment-definitions",
-        "net-attach-def"
+        "net-attach-def",
+        "network-attachment-definitions"
     ],
     "adminpolicybasedexternalroute": [
         "apbexternalroute",
@@ -542,8 +542,8 @@
         "egressfirewalls"
     ],
     "egressip": [
-        "egressips",
-        "eip"
+        "eip",
+        "egressips"
     ],
     "egressqos": [
         "egressqoses"
@@ -552,34 +552,34 @@
         "egressservices"
     ],
     "kubevirt": [
-        "kubevirts",
         "kv",
-        "kvs"
+        "kvs",
+        "kubevirts"
     ],
     "virtualmachineinstancemigration": [
-        "virtualmachineinstancemigrations",
         "vmim",
+        "virtualmachineinstancemigrations",
         "vmims"
     ],
     "virtualmachineinstancepreset": [
-        "virtualmachineinstancepresets",
         "vmipreset",
+        "virtualmachineinstancepresets",
         "vmipresets"
     ],
     "virtualmachineinstancereplicaset": [
+        "virtualmachineinstancereplicasets",
         "vmirs",
-        "vmirss",
-        "virtualmachineinstancereplicasets"
+        "vmirss"
     ],
     "virtualmachineinstance": [
-        "vmi",
+        "virtualmachineinstances",
         "vmis",
-        "virtualmachineinstances"
+        "vmi"
     ],
     "virtualmachine": [
         "virtualmachines",
-        "vm",
-        "vms"
+        "vms",
+        "vm"
     ],
     "localvolumediscovery": [
         "localvolumediscoveries"
@@ -597,8 +597,8 @@
         "controlplanemachinesets"
     ],
     "machinehealthcheck": [
-        "mhc",
         "mhcs",
+        "mhc",
         "machinehealthchecks"
     ],
     "machine": [
@@ -608,8 +608,8 @@
         "machinesets"
     ],
     "containerruntimeconfig": [
-        "ctrcfg",
-        "containerruntimeconfigs"
+        "containerruntimeconfigs",
+        "ctrcfg"
     ],
     "controllerconfig": [
         "controllerconfigs"
@@ -626,13 +626,13 @@
         "machineconfigs"
     ],
     "baremetalhost": [
-        "baremetalhosts",
         "bmhost",
-        "bmh"
+        "bmh",
+        "baremetalhosts"
     ],
     "bmceventsubscription": [
-        "bmcevent",
         "bmceventsubscriptions",
+        "bmcevent",
         "bes"
     ],
     "dataimage": [
@@ -642,8 +642,8 @@
         "firmwareschemas"
     ],
     "hardwaredata": [
-        "hardwaredata",
-        "hd"
+        "hd",
+        "hardwaredata"
     ],
     "hostfirmwarecomponents": [
         "hostfirmwarecomponents"
@@ -675,8 +675,8 @@
         "migrationpolicies"
     ],
     "alertmanagerconfig": [
-        "amcfg",
-        "alertmanagerconfigs"
+        "alertmanagerconfigs",
+        "amcfg"
     ],
     "alertmanager": [
         "alertmanagers",
@@ -691,12 +691,12 @@
         "probes"
     ],
     "prometheus": [
-        "prom",
-        "prometheuses"
+        "prometheuses",
+        "prom"
     ],
     "prometheusrule": [
-        "prometheusrules",
-        "promrule"
+        "promrule",
+        "prometheusrules"
     ],
     "servicemonitor": [
         "smon",
@@ -732,8 +732,8 @@
         "nmstates"
     ],
     "nodenetworkconfigurationenactment": [
-        "nodenetworkconfigurationenactments",
-        "nnce"
+        "nnce",
+        "nodenetworkconfigurationenactments"
     ],
     "nodenetworkconfigurationpolicy": [
         "nodenetworkconfigurationpolicies",
@@ -759,8 +759,8 @@
         "noobaaaccounts"
     ],
     "noobaa": [
-        "nb",
-        "noobaas"
+        "noobaas",
+        "nb"
     ],
     "oauthaccesstoken": [
         "oauthaccesstokens"
@@ -778,14 +778,14 @@
         "useroauthaccesstokens"
     ],
     "objectbucketclaim": [
+        "objectbucketclaims",
         "obc",
-        "obcs",
-        "objectbucketclaims"
+        "obcs"
     ],
     "objectbucket": [
-        "obs",
         "ob",
-        "objectbuckets"
+        "objectbuckets",
+        "obs"
     ],
     "ocsinitialization": [
         "ocsinitializations"
@@ -809,8 +809,8 @@
         "storagerequests"
     ],
     "storagesystem": [
-        "storagesystems",
-        "storsys"
+        "storsys",
+        "storagesystems"
     ],
     "cloudcredential": [
         "cloudcredentials"
@@ -865,9 +865,9 @@
         "catalogsources"
     ],
     "clusterserviceversion": [
-        "csvs",
         "csv",
-        "clusterserviceversions"
+        "clusterserviceversions",
+        "csvs"
     ],
     "installplan": [
         "installplans",
@@ -881,16 +881,16 @@
         "operatorconditions"
     ],
     "operatorgroup": [
-        "og",
-        "operatorgroups"
+        "operatorgroups",
+        "og"
     ],
     "operator": [
         "operators"
     ],
     "subscription": [
         "sub",
-        "subs",
-        "subscriptions"
+        "subscriptions",
+        "subs"
     ],
     "packagemanifest": [
         "packagemanifests"
@@ -907,13 +907,13 @@
         "anp"
     ],
     "baselineadminnetworkpolicy": [
-        "banp",
-        "baselineadminnetworkpolicies"
+        "baselineadminnetworkpolicies",
+        "banp"
     ],
     "virtualmachinepool": [
-        "vmpool",
+        "virtualmachinepools",
         "vmpools",
-        "virtualmachinepools"
+        "vmpool"
     ],
     "projectrequest": [
         "projectrequests"
@@ -938,19 +938,19 @@
         "volumegroupreplications"
     ],
     "volumereplicationclass": [
-        "vrc",
-        "volumereplicationclasses"
+        "volumereplicationclasses",
+        "vrc"
     ],
     "volumereplication": [
-        "vr",
-        "volumereplications"
+        "volumereplications",
+        "vr"
     ],
     "route": [
         "routes"
     ],
     "priorityclass": [
-        "priorityclasses",
-        "pc"
+        "pc",
+        "priorityclasses"
     ],
     "rangeallocation": [
         "rangeallocations"
@@ -970,18 +970,18 @@
     ],
     "virtualmachinerestore": [
         "virtualmachinerestores",
-        "vmrestore",
-        "vmrestores"
+        "vmrestores",
+        "vmrestore"
     ],
     "virtualmachinesnapshotcontent": [
-        "virtualmachinesnapshotcontents",
         "vmsnapshotcontent",
-        "vmsnapshotcontents"
+        "vmsnapshotcontents",
+        "virtualmachinesnapshotcontents"
     ],
     "virtualmachinesnapshot": [
         "vmsnapshot",
-        "vmsnapshots",
-        "virtualmachinesnapshots"
+        "virtualmachinesnapshots",
+        "vmsnapshots"
     ],
     "volumesnapshotclass": [
         "vsclass",
@@ -990,8 +990,8 @@
     ],
     "volumesnapshotcontent": [
         "volumesnapshotcontents",
-        "vscs",
-        "vsc"
+        "vsc",
+        "vscs"
     ],
     "volumesnapshot": [
         "vs",
@@ -1010,8 +1010,8 @@
         "csistoragecapacities"
     ],
     "storageclass": [
-        "sc",
-        "storageclasses"
+        "storageclasses",
+        "sc"
     ],
     "volumeattachment": [
         "volumeattachments"
@@ -1032,9 +1032,9 @@
         "tuneds"
     ],
     "uploadtokenrequest": [
+        "utrs",
         "uploadtokenrequests",
-        "utr",
-        "utrs"
+        "utr"
     ],
     "group": [
         "groups"
@@ -1053,5 +1053,32 @@
     ],
     "overlappingrangeipreservation": [
         "overlappingrangeipreservations"
+    ],
+    "forkliftcontroller": [
+        "forkliftcontrollers"
+    ],
+    "hook": [
+        "hooks"
+    ],
+    "host": [
+        "hosts"
+    ],
+    "migration": [
+        "migrations"
+    ],
+    "networkmap": [
+        "networkmaps"
+    ],
+    "plan": [
+        "plans"
+    ],
+    "provider": [
+        "providers"
+    ],
+    "storagemap": [
+        "storagemaps"
+    ],
+    "nodeslicepool": [
+        "nodeslicepools"
     ]
 }
