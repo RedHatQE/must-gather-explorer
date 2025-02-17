@@ -4,14 +4,13 @@ import sysconfig
 from pathlib import Path
 from typing import Any
 
+import yaml
 from rich.table import Table
 from simple_logger.logger import get_logger
 from tqdm import tqdm
-import yaml
 
-from must_gather_explorer.constants import ALIASES_FILE_PATH, HOW_TO_UPDATE_ALIASES_MESSAGE, CONSOLE
+from must_gather_explorer.constants import ALIASES_FILE_PATH, CONSOLE, HOW_TO_UPDATE_ALIASES_MESSAGE
 from must_gather_explorer.exceptions import FailToReadJSONFileError, MissingResourceKindAliasError
-
 
 LOGGER = get_logger(__name__)
 GET_ACTION_STR = "get"
@@ -100,7 +99,10 @@ def get_all_resources(all_yaml_files: dict[str, list[str]]) -> dict[str, Any]:
                     LOGGER.debug(f"Error parsing YAML file {yaml_file_path}: {exp}")
                     continue
 
-            resource_dict_metadata = resource_dictionary["metadata"]
+            resource_dict_metadata = resource_dictionary.get("metadata")
+            if not resource_dict_metadata:
+                continue
+
             all_resources.setdefault(resource_dictionary["kind"].lower(), []).append({
                 "name": resource_dict_metadata.get("name", ""),
                 "namespace": resource_dict_metadata.get("namespace", ""),
