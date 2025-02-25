@@ -2,6 +2,8 @@ from contextlib import redirect_stderr, redirect_stdout
 import sys
 
 from cmd2.utils import StdSim
+
+from must_gather_explorer.tests.constants import MUST_GATHER_PATH_FOR_TESTS
 from must_gather_explorer.utils import get_all_resources, get_all_yaml_and_log_files, read_aliases_file
 import pytest
 from must_gather_explorer.prompt_handler import MustGatherExplorerPrompt
@@ -39,9 +41,7 @@ def aliases_file():
 
 @pytest.fixture(scope="module")
 def yaml_files():
-    all_yaml_files, _ = get_all_yaml_and_log_files(
-        must_gather_path="must_gather_explorer/tests/manifests/must-gather-data"
-    )
+    all_yaml_files, _ = get_all_yaml_and_log_files(must_gather_path=MUST_GATHER_PATH_FOR_TESTS)
     yield get_all_resources(all_yaml_files=all_yaml_files)
 
 
