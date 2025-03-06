@@ -1,4 +1,6 @@
 import sys
+import pytest
+from io import StringIO
 
 from must_gather_explorer.tests.constants import MUST_GATHER_PATH_FOR_TESTS
 from must_gather_explorer.utils import (
@@ -10,9 +12,6 @@ from must_gather_explorer.utils import (
     get_cluster_resources_raw_data,
     get_resource_kind_by_alias,
 )
-
-from io import StringIO
-import pytest
 
 
 class Capturing(list):
@@ -57,14 +56,14 @@ def test_get_resource_kind_by_alias():
     assert get_resource_kind_by_alias(resources_aliases=read_aliases_file(), requested_kind="Pod")
 
 
-# TODO add parameters for different querries (pod, node, with yaml, with yaml fields, with name, with partial name)
+# TODO add parameters for different queries (pod, node, with yaml, with yaml fields, with name, with partial name)
 @pytest.mark.parametrize(
     "kind, name, namespace, expected_output_1, expected_output_2",
     [
-        pytest.param("pod", None, None, "csi-nfs-controller-c54d89cd5-gbd5s", "csi-nfs-node-2r5tx"),
-        pytest.param("pod", "csi-nfs", None, "csi-nfs-controller-c54d89cd5-gbd5s", "csi-nfs-node-2r5tx"),
+        pytest.param("pod", None, "", "csi-nfs-controller-c54d89cd5-gbd5s", "csi-nfs-node-2r5tx"),
+        pytest.param("pod", "csi-nfs", "", "csi-nfs-controller-c54d89cd5-gbd5s", "csi-nfs-node-2r5tx"),
         pytest.param("pod", "csi-nfs", "kube-system", "csi-nfs-controller-c54d89cd5-gbd5s", "csi-nfs-node-2r5tx"),
-        pytest.param("node", None, None, "infd-vrf-418t2-2lnlk-master-0", "infd-vrf-418t2-2lnlk-worker-0-5ddfx"),
+        pytest.param("node", None, "", "infd-vrf-418t2-2lnlk-master-0", "infd-vrf-418t2-2lnlk-worker-0-5ddfx"),
     ],
 )
 def test_get_resources(kind, name, namespace, expected_output_1, expected_output_2):
