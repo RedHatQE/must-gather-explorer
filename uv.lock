@@ -370,7 +370,7 @@ wheels = [
 
 [[package]]
 name = "must-gather-explorer"
-version = "0.1.10"
+version = "0.1.11"
 source = { editable = "." }
 dependencies = [
     { name = "click" },
