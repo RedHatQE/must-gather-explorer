@@ -79,3 +79,11 @@ exit
 ```bash
 must-gather-explorer-update-aliases
 ```
+
+## Tests
+
+- Run the command:
+
+```bash
+uv run pytest must_gather_explorer/tests
+```
