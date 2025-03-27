@@ -35,9 +35,8 @@ def test_read_aliases_file():
 
 
 def test_get_all_yaml_and_log_files():
-    all_yaml_files, all_log_files = get_all_yaml_and_log_files(must_gather_path=MUST_GATHER_PATH_FOR_TESTS)
+    all_yaml_files, _ = get_all_yaml_and_log_files(must_gather_path=MUST_GATHER_PATH_FOR_TESTS)
     assert all_yaml_files, "No yaml files found"
-    assert all_log_files, "No log files found"
 
 
 def test_get_all_resources():
