@@ -1,6 +1,7 @@
-import cmd2
 import argparse
 from typing import Any
+
+import cmd2
 
 from must_gather_explorer.constants import CONSOLE
 from must_gather_explorer.utils import call_actions
