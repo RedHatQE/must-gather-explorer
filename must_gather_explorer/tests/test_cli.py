@@ -1,12 +1,12 @@
-from contextlib import redirect_stderr, redirect_stdout
 import sys
+from contextlib import redirect_stderr, redirect_stdout
 
+import pytest
 from cmd2.utils import StdSim
 
+from must_gather_explorer.prompt_handler import MustGatherExplorerPrompt
 from must_gather_explorer.tests.constants import MUST_GATHER_PATH_FOR_TESTS
 from must_gather_explorer.utils import get_all_resources, get_all_yaml_and_log_files, read_aliases_file
-import pytest
-from must_gather_explorer.prompt_handler import MustGatherExplorerPrompt
 
 
 def run_cmd(app, cmd):
@@ -22,9 +22,8 @@ def run_cmd(app, cmd):
 
     try:
         app.stdout = copy_cmd_stdout
-        with redirect_stdout(copy_cmd_stdout):
-            with redirect_stderr(copy_stderr):
-                app.onecmd_plus_hooks(cmd)
+        with redirect_stdout(copy_cmd_stdout), redirect_stderr(copy_stderr):
+            app.onecmd_plus_hooks(cmd)
     finally:
         app.stdout = copy_cmd_stdout.inner_stream
         sys.stdout = saved_sysout
