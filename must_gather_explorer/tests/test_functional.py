@@ -1,16 +1,17 @@
 import sys
-import pytest
 from io import StringIO
+
+import pytest
 
 from must_gather_explorer.tests.constants import MUST_GATHER_PATH_FOR_TESTS
 from must_gather_explorer.utils import (
     get_aliases_file_path,
-    read_aliases_file,
-    get_all_yaml_and_log_files,
     get_all_resources,
-    get_resources,
+    get_all_yaml_and_log_files,
     get_cluster_resources_raw_data,
     get_resource_kind_by_alias,
+    get_resources,
+    read_aliases_file,
 )
 
 
