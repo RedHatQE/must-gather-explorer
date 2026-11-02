@@ -54,9 +54,9 @@ def fill_api_resources_aliases() -> None:
     try:
         with open(ALIASES_FILE_PATH, "w") as aliases_file:
             json.dump(resources_aliases, aliases_file, indent=4)
-    except IOError as e:
+    except OSError as e:
         CONSOLE.print(f"[bold red]Error:[/bold red] Failed to write to {ALIASES_FILE_PATH}")
-        CONSOLE.print(f"Error details: {str(e)}")
+        CONSOLE.print(f"Error details: {e!s}")
         sys.exit(1)
 
 
