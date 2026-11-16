@@ -144,7 +144,7 @@ def print_resource_yaml(resources_raw_data: list[dict[str, Any]], yaml_fields: s
         try:
             with open(raw_data["yaml_file"]) as fd:
                 resource_yaml_content = fd.read()
-        except (FileNotFoundError, IOError) as e:
+        except (OSError, FileNotFoundError) as e:
             CONSOLE.print(f"[red]Error opening file {raw_data['yaml_file']}: {e}")
             continue
 
@@ -282,8 +282,8 @@ def call_actions(
         namespace=namespace,
     )
     if not resources_raw_data:
-        name = resource_name if resource_name else ""
-        namespace = namespace if namespace else ""
+        name = resource_name or ""
+        namespace = namespace or ""
         CONSOLE.print(
             f"No resources found for `{kind}` {f'that match the name {name}' if name else ''} {f'in {namespace}' if namespace else ''}"
         )
